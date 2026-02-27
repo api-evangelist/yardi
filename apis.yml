@@ -1,0 +1,94 @@
+name: Yardi
+description: Yardi develops and supports industry-leading investment and property management software for all types and sizes of real estate companies. The platform includes solutions for residential, commercial, public housing, affordable housing, and military housing management.
+image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
+url: https://www.yardi.com
+created: '2025'
+modified: '2025'
+apis:
+- name: Yardi Voyager API
+  description: Core property management platform API providing access to accounting, operations, and reporting functionality for real estate portfolios.
+  image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
+  humanURL: https://www.yardi.com/products/voyager/
+  baseURL: https://api.yardi.com
+  tags:
+  - property management
+  - accounting
+  - real estate
+  - commercial
+  - residential
+  properties:
+  - type: Documentation
+    url: https://www.yardi.com/platform/api/
+  - type: OpenAPI
+    url: https://api.yardi.com/swagger
+  - type: Authentication
+    url: https://www.yardi.com/platform/api/authentication/
+- name: Yardi RENTCafe API
+  description: API for online rental applications, payments, and resident portal functionality for multifamily properties.
+  image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
+  humanURL: https://www.rentcafe.com/
+  baseURL: https://api.rentcafe.com
+  tags:
+  - residents
+  - payments
+  - applications
+  - multifamily
+  - portal
+  properties:
+  - type: Documentation
+    url: https://www.rentcafe.com/api/
+  - type: API Terms
+    url: https://www.yardi.com/about-us/legal/
+- name: Yardi Maintenance IQ API
+  description: Maintenance and work order management API enabling integration with maintenance operations, service requests, and vendor management.
+  image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
+  humanURL: https://www.yardi.com/products/maintenance-iq/
+  baseURL: https://api.yardi.com/maintenance
+  tags:
+  - maintenance
+  - work orders
+  - facilities
+  - vendors
+  properties:
+  - type: Documentation
+    url: https://www.yardi.com/platform/api/maintenance/
+- name: Yardi Investment Manager API
+  description: API for investment and asset management functions including deal tracking, investor reporting, and portfolio analytics.
+  image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
+  humanURL: https://www.yardi.com/products/investment-manager/
+  baseURL: https://api.yardi.com/investment
+  tags:
+  - investment
+  - asset management
+  - analytics
+  - reporting
+  properties:
+  - type: Documentation
+    url: https://www.yardi.com/platform/api/investment/
+common:
+- type: Portal
+  url: https://www.yardi.com/platform/
+- type: Developer Resources
+  url: https://www.yardi.com/platform/api/
+- type: Support
+  url: https://www.yardi.com/support/
+- type: Contact
+  url: https://www.yardi.com/contact-us/
+- type: Privacy Policy
+  url: https://www.yardi.com/about-us/legal/privacy-policy/
+- type: Terms of Service
+  url: https://www.yardi.com/about-us/legal/terms-of-use/
+- type: Status
+  url: https://status.yardi.com
+maintainers:
+- FN: Yardi Systems
+  email: api-support@yardi.com
+  url: https://www.yardi.com
+tags:
+- property management
+- real estate
+- commercial real estate
+- residential
+- multifamily
+- accounting
+- investment management
