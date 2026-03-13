@@ -3,19 +3,24 @@ description: Yardi develops and supports industry-leading investment and propert
 image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
 url: https://www.yardi.com
 created: '2025'
-modified: '2025'
+modified: '2026-03-04'
 apis:
 - name: Yardi Voyager API
-  description: Core property management platform API providing access to accounting, operations, and reporting functionality for real estate portfolios.
+  description: >-
+    Core property management platform API providing access to accounting,
+    operations, and reporting functionality for real estate portfolios. Yardi
+    Voyager uses SOAP-based web services defined via WSDL, with interfaces for
+    billing and payments, common data, service requests, vendor invoicing, job
+    cost, and commercial data export.
   image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
   humanURL: https://www.yardi.com/products/voyager/
   baseURL: https://api.yardi.com
   tags:
-  - property management
-  - accounting
-  - real estate
-  - commercial
-  - residential
+  - Property Management
+  - Accounting
+  - Real Estate
+  - Commercial
+  - Residential
   properties:
   - type: Documentation
     url: https://www.yardi.com/platform/api/
@@ -23,48 +28,146 @@ apis:
     url: https://api.yardi.com/swagger
   - type: Authentication
     url: https://www.yardi.com/platform/api/authentication/
+  - type: Getting Started
+    url: https://www.yardi.com/company/become-an-interface-partner/
+  - type: Reference
+    url: https://www.yardi.com/services/interfaces/standard-interface-options/
+- name: Yardi Voyager Commercial Data API
+  description: >-
+    Web service interface that provides the ability to export commercial data
+    from Yardi Voyager databases, including property, unit, lease, and rent roll
+    information. Built on the OSCRE standard with Yardi-specific extensions, this
+    API expands existing services geared towards financial transactions and
+    facilities management.
+  image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
+  humanURL: https://www.yardi.com/news/press-releases/yardi-adds-commercial-data-interface-to-voyager-standard-interface-partnership-program/
+  baseURL: https://api.yardi.com
+  tags:
+  - Commercial
+  - Data Export
+  - Leasing
+  - OSCRE
+  properties:
+  - type: Documentation
+    url: https://www.yardi.com/services/interfaces/standard-interface-options/
+  - type: Getting Started
+    url: https://www.yardi.com/company/become-an-interface-partner/
 - name: Yardi RENTCafe API
-  description: API for online rental applications, payments, and resident portal functionality for multifamily properties.
+  description: >-
+    API for online rental applications, payments, and resident portal
+    functionality for multifamily properties. RENTCafe APIv2 provides
+    transaction-based pricing with an annual price cap, enabling vendors to
+    integrate leasing, marketing, and resident services into their applications.
   image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
   humanURL: https://www.rentcafe.com/
   baseURL: https://api.rentcafe.com
   tags:
-  - residents
-  - payments
-  - applications
-  - multifamily
-  - portal
+  - Residents
+  - Payments
+  - Applications
+  - Multifamily
+  - Portal
   properties:
   - type: Documentation
     url: https://www.rentcafe.com/api/
-  - type: API Terms
-    url: https://www.yardi.com/about-us/legal/
+  - type: Terms of Service
+    url: https://resources.yardi.com/legal/rc-api-tou/
+  - type: Getting Started
+    url: https://www.yardi.com/company/become-an-interface-partner/
 - name: Yardi Maintenance IQ API
-  description: Maintenance and work order management API enabling integration with maintenance operations, service requests, and vendor management.
+  description: >-
+    Maintenance and work order management API enabling integration with
+    maintenance operations, service requests, and vendor management. Part of the
+    Voyager Standard Interface Partnership Program, this API supports creating
+    and updating work orders between Yardi and third-party systems.
   image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
   humanURL: https://www.yardi.com/products/maintenance-iq/
   baseURL: https://api.yardi.com/maintenance
   tags:
-  - maintenance
-  - work orders
-  - facilities
-  - vendors
+  - Maintenance
+  - Work Orders
+  - Facilities
+  - Vendors
   properties:
   - type: Documentation
     url: https://www.yardi.com/platform/api/maintenance/
+  - type: Getting Started
+    url: https://www.yardi.com/company/become-an-interface-partner/
 - name: Yardi Investment Manager API
-  description: API for investment and asset management functions including deal tracking, investor reporting, and portfolio analytics.
+  description: >-
+    API for investment and asset management functions including deal tracking,
+    investor reporting, and portfolio analytics. Provides programmatic access to
+    investment management data within the Yardi Voyager platform.
   image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
   humanURL: https://www.yardi.com/products/investment-manager/
   baseURL: https://api.yardi.com/investment
   tags:
-  - investment
-  - asset management
-  - analytics
-  - reporting
+  - Investment
+  - Asset Management
+  - Analytics
+  - Reporting
   properties:
   - type: Documentation
     url: https://www.yardi.com/platform/api/investment/
+  - type: Getting Started
+    url: https://www.yardi.com/company/become-an-interface-partner/
+- name: Yardi Store Web Services API
+  description: >-
+    SOAP-based API for Yardi's self-storage management platform, formerly known
+    as CenterShift. The SWS2 API provides tokenized authentication and access to
+    store management methods for creating custom applications and websites that
+    interact with Yardi Store Enterprise and Store Advantage systems.
+  image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
+  humanURL: https://centershiftdevx.com/
+  baseURL: https://api.yardi.com
+  tags:
+  - Self Storage
+  - Store Management
+  - SOAP
+  - Reservations
+  properties:
+  - type: Documentation
+    url: https://centershiftdevx.com/2015/01/22/sws2-api-documentation/
+  - type: Reference
+    url: https://centershiftdevx.com/2017/01/23/end-points/
+  - type: Getting Started
+    url: https://centershiftdevx.com/2017/04/16/overview-using-yardi-store-web-services-sws/
+  - type: Support
+    url: https://centershiftdevx.com/2011/06/20/contacting-centershift/
+- name: Yardi Kube API
+  description: >-
+    API and webhook integration for Yardi Kube, the coworking and flexible
+    workspace management platform. Enables connecting third-party applications
+    with Yardi Kube for member management, billing, space booking, access
+    control, and CRM integrations.
+  image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
+  humanURL: https://www.yardikube.com/integrations-api/
+  baseURL: https://api.yardikube.com
+  tags:
+  - Coworking
+  - Flexible Workspace
+  - Webhooks
+  - Booking
+  properties:
+  - type: Documentation
+    url: https://www.yardikube.com/integrations-api/
+- name: Yardi Senior Living EHR API
+  description: >-
+    Interface API for Yardi's Electronic Health Records platform designed for
+    senior living communities. Supports secure data exchange with pharmacy
+    networks, laboratory systems, and other healthcare partners through
+    standardized interfaces including NCPDP 10.6 SCRIPT compliance.
+  image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
+  humanURL: https://www.yardi.com/product/ehr/
+  baseURL: https://api.yardi.com
+  tags:
+  - Senior Living
+  - Healthcare
+  - EHR
+  - Pharmacy
+  properties:
+  - type: Documentation
+    url: https://www.yardi.com/product/ehr/
 common:
 - type: Portal
   url: https://www.yardi.com/platform/
@@ -75,20 +178,39 @@ common:
 - type: Contact
   url: https://www.yardi.com/contact-us/
 - type: Privacy Policy
-  url: https://www.yardi.com/about-us/legal/privacy-policy/
+  url: https://resources.yardi.com/legal/privacy-statement/
 - type: Terms of Service
   url: https://www.yardi.com/about-us/legal/terms-of-use/
 - type: Status
   url: https://status.yardi.com
+- type: Website
+  url: https://www.yardi.com
+- type: Blog
+  url: https://www.yardi.com/blog/
+- type: Getting Started
+  url: https://www.yardi.com/company/become-an-interface-partner/
+- type: Sign Up
+  url: https://www.yardi.com/company/become-an-interface-partner/
+- type: Documentation
+  url: https://www.yardi.com/services/interfaces/standard-interface-options/
+- type: GitHub Organization
+  url: https://github.com/YardiSystems
+- type: Training
+  url: https://www.yardi.com/company/training/
+- type: Login
+  url: https://www.yardi.com/company/technical-support/
 maintainers:
-- FN: Yardi Systems
-  email: api-support@yardi.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
   url: https://www.yardi.com
 tags:
-- property management
-- real estate
-- commercial real estate
-- residential
-- multifamily
-- accounting
-- investment management
+- Property Management
+- Real Estate
+- Commercial Real Estate
+- Residential
+- Multifamily
+- Accounting
+- Investment Management
+- Self Storage
+- Senior Living
+- Coworking

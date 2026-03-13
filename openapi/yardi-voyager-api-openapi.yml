@@ -1,0 +1,1055 @@
+openapi: 3.1.0
+info:
+  title: Yardi Voyager API
+  description: >-
+    Core property management platform API providing access to accounting,
+    operations, and reporting functionality for real estate portfolios. Yardi
+    Voyager uses SOAP-based web services defined via WSDL, with interfaces for
+    billing and payments, common data, service requests, vendor invoicing, job
+    cost, and commercial data export. This OpenAPI specification documents the
+    primary web service operations available through the Voyager Standard
+    Interface Partnership Program.
+  version: '20.0'
+  contact:
+    name: Yardi Systems
+    url: https://www.yardi.com/support/
+  termsOfService: https://www.yardi.com/about-us/legal/terms-of-use/
+externalDocs:
+  description: Yardi Platform API Documentation
+  url: https://www.yardi.com/platform/api/
+servers:
+  - url: https://{server}.yardi.com/{clientUrl}/webservices
+    description: Yardi Voyager Web Services Server
+    variables:
+      server:
+        default: www.yardiasp13
+        description: >-
+          Yardi hosting server. Specific server varies by client deployment.
+      clientUrl:
+        default: '{client}'
+        description: >-
+          Client-specific URL path. Obtain from Yardi representative or check in
+          Voyager under Administration > About > URL.
+tags:
+  - name: Billing and Payments
+    description: >-
+      Operations for managing resident transactions, charges, payments,
+      credits, and billing data. Accessed via the ItfResidentTransactions20
+      web service interface.
+  - name: Common Data
+    description: >-
+      Operations for retrieving shared property management data including
+      properties, units, tenants, and chart of accounts. Accessed via the
+      ItfCommonData web service interface.
+  - name: Service Requests
+    description: >-
+      Operations for creating and managing maintenance work orders and
+      service requests. Accessed via the ItfServiceRequests web service
+      interface.
+  - name: Vendor Invoicing
+    description: >-
+      Operations for managing vendor invoices, purchase orders, and accounts
+      payable transactions. Accessed via the ItfVendorInvoice web service
+      interface.
+  - name: Job Cost
+    description: >-
+      Operations for managing job cost tracking, budgets, and construction
+      project financials. Accessed via the ItfJobCost web service interface.
+security:
+  - soapAuth: []
+paths:
+  /ItfResidentTransactions20.asmx/GetResidentTransactions_Login:
+    post:
+      operationId: getResidentTransactionsLogin
+      summary: Get resident transactions with login
+      description: >-
+        Retrieves resident transaction records for a specified property and date
+        range. Requires authentication credentials passed in the SOAP request
+        body. Returns billing, payment, and charge history for residents.
+      tags:
+        - Billing and Payments
+      requestBody:
+        required: true
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetResidentTransactionsRequest'
+      responses:
+        '200':
+          description: Successful response with resident transaction data
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+        '401':
+          description: Authentication failed
+        '500':
+          description: Server error processing the SOAP request
+  /ItfResidentTransactions20.asmx/GetResidentTransactions_ByChargeDate_Login:
+    post:
+      operationId: getResidentTransactionsByChargeDateLogin
+      summary: Get resident transactions by charge date
+      description: >-
+        Retrieves resident transaction records filtered by charge date for a
+        specified property. Returns billing and payment records within the
+        specified charge date range.
+      tags:
+        - Billing and Payments
+      requestBody:
+        required: true
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetResidentTransactionsByChargeDateRequest'
+      responses:
+        '200':
+          description: Successful response with filtered transaction data
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+        '401':
+          description: Authentication failed
+        '500':
+          description: Server error processing the SOAP request
+  /ItfResidentTransactions20.asmx/ImportResidentTransactions_Login:
+    post:
+      operationId: importResidentTransactionsLogin
+      summary: Import resident transactions
+      description: >-
+        Imports resident transaction records including charges, payments, and
+        credits into the Voyager system for a specified property. Used for
+        batch processing of financial transactions from external systems.
+      tags:
+        - Billing and Payments
+      requestBody:
+        required: true
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ImportResidentTransactionsRequest'
+      responses:
+        '200':
+          description: Successful import confirmation
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ImportResponse'
+        '401':
+          description: Authentication failed
+        '500':
+          description: Server error processing the SOAP request
+  /ItfResidentTransactions20.asmx/GetBudgetData_Login:
+    post:
+      operationId: getBudgetDataLogin
+      summary: Get budget data
+      description: >-
+        Retrieves budget data for a specified property, including approved
+        budgets, actual vs. budget comparisons, and variance data for
+        accounting periods.
+      tags:
+        - Billing and Payments
+      requestBody:
+        required: true
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetBudgetDataRequest'
+      responses:
+        '200':
+          description: Successful response with budget data
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/BudgetDataResponse'
+        '401':
+          description: Authentication failed
+        '500':
+          description: Server error processing the SOAP request
+  /ItfCommonData.asmx/GetPropertyConfigurations_Login:
+    post:
+      operationId: getPropertyConfigurationsLogin
+      summary: Get property configurations
+      description: >-
+        Retrieves property configuration data including property details, unit
+        types, amenities, and management settings. Used for synchronizing
+        property master data with external systems.
+      tags:
+        - Common Data
+      requestBody:
+        required: true
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetPropertyConfigurationsRequest'
+      responses:
+        '200':
+          description: Successful response with property configuration data
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/PropertyConfigurationsResponse'
+        '401':
+          description: Authentication failed
+        '500':
+          description: Server error processing the SOAP request
+  /ItfCommonData.asmx/GetUnitInformation_Login:
+    post:
+      operationId: getUnitInformationLogin
+      summary: Get unit information
+      description: >-
+        Retrieves detailed unit information for a specified property including
+        unit numbers, types, square footage, bedroom and bathroom counts,
+        occupancy status, and market rents.
+      tags:
+        - Common Data
+      requestBody:
+        required: true
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetUnitInformationRequest'
+      responses:
+        '200':
+          description: Successful response with unit information
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/UnitInformationResponse'
+        '401':
+          description: Authentication failed
+        '500':
+          description: Server error processing the SOAP request
+  /ItfCommonData.asmx/GetTenants_Login:
+    post:
+      operationId: getTenantsLogin
+      summary: Get tenant data
+      description: >-
+        Retrieves tenant records for a specified property, including tenant
+        contact information, lease details, move-in dates, and account status.
+      tags:
+        - Common Data
+      requestBody:
+        required: true
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetTenantsRequest'
+      responses:
+        '200':
+          description: Successful response with tenant data
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TenantsResponse'
+        '401':
+          description: Authentication failed
+        '500':
+          description: Server error processing the SOAP request
+  /ItfCommonData.asmx/GetChartOfAccounts_Login:
+    post:
+      operationId: getChartOfAccountsLogin
+      summary: Get chart of accounts
+      description: >-
+        Retrieves the chart of accounts for a specified property or entity,
+        including account numbers, descriptions, types, and hierarchy.
+      tags:
+        - Common Data
+      requestBody:
+        required: true
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetChartOfAccountsRequest'
+      responses:
+        '200':
+          description: Successful response with chart of accounts
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ChartOfAccountsResponse'
+        '401':
+          description: Authentication failed
+        '500':
+          description: Server error processing the SOAP request
+  /ItfServiceRequests.asmx/GetServiceRequests_Login:
+    post:
+      operationId: getServiceRequestsLogin
+      summary: Get service requests
+      description: >-
+        Retrieves service request and work order records for a specified
+        property, including request details, status, priority, assigned
+        technician, and completion information.
+      tags:
+        - Service Requests
+      requestBody:
+        required: true
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetServiceRequestsRequest'
+      responses:
+        '200':
+          description: Successful response with service request data
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ServiceRequestsResponse'
+        '401':
+          description: Authentication failed
+        '500':
+          description: Server error processing the SOAP request
+  /ItfServiceRequests.asmx/ImportServiceRequests_Login:
+    post:
+      operationId: importServiceRequestsLogin
+      summary: Import service requests
+      description: >-
+        Creates or updates service request and work order records in the
+        Voyager system. Used for integrating maintenance management data
+        from external systems.
+      tags:
+        - Service Requests
+      requestBody:
+        required: true
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ImportServiceRequestsRequest'
+      responses:
+        '200':
+          description: Successful import confirmation
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ImportResponse'
+        '401':
+          description: Authentication failed
+        '500':
+          description: Server error processing the SOAP request
+  /ItfVendorInvoice.asmx/GetVendorInvoices_Login:
+    post:
+      operationId: getVendorInvoicesLogin
+      summary: Get vendor invoices
+      description: >-
+        Retrieves vendor invoice records for a specified property or entity,
+        including invoice amounts, dates, approval status, and payment
+        information.
+      tags:
+        - Vendor Invoicing
+      requestBody:
+        required: true
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetVendorInvoicesRequest'
+      responses:
+        '200':
+          description: Successful response with vendor invoice data
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/VendorInvoicesResponse'
+        '401':
+          description: Authentication failed
+        '500':
+          description: Server error processing the SOAP request
+  /ItfVendorInvoice.asmx/ImportVendorInvoices_Login:
+    post:
+      operationId: importVendorInvoicesLogin
+      summary: Import vendor invoices
+      description: >-
+        Imports vendor invoice records into the Voyager accounts payable
+        system. Supports creating new invoices and updating existing ones
+        for batch processing from external procurement systems.
+      tags:
+        - Vendor Invoicing
+      requestBody:
+        required: true
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ImportVendorInvoicesRequest'
+      responses:
+        '200':
+          description: Successful import confirmation
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ImportResponse'
+        '401':
+          description: Authentication failed
+        '500':
+          description: Server error processing the SOAP request
+  /ItfJobCost.asmx/GetJobCostData_Login:
+    post:
+      operationId: getJobCostDataLogin
+      summary: Get job cost data
+      description: >-
+        Retrieves job cost tracking data for construction and renovation
+        projects, including budgets, commitments, actual costs, and variance
+        reporting.
+      tags:
+        - Job Cost
+      requestBody:
+        required: true
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetJobCostDataRequest'
+      responses:
+        '200':
+          description: Successful response with job cost data
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/JobCostDataResponse'
+        '401':
+          description: Authentication failed
+        '500':
+          description: Server error processing the SOAP request
+components:
+  securitySchemes:
+    soapAuth:
+      type: http
+      scheme: basic
+      description: >-
+        SOAP authentication using UserName, Password, and ServerName parameters
+        passed within the SOAP request body. Credentials are provided by the
+        Yardi Standard Interface Partnership Program.
+  schemas:
+    GetResidentTransactionsRequest:
+      type: object
+      description: >-
+        SOAP request for retrieving resident transactions within a date range.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+          enum:
+            - SQL Server
+            - Oracle
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+        FromDate:
+          type: string
+          format: date
+          description: Start date for transaction query
+        ToDate:
+          type: string
+          format: date
+          description: End date for transaction query
+      required:
+        - UserName
+        - Password
+        - ServerName
+        - Database
+        - Platform
+        - YardiPropertyId
+        - InterfaceEntity
+        - InterfaceLicense
+    GetResidentTransactionsByChargeDateRequest:
+      type: object
+      description: >-
+        SOAP request for retrieving resident transactions filtered by charge
+        date.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+        ChargeFromDate:
+          type: string
+          format: date
+          description: Start charge date for filtering
+        ChargeToDate:
+          type: string
+          format: date
+          description: End charge date for filtering
+      required:
+        - UserName
+        - Password
+        - ServerName
+        - Database
+        - Platform
+        - YardiPropertyId
+        - InterfaceEntity
+        - InterfaceLicense
+    ImportResidentTransactionsRequest:
+      type: object
+      description: >-
+        SOAP request for importing resident transactions into Voyager.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+        TransactionXml:
+          type: string
+          description: XML payload containing transaction data to import
+      required:
+        - UserName
+        - Password
+        - ServerName
+        - Database
+        - Platform
+        - YardiPropertyId
+        - InterfaceEntity
+        - InterfaceLicense
+        - TransactionXml
+    GetBudgetDataRequest:
+      type: object
+      description: >-
+        SOAP request for retrieving budget data for a property.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+        BudgetName:
+          type: string
+          description: Name of the budget to retrieve
+        FiscalYear:
+          type: string
+          description: Fiscal year for budget data
+      required:
+        - UserName
+        - Password
+        - ServerName
+        - Database
+        - Platform
+        - YardiPropertyId
+        - InterfaceEntity
+        - InterfaceLicense
+    GetPropertyConfigurationsRequest:
+      type: object
+      description: >-
+        SOAP request for retrieving property configuration data.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+      required:
+        - UserName
+        - Password
+        - ServerName
+        - Database
+        - Platform
+        - YardiPropertyId
+        - InterfaceEntity
+        - InterfaceLicense
+    GetUnitInformationRequest:
+      type: object
+      description: >-
+        SOAP request for retrieving unit information for a property.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+      required:
+        - UserName
+        - Password
+        - ServerName
+        - Database
+        - Platform
+        - YardiPropertyId
+        - InterfaceEntity
+        - InterfaceLicense
+    GetTenantsRequest:
+      type: object
+      description: >-
+        SOAP request for retrieving tenant data for a property.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+      required:
+        - UserName
+        - Password
+        - ServerName
+        - Database
+        - Platform
+        - YardiPropertyId
+        - InterfaceEntity
+        - InterfaceLicense
+    GetChartOfAccountsRequest:
+      type: object
+      description: >-
+        SOAP request for retrieving the chart of accounts.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+      required:
+        - UserName
+        - Password
+        - ServerName
+        - Database
+        - Platform
+        - YardiPropertyId
+        - InterfaceEntity
+        - InterfaceLicense
+    GetServiceRequestsRequest:
+      type: object
+      description: >-
+        SOAP request for retrieving service requests and work orders.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+        FromDate:
+          type: string
+          format: date
+          description: Start date for service request query
+        ToDate:
+          type: string
+          format: date
+          description: End date for service request query
+      required:
+        - UserName
+        - Password
+        - ServerName
+        - Database
+        - Platform
+        - YardiPropertyId
+        - InterfaceEntity
+        - InterfaceLicense
+    ImportServiceRequestsRequest:
+      type: object
+      description: >-
+        SOAP request for creating or updating service requests in Voyager.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+        ServiceRequestXml:
+          type: string
+          description: XML payload containing service request data to import
+      required:
+        - UserName
+        - Password
+        - ServerName
+        - Database
+        - Platform
+        - YardiPropertyId
+        - InterfaceEntity
+        - InterfaceLicense
+        - ServiceRequestXml
+    GetVendorInvoicesRequest:
+      type: object
+      description: >-
+        SOAP request for retrieving vendor invoice records.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+        FromDate:
+          type: string
+          format: date
+          description: Start date for invoice query
+        ToDate:
+          type: string
+          format: date
+          description: End date for invoice query
+      required:
+        - UserName
+        - Password
+        - ServerName
+        - Database
+        - Platform
+        - YardiPropertyId
+        - InterfaceEntity
+        - InterfaceLicense
+    ImportVendorInvoicesRequest:
+      type: object
+      description: >-
+        SOAP request for importing vendor invoices into Voyager accounts payable.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+        InvoiceXml:
+          type: string
+          description: XML payload containing vendor invoice data to import
+      required:
+        - UserName
+        - Password
+        - ServerName
+        - Database
+        - Platform
+        - YardiPropertyId
+        - InterfaceEntity
+        - InterfaceLicense
+        - InvoiceXml
+    GetJobCostDataRequest:
+      type: object
+      description: >-
+        SOAP request for retrieving job cost tracking data.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+        JobId:
+          type: string
+          description: Job or project identifier
+      required:
+        - UserName
+        - Password
+        - ServerName
+        - Database
+        - Platform
+        - YardiPropertyId
+        - InterfaceEntity
+        - InterfaceLicense
+    TransactionResponse:
+      type: object
+      description: >-
+        SOAP response containing resident transaction data in XML format.
+      properties:
+        TransactionXmlResponse:
+          type: string
+          description: XML response containing transaction records
+    BudgetDataResponse:
+      type: object
+      description: >-
+        SOAP response containing budget data in XML format.
+      properties:
+        BudgetDataXmlResponse:
+          type: string
+          description: XML response containing budget records
+    PropertyConfigurationsResponse:
+      type: object
+      description: >-
+        SOAP response containing property configuration data.
+      properties:
+        PropertyConfigurationsXmlResponse:
+          type: string
+          description: XML response containing property configuration records
+    UnitInformationResponse:
+      type: object
+      description: >-
+        SOAP response containing unit information data.
+      properties:
+        UnitInformationXmlResponse:
+          type: string
+          description: XML response containing unit records
+    TenantsResponse:
+      type: object
+      description: >-
+        SOAP response containing tenant data.
+      properties:
+        TenantsXmlResponse:
+          type: string
+          description: XML response containing tenant records
+    ChartOfAccountsResponse:
+      type: object
+      description: >-
+        SOAP response containing chart of accounts data.
+      properties:
+        ChartOfAccountsXmlResponse:
+          type: string
+          description: XML response containing account records
+    ServiceRequestsResponse:
+      type: object
+      description: >-
+        SOAP response containing service request and work order data.
+      properties:
+        ServiceRequestsXmlResponse:
+          type: string
+          description: XML response containing service request records
+    VendorInvoicesResponse:
+      type: object
+      description: >-
+        SOAP response containing vendor invoice data.
+      properties:
+        VendorInvoicesXmlResponse:
+          type: string
+          description: XML response containing vendor invoice records
+    JobCostDataResponse:
+      type: object
+      description: >-
+        SOAP response containing job cost tracking data.
+      properties:
+        JobCostDataXmlResponse:
+          type: string
+          description: XML response containing job cost records
+    ImportResponse:
+      type: object
+      description: >-
+        SOAP response confirming successful import of data.
+      properties:
+        ImportResult:
+          type: string
+          description: Import result status message
+        ErrorMessages:
+          type: array
+          description: List of error messages if any records failed to import
+          items:
+            type: string
