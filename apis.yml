@@ -1,9 +1,12 @@
+aid: yardi
 name: Yardi
 description: Yardi develops and supports industry-leading investment and property management software for all types and sizes of real estate companies. The platform includes solutions for residential, commercial, public housing, affordable housing, and military housing management.
-image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
-url: https://www.yardi.com
-created: '2025'
-modified: '2026-03-04'
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/yardi/refs/heads/main/apis.yml
+created: '2025-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
 apis:
 - name: Yardi Voyager API
   description: >-
@@ -200,9 +203,8 @@ common:
 - type: Login
   url: https://www.yardi.com/company/technical-support/
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
-  url: https://www.yardi.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
 tags:
 - Property Management
 - Real Estate
