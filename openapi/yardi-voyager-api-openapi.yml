@@ -41,6 +41,10 @@ tags:
       Operations for retrieving shared property management data including
       properties, units, tenants, and chart of accounts. Accessed via the
       ItfCommonData web service interface.
+  - name: Job Cost
+    description: >-
+      Operations for managing job cost tracking, budgets, and construction
+      project financials. Accessed via the ItfJobCost web service interface.
   - name: Service Requests
     description: >-
       Operations for creating and managing maintenance work orders and
@@ -51,10 +55,6 @@ tags:
       Operations for managing vendor invoices, purchase orders, and accounts
       payable transactions. Accessed via the ItfVendorInvoice web service
       interface.
-  - name: Job Cost
-    description: >-
-      Operations for managing job cost tracking, budgets, and construction
-      project financials. Accessed via the ItfJobCost web service interface.
 security:
   - soapAuth: []
 paths:
