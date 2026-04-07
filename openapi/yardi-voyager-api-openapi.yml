@@ -61,7 +61,7 @@ paths:
   /ItfResidentTransactions20.asmx/GetResidentTransactions_Login:
     post:
       operationId: getResidentTransactionsLogin
-      summary: Get resident transactions with login
+      summary: Yardi Get resident transactions with login
       description: >-
         Retrieves resident transaction records for a specified property and date
         range. Requires authentication credentials passed in the SOAP request
@@ -88,7 +88,7 @@ paths:
   /ItfResidentTransactions20.asmx/GetResidentTransactions_ByChargeDate_Login:
     post:
       operationId: getResidentTransactionsByChargeDateLogin
-      summary: Get resident transactions by charge date
+      summary: Yardi Get resident transactions by charge date
       description: >-
         Retrieves resident transaction records filtered by charge date for a
         specified property. Returns billing and payment records within the
@@ -115,7 +115,7 @@ paths:
   /ItfResidentTransactions20.asmx/ImportResidentTransactions_Login:
     post:
       operationId: importResidentTransactionsLogin
-      summary: Import resident transactions
+      summary: Yardi Import resident transactions
       description: >-
         Imports resident transaction records including charges, payments, and
         credits into the Voyager system for a specified property. Used for
@@ -142,7 +142,7 @@ paths:
   /ItfResidentTransactions20.asmx/GetBudgetData_Login:
     post:
       operationId: getBudgetDataLogin
-      summary: Get budget data
+      summary: Yardi Get budget data
       description: >-
         Retrieves budget data for a specified property, including approved
         budgets, actual vs. budget comparisons, and variance data for
@@ -169,7 +169,7 @@ paths:
   /ItfCommonData.asmx/GetPropertyConfigurations_Login:
     post:
       operationId: getPropertyConfigurationsLogin
-      summary: Get property configurations
+      summary: Yardi Get property configurations
       description: >-
         Retrieves property configuration data including property details, unit
         types, amenities, and management settings. Used for synchronizing
@@ -196,7 +196,7 @@ paths:
   /ItfCommonData.asmx/GetUnitInformation_Login:
     post:
       operationId: getUnitInformationLogin
-      summary: Get unit information
+      summary: Yardi Get unit information
       description: >-
         Retrieves detailed unit information for a specified property including
         unit numbers, types, square footage, bedroom and bathroom counts,
@@ -223,7 +223,7 @@ paths:
   /ItfCommonData.asmx/GetTenants_Login:
     post:
       operationId: getTenantsLogin
-      summary: Get tenant data
+      summary: Yardi Get tenant data
       description: >-
         Retrieves tenant records for a specified property, including tenant
         contact information, lease details, move-in dates, and account status.
@@ -249,7 +249,7 @@ paths:
   /ItfCommonData.asmx/GetChartOfAccounts_Login:
     post:
       operationId: getChartOfAccountsLogin
-      summary: Get chart of accounts
+      summary: Yardi Get chart of accounts
       description: >-
         Retrieves the chart of accounts for a specified property or entity,
         including account numbers, descriptions, types, and hierarchy.
@@ -275,7 +275,7 @@ paths:
   /ItfServiceRequests.asmx/GetServiceRequests_Login:
     post:
       operationId: getServiceRequestsLogin
-      summary: Get service requests
+      summary: Yardi Get service requests
       description: >-
         Retrieves service request and work order records for a specified
         property, including request details, status, priority, assigned
@@ -302,7 +302,7 @@ paths:
   /ItfServiceRequests.asmx/ImportServiceRequests_Login:
     post:
       operationId: importServiceRequestsLogin
-      summary: Import service requests
+      summary: Yardi Import service requests
       description: >-
         Creates or updates service request and work order records in the
         Voyager system. Used for integrating maintenance management data
@@ -329,7 +329,7 @@ paths:
   /ItfVendorInvoice.asmx/GetVendorInvoices_Login:
     post:
       operationId: getVendorInvoicesLogin
-      summary: Get vendor invoices
+      summary: Yardi Get vendor invoices
       description: >-
         Retrieves vendor invoice records for a specified property or entity,
         including invoice amounts, dates, approval status, and payment
@@ -356,7 +356,7 @@ paths:
   /ItfVendorInvoice.asmx/ImportVendorInvoices_Login:
     post:
       operationId: importVendorInvoicesLogin
-      summary: Import vendor invoices
+      summary: Yardi Import vendor invoices
       description: >-
         Imports vendor invoice records into the Voyager accounts payable
         system. Supports creating new invoices and updating existing ones
@@ -383,7 +383,7 @@ paths:
   /ItfJobCost.asmx/GetJobCostData_Login:
     post:
       operationId: getJobCostDataLogin
-      summary: Get job cost data
+      summary: Yardi Get job cost data
       description: >-
         Retrieves job cost tracking data for construction and renovation
         projects, including budgets, commitments, actual costs, and variance
