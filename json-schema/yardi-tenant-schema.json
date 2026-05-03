@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/yardi/main/json-schema/yardi-tenant-schema.json",
+  "title": "Yardi Tenant",
+  "description": "Schema for a Yardi Voyager tenant record including lease, contact, and account details.",
+  "type": "object",
+  "properties": {
+    "tenantId": {
+      "type": "string",
+      "description": "Unique identifier for the tenant in Yardi Voyager"
+    },
+    "propertyId": {
+      "type": "string",
+      "description": "Yardi property identifier the tenant belongs to"
+    },
+    "unitId": {
+      "type": "string",
+      "description": "Unit identifier the tenant occupies"
+    },
+    "firstName": {
+      "type": "string",
+      "description": "Tenant first name"
+    },
+    "lastName": {
+      "type": "string",
+      "description": "Tenant last name"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Tenant email address"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Tenant primary phone number"
+    },
+    "leaseStartDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the current lease term began"
+    },
+    "leaseEndDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the current lease term ends"
+    },
+    "moveInDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the tenant moved into the unit"
+    },
+    "moveOutDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the tenant is scheduled to or has moved out"
+    },
+    "monthlyRent": {
+      "type": "number",
+      "description": "Monthly rent amount in USD"
+    },
+    "balance": {
+      "type": "number",
+      "description": "Current account balance (positive = owed, negative = credit)"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Current", "Notice", "Eviction", "Past", "Applicant"],
+      "description": "Current tenant account status"
+    }
+  },
+  "required": ["tenantId", "propertyId", "unitId", "lastName", "status"]
+}

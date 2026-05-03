@@ -1,0 +1,92 @@
+rules:
+  yardi-operation-summary-title-case:
+    description: All operation summaries must use Title Case
+    message: "Operation summary '{{value}}' must use Title Case"
+    given: "$.paths[*][*].summary"
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9 ]*$"
+
+  yardi-operation-id-camel-case:
+    description: All operationIds must use camelCase
+    message: "OperationId '{{value}}' must use camelCase"
+    given: "$.paths[*][*].operationId"
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  yardi-must-have-operation-id:
+    description: All operations must have an operationId
+    message: "Operation is missing an operationId"
+    given: "$.paths[*][get,post,put,patch,delete]"
+    severity: error
+    then:
+      field: operationId
+      function: truthy
+
+  yardi-must-have-tags:
+    description: All operations must have at least one tag
+    message: "Operation is missing tags"
+    given: "$.paths[*][get,post,put,patch,delete]"
+    severity: warn
+    then:
+      field: tags
+      function: truthy
+
+  yardi-post-must-have-request-body:
+    description: POST operations for imports must have a request body
+    message: "POST operation importing data must have a request body"
+    given: "$.paths[*][post]"
+    severity: warn
+    then:
+      field: requestBody
+      function: truthy
+
+  yardi-must-have-description:
+    description: All operations must have a description
+    message: "Operation is missing a description"
+    given: "$.paths[*][get,post,put,patch,delete]"
+    severity: warn
+    then:
+      field: description
+      function: truthy
+
+  yardi-responses-must-have-200:
+    description: All operations must have a 200 response
+    message: "Operation is missing a 200 success response"
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    severity: error
+    then:
+      field: "200"
+      function: truthy
+
+  yardi-responses-must-have-401:
+    description: Authenticated operations must document 401 response
+    message: "Operation is missing a 401 unauthorized response"
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    severity: warn
+    then:
+      field: "401"
+      function: truthy
+
+  yardi-must-have-contact:
+    description: API must have contact information
+    message: "API info is missing contact details"
+    given: "$.info"
+    severity: warn
+    then:
+      field: contact
+      function: truthy
+
+  yardi-must-have-terms-of-service:
+    description: API must have terms of service
+    message: "API info is missing termsOfService"
+    given: "$.info"
+    severity: warn
+    then:
+      field: termsOfService
+      function: truthy

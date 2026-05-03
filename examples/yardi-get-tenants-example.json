@@ -1,0 +1,23 @@
+{
+  "request": {
+    "endpoint": "POST /ItfCommonData.asmx/GetTenants_Login",
+    "description": "Retrieve tenant records for a Yardi Voyager property",
+    "body": {
+      "UserName": "interface_user",
+      "Password": "interface_password",
+      "ServerName": "voyager_db_server",
+      "Database": "voyager_db",
+      "Platform": "SQL Server",
+      "YardiPropertyId": "PROP001",
+      "InterfaceEntity": "InterfaceEntityCode",
+      "InterfaceLicense": "LicenseKey123"
+    }
+  },
+  "response": {
+    "status": 200,
+    "description": "Tenant records returned in XML format",
+    "body": {
+      "TenantsXmlResponse": "<Tenants><Tenant><TenantId>T001</TenantId><FirstName>Jane</FirstName><LastName>Smith</LastName><UnitId>101A</UnitId><LeaseStartDate>2024-01-01</LeaseStartDate><LeaseEndDate>2024-12-31</LeaseEndDate><MonthlyRent>1800.00</MonthlyRent><Status>Current</Status></Tenant></Tenants>"
+    }
+  }
+}

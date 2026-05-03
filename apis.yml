@@ -5,7 +5,7 @@ image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: >-
   https://raw.githubusercontent.com/api-evangelist/yardi/refs/heads/main/apis.yml
 created: '2025-01-01'
-modified: '2026-03-16'
+modified: '2026-05-03'
 specificationVersion: '0.19'
 apis:
   - name: Yardi Voyager API
@@ -28,7 +28,8 @@ apis:
       - type: Documentation
         url: https://www.yardi.com/platform/api/
       - type: OpenAPI
-        url: https://api.yardi.com/swagger
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/yardi/refs/heads/main/openapi/yardi-voyager-api-openapi.yml
       - type: Authentication
         url: https://www.yardi.com/platform/api/authentication/
       - type: Getting Started

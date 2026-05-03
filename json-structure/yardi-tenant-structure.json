@@ -1,0 +1,20 @@
+{
+  "name": "Yardi Tenant",
+  "description": "Structure documentation for a Yardi Voyager tenant record",
+  "fields": [
+    { "name": "tenantId", "type": "string", "required": true, "description": "Unique tenant identifier" },
+    { "name": "propertyId", "type": "string", "required": true, "description": "Property identifier" },
+    { "name": "unitId", "type": "string", "required": true, "description": "Unit identifier" },
+    { "name": "firstName", "type": "string", "required": false, "description": "First name" },
+    { "name": "lastName", "type": "string", "required": true, "description": "Last name" },
+    { "name": "email", "type": "string", "required": false, "description": "Email address" },
+    { "name": "phone", "type": "string", "required": false, "description": "Phone number" },
+    { "name": "leaseStartDate", "type": "date", "required": false, "description": "Lease start date" },
+    { "name": "leaseEndDate", "type": "date", "required": false, "description": "Lease end date" },
+    { "name": "moveInDate", "type": "date", "required": false, "description": "Move-in date" },
+    { "name": "moveOutDate", "type": "date", "required": false, "description": "Move-out date" },
+    { "name": "monthlyRent", "type": "number", "required": false, "description": "Monthly rent in USD" },
+    { "name": "balance", "type": "number", "required": false, "description": "Current balance" },
+    { "name": "status", "type": "string", "required": true, "description": "Tenant status (Current/Notice/Eviction/Past/Applicant)" }
+  ]
+}

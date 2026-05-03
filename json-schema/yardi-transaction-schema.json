@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/yardi/main/json-schema/yardi-transaction-schema.json",
+  "title": "Yardi Resident Transaction",
+  "description": "Schema for a Yardi Voyager resident transaction record including charges, payments, and credits.",
+  "type": "object",
+  "properties": {
+    "transactionId": {
+      "type": "string",
+      "description": "Unique transaction identifier"
+    },
+    "tenantId": {
+      "type": "string",
+      "description": "Tenant identifier associated with the transaction"
+    },
+    "propertyId": {
+      "type": "string",
+      "description": "Property identifier"
+    },
+    "unitId": {
+      "type": "string",
+      "description": "Unit identifier"
+    },
+    "transactionDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the transaction was posted"
+    },
+    "chargeDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the charge was applied"
+    },
+    "transactionType": {
+      "type": "string",
+      "enum": ["Charge", "Payment", "Credit", "Adjustment", "NSF"],
+      "description": "Type of financial transaction"
+    },
+    "chargeCode": {
+      "type": "string",
+      "description": "Yardi charge code identifying the transaction category"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the transaction"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Transaction amount in USD"
+    },
+    "balance": {
+      "type": "number",
+      "description": "Tenant account balance after transaction"
+    },
+    "reference": {
+      "type": "string",
+      "description": "External reference or check number"
+    }
+  },
+  "required": ["transactionId", "tenantId", "propertyId", "transactionDate", "transactionType", "amount"]
+}

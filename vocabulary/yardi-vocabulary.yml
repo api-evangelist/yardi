@@ -1,0 +1,140 @@
+vocabulary:
+  name: Yardi Vocabulary
+  description: >-
+    Domain vocabulary for Yardi property management platform covering Voyager
+    web services, real estate management concepts, financial operations, and
+    maintenance workflows.
+  version: '1.0'
+  created: '2026-05-03'
+  modified: '2026-05-03'
+  tags:
+    - Accounting
+    - Property Management
+    - Real Estate
+    - Yardi
+
+  terms:
+
+    - term: Voyager
+      definition: >-
+        Yardi's core cloud-based real estate management platform for all
+        property types. Formerly desktop-based, now a web-based system used
+        by property managers, accountants, and asset managers.
+      tags:
+        - Core
+        - Platform
+
+    - term: Interface Partnership Program
+      definition: >-
+        Yardi's program for certifying third-party vendors to integrate with
+        Yardi systems. Partners receive interface licenses and access to
+        documented web service operations.
+      tags:
+        - Integrations
+        - Partners
+
+    - term: Interface License
+      definition: >-
+        A license key issued by Yardi to certified interface partners, required
+        as an authentication parameter in all API calls.
+      tags:
+        - Authentication
+        - Integrations
+
+    - term: SOAP Web Service
+      definition: >-
+        Yardi's primary integration mechanism using SOAP-based XML web services
+        over HTTP. Each interface module (e.g., ItfCommonData, ItfVendorInvoice)
+        is a separate ASMX endpoint.
+      tags:
+        - API
+        - Integration
+
+    - term: YardiPropertyId
+      definition: >-
+        A unique alphanumeric identifier for a property within a Yardi database.
+        Required for all property-scoped API calls.
+      tags:
+        - Core
+        - Identifiers
+
+    - term: ItfCommonData
+      definition: >-
+        The Yardi web service interface providing common property management data
+        including properties, units, tenants, and chart of accounts.
+      tags:
+        - API
+        - Integration
+
+    - term: ItfResidentTransactions20
+      definition: >-
+        The Yardi web service interface for resident billing, payments, charges,
+        credits, and related financial transactions.
+      tags:
+        - API
+        - Billing
+
+    - term: ItfServiceRequests
+      definition: >-
+        The Yardi web service interface for creating and managing maintenance
+        work orders and service requests.
+      tags:
+        - API
+        - Maintenance
+
+    - term: ItfVendorInvoice
+      definition: >-
+        The Yardi web service interface for vendor invoice management and
+        accounts payable integration.
+      tags:
+        - API
+        - Accounting
+
+    - term: ItfJobCost
+      definition: >-
+        The Yardi web service interface for construction and renovation project
+        cost tracking, budgets, and commitments.
+      tags:
+        - API
+        - Finance
+
+    - term: Charge Code
+      definition: >-
+        A Yardi-specific alphanumeric code identifying the category of a
+        financial transaction (e.g., rent, late fee, parking, utilities).
+      tags:
+        - Accounting
+        - Billing
+
+    - term: RENTCafe
+      definition: >-
+        Yardi's online leasing, marketing, and resident portal product with
+        a separate REST API for integrating rental applications, payments, and
+        resident services.
+      tags:
+        - Leasing
+        - Residents
+
+    - term: Yardi Breeze
+      definition: >-
+        Yardi's simplified cloud property management platform targeting small
+        to mid-size landlords and property managers with a modern interface.
+      tags:
+        - Platform
+        - Product
+
+    - term: Kube
+      definition: >-
+        Yardi's coworking and flexible workspace management platform with
+        webhook-based integrations for member management and space booking.
+      tags:
+        - Coworking
+        - Product
+
+    - term: NSF
+      definition: >-
+        Non-Sufficient Funds. A transaction type in Yardi representing a
+        returned payment due to insufficient funds in a tenant's account.
+      tags:
+        - Billing
+        - Accounting

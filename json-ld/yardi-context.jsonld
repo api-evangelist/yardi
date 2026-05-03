@@ -1,0 +1,38 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "yardi": "https://www.yardi.com/vocab/",
+
+    "Tenant": { "@id": "yardi:Tenant", "@type": "@id" },
+    "Property": { "@id": "schema:RealEstateListing", "@type": "@id" },
+    "Unit": { "@id": "schema:Accommodation", "@type": "@id" },
+    "Lease": { "@id": "yardi:Lease", "@type": "@id" },
+    "Transaction": { "@id": "schema:PayAction", "@type": "@id" },
+    "ServiceRequest": { "@id": "yardi:ServiceRequest", "@type": "@id" },
+    "VendorInvoice": { "@id": "schema:Invoice", "@type": "@id" },
+    "BudgetData": { "@id": "yardi:BudgetData", "@type": "@id" },
+    "ChartOfAccounts": { "@id": "yardi:ChartOfAccounts", "@type": "@id" },
+    "JobCost": { "@id": "yardi:JobCost", "@type": "@id" },
+
+    "tenantId": { "@id": "schema:identifier", "@type": "xsd:string" },
+    "propertyId": { "@id": "schema:identifier", "@type": "xsd:string" },
+    "unitId": { "@id": "schema:identifier", "@type": "xsd:string" },
+    "firstName": { "@id": "schema:givenName", "@type": "xsd:string" },
+    "lastName": { "@id": "schema:familyName", "@type": "xsd:string" },
+    "email": { "@id": "schema:email", "@type": "xsd:string" },
+    "phone": { "@id": "schema:telephone", "@type": "xsd:string" },
+    "leaseStartDate": { "@id": "schema:startDate", "@type": "xsd:date" },
+    "leaseEndDate": { "@id": "schema:endDate", "@type": "xsd:date" },
+    "monthlyRent": { "@id": "yardi:monthlyRent", "@type": "xsd:decimal" },
+    "balance": { "@id": "yardi:balance", "@type": "xsd:decimal" },
+    "amount": { "@id": "schema:price", "@type": "xsd:decimal" },
+    "transactionDate": { "@id": "schema:startDate", "@type": "xsd:date" },
+    "transactionType": { "@id": "yardi:transactionType", "@type": "xsd:string" },
+    "chargeCode": { "@id": "yardi:chargeCode", "@type": "xsd:string" },
+    "description": { "@id": "schema:description", "@type": "xsd:string" },
+    "status": { "@id": "schema:status", "@type": "xsd:string" },
+    "name": { "@id": "schema:name", "@type": "xsd:string" }
+  }
+}

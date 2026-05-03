@@ -1,0 +1,304 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Yardi Property Management"
+  description: >-
+    Unified capability combining Yardi Voyager's property management operations
+    for property managers and operations teams. Enables tenant management,
+    billing, maintenance tracking, and financial reporting across real estate
+    portfolios.
+  tags:
+    - Accounting
+    - Billing
+    - Leasing
+    - Maintenance
+    - Property Management
+    - Real Estate
+    - Yardi
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      YARDI_USERNAME: YARDI_USERNAME
+      YARDI_PASSWORD: YARDI_PASSWORD
+      YARDI_SERVER_NAME: YARDI_SERVER_NAME
+      YARDI_DATABASE: YARDI_DATABASE
+      YARDI_INTERFACE_ENTITY: YARDI_INTERFACE_ENTITY
+      YARDI_INTERFACE_LICENSE: YARDI_INTERFACE_LICENSE
+
+capability:
+  consumes:
+    - import: yardi-voyager
+      location: ./shared/voyager-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: yardi-property-management-api
+      description: "Unified REST API for Yardi property management operations."
+      resources:
+        - path: /v1/properties/{propertyId}/transactions
+          name: transactions
+          description: "Resident billing and payment transactions"
+          operations:
+            - method: GET
+              name: list-transactions
+              description: "List resident transactions for a property"
+              call: "yardi-voyager.get-resident-transactions"
+              with:
+                YardiPropertyId: "rest.propertyId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: import-transactions
+              description: "Import resident transactions into Voyager"
+              call: "yardi-voyager.import-resident-transactions"
+              with:
+                YardiPropertyId: "rest.propertyId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/properties/{propertyId}/budgets
+          name: budgets
+          description: "Budget data and financial planning"
+          operations:
+            - method: GET
+              name: get-budget
+              description: "Get budget data for a property"
+              call: "yardi-voyager.get-budget-data"
+              with:
+                YardiPropertyId: "rest.propertyId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/properties/{propertyId}/units
+          name: units
+          description: "Unit inventory and configuration"
+          operations:
+            - method: GET
+              name: list-units
+              description: "List all units for a property"
+              call: "yardi-voyager.get-unit-information"
+              with:
+                YardiPropertyId: "rest.propertyId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/properties/{propertyId}/tenants
+          name: tenants
+          description: "Tenant records and lease information"
+          operations:
+            - method: GET
+              name: list-tenants
+              description: "List all tenants for a property"
+              call: "yardi-voyager.get-tenants"
+              with:
+                YardiPropertyId: "rest.propertyId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/properties/{propertyId}/accounts
+          name: chart-of-accounts
+          description: "Chart of accounts for property financials"
+          operations:
+            - method: GET
+              name: get-chart-of-accounts
+              description: "Get the chart of accounts for a property"
+              call: "yardi-voyager.get-chart-of-accounts"
+              with:
+                YardiPropertyId: "rest.propertyId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/properties/{propertyId}/service-requests
+          name: service-requests
+          description: "Maintenance work orders and service requests"
+          operations:
+            - method: GET
+              name: list-service-requests
+              description: "List service requests and work orders"
+              call: "yardi-voyager.get-service-requests"
+              with:
+                YardiPropertyId: "rest.propertyId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: import-service-requests
+              description: "Submit new service requests to Voyager"
+              call: "yardi-voyager.import-service-requests"
+              with:
+                YardiPropertyId: "rest.propertyId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/properties/{propertyId}/vendor-invoices
+          name: vendor-invoices
+          description: "Vendor invoices and accounts payable"
+          operations:
+            - method: GET
+              name: list-vendor-invoices
+              description: "List vendor invoices for a property"
+              call: "yardi-voyager.get-vendor-invoices"
+              with:
+                YardiPropertyId: "rest.propertyId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: import-vendor-invoices
+              description: "Import vendor invoices into accounts payable"
+              call: "yardi-voyager.import-vendor-invoices"
+              with:
+                YardiPropertyId: "rest.propertyId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/properties/{propertyId}/job-costs
+          name: job-costs
+          description: "Construction and renovation project financials"
+          operations:
+            - method: GET
+              name: get-job-costs
+              description: "Get job cost data for a project"
+              call: "yardi-voyager.get-job-cost-data"
+              with:
+                YardiPropertyId: "rest.propertyId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9080
+      namespace: yardi-property-management-mcp
+      transport: http
+      description: "MCP server for AI-assisted Yardi property management workflows."
+      tools:
+        - name: list-resident-transactions
+          description: "Retrieve resident billing and payment transactions for a property"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "yardi-voyager.get-resident-transactions"
+          with:
+            YardiPropertyId: "tools.property_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-budget-data
+          description: "Retrieve budget and actual financial data for a property"
+          hints:
+            readOnly: true
+          call: "yardi-voyager.get-budget-data"
+          with:
+            YardiPropertyId: "tools.property_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-property-units
+          description: "List all units in a property with occupancy and market rent"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "yardi-voyager.get-unit-information"
+          with:
+            YardiPropertyId: "tools.property_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-tenants
+          description: "Retrieve tenant records, lease details, and contact information"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "yardi-voyager.get-tenants"
+          with:
+            YardiPropertyId: "tools.property_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-chart-of-accounts
+          description: "Retrieve chart of accounts for property financial reporting"
+          hints:
+            readOnly: true
+          call: "yardi-voyager.get-chart-of-accounts"
+          with:
+            YardiPropertyId: "tools.property_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-service-requests
+          description: "Retrieve maintenance work orders and service requests"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "yardi-voyager.get-service-requests"
+          with:
+            YardiPropertyId: "tools.property_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: submit-service-requests
+          description: "Create new maintenance service requests in Voyager"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "yardi-voyager.import-service-requests"
+          with:
+            YardiPropertyId: "tools.property_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-vendor-invoices
+          description: "Retrieve vendor invoices and accounts payable data"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "yardi-voyager.get-vendor-invoices"
+          with:
+            YardiPropertyId: "tools.property_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: import-vendor-invoices
+          description: "Submit vendor invoices to accounts payable"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "yardi-voyager.import-vendor-invoices"
+          with:
+            YardiPropertyId: "tools.property_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-job-cost-data
+          description: "Retrieve construction project cost tracking data"
+          hints:
+            readOnly: true
+          call: "yardi-voyager.get-job-cost-data"
+          with:
+            YardiPropertyId: "tools.property_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
