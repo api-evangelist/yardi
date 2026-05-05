@@ -1,0 +1,13 @@
+{
+  "repo": "yardi",
+  "feeds": [
+    {
+      "source": "https://www.yardi.com/blog/",
+      "feed_url": "https://www.yardi.com/feed/",
+      "saved": 10,
+      "title": "Yardi"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:38:44Z"
+}
