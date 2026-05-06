@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -8,196 +9,57 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: Yardi
 providerId: yardi
-publisherName: Yardi
-serviceCategory: API
+publisherName: Yardi Systems, Inc.
+serviceCategory: Property Management / PropTech
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Accounting
-  - Commercial Real Estate
-  - Coworking
-  - Investment Management
-  - Multifamily
   - Property Management
   - Real Estate
-  - Residential
-  - Self Storage
-  - Senior Living
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the Yardi API surface. Provides a FOCUS-aligned mapping for
-  cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+description: Yardi's commercial model is sales-negotiated by portfolio and module mix,
+  with no public price card; this artifact is a Contact Sales placeholder.
+sources:
+  - https://www.yardi.com/products/
+notes: |
+  Yardi does not publish per-meter pricing or invoice line items publicly. Meter and
+  FOCUS column values below are minimal placeholders pending the customer's signed
+  Yardi license / SaaS agreement.
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Contact Sales
+  billingFrequency: Per-Invoice
   billingCurrency: USD
   chargeCategories:
     - Usage
     - Purchase
-    - Tax
-    - Credit
-    - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
   ServiceName: Yardi
-  ServiceCategory: Developer Tools / API
+  ServiceCategory: Property Management / PropTech
   ProviderName: Yardi
-  PublisherName: Yardi
-  InvoiceIssuerName: Yardi
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PublisherName: Yardi Systems, Inc.
+  InvoiceIssuerName: Yardi Systems, Inc.
   BillingCurrency: USD
-  ChargeCategory: Usage
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
+  - name: contracted_modules
+    description: Module / product bundles licensed under the Yardi agreement (Voyager,
+      Breeze, RentCafe, etc.); priced per portfolio.
+    unit: varies
     aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Yardi Voyager API
-    baseURL: https://api.yardi.com
-    tags:
-      - Accounting
-      - Commercial
-      - Property Management
-      - Real Estate
-      - Residential
-    serviceName: Yardi Voyager API
-    serviceCategory: API
-  - name: Yardi Voyager Commercial Data API
-    baseURL: https://api.yardi.com
-    tags:
-      - Commercial
-      - Data Export
-      - Leasing
-      - OSCRE
-    serviceName: Yardi Voyager Commercial Data API
-    serviceCategory: API
-  - name: Yardi RENTCafe API
-    baseURL: https://api.rentcafe.com
-    tags:
-      - Applications
-      - Multifamily
-      - Payments
-      - Portal
-      - Residents
-    serviceName: Yardi RENTCafe API
-    serviceCategory: API
-  - name: Yardi Maintenance IQ API
-    baseURL: https://api.yardi.com/maintenance
-    tags:
-      - Facilities
-      - Maintenance
-      - Vendors
-      - Work Orders
-    serviceName: Yardi Maintenance IQ API
-    serviceCategory: API
-  - name: Yardi Investment Manager API
-    baseURL: https://api.yardi.com/investment
-    tags:
-      - Analytics
-      - Asset Management
-      - Investment
-      - Reporting
-    serviceName: Yardi Investment Manager API
-    serviceCategory: API
-  - name: Yardi Store Web Services API
-    baseURL: https://api.yardi.com
-    tags:
-      - Reservations
-      - Self Storage
-      - SOAP
-      - Store Management
-    serviceName: Yardi Store Web Services API
-    serviceCategory: API
-  - name: Yardi Kube API
-    baseURL: https://api.yardikube.com
-    tags:
-      - Booking
-      - Coworking
-      - Flexible Workspace
-      - Webhooks
-    serviceName: Yardi Kube API
-    serviceCategory: API
-  - name: Yardi Senior Living EHR API
-    baseURL: https://api.yardi.com
-    tags:
-      - EHR
-      - Healthcare
-      - Pharmacy
-      - Senior Living
-    serviceName: Yardi Senior Living EHR API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+principles:
+  - name: Visibility
+    description: Yardi invoices roll up by module and portfolio; line-item detail comes
+      from the customer's Yardi account team rather than a self-serve usage API.
+  - name: Allocation
+    description: Allocate Yardi spend by property / portfolio / business unit using the
+      cost-center fields configured in Voyager General Ledger.
+  - name: Optimization
+    description: Optimization is module-driven — review Voyager add-ons, RentCafe seat
+      counts, and Marketplace transaction fees during annual contract renewal.
+  - name: Accountability
+    description: Spend ownership sits with the property operations / IT lead who signs the
+      Yardi master agreement.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
