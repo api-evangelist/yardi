@@ -203,6 +203,61 @@ common:
     url: https://www.yardi.com/company/training/
   - type: Login
     url: https://www.yardi.com/company/technical-support/
+  - type: Integrations
+    url: https://www.yardi.com/product/marketplace/
+integrations:
+  - name: yardi_logo
+  - name: down_icon
+  - name: search_icon
+  - name: support_icon
+  - name: globe_icon
+  - name: yardi_icon
+  - name: voyager_icon
+  - name: breeze_icon
+  - name: virtuoso_icon
+  - name: investment-suite_icon
+  - name: rentcafe_icon
+  - name: reach-by-rentcafe_icon
+  - name: commercialcafe_icon
+  - name: elevate-suite_icon
+  - name: procure-to-pay-suite_icon
+  - name: energy-suite_icon
+  - name: aspire_icon
+  - name: rightsource_icon
+  - name: care-suite_icon
+  - name: matrix_icon
+  - name: yardi-kube_icon
+  - name: screeningworks-pro_icon
+  - name: corom_icon
+  - name: voyager_logo
+  - name: breeze_logo
+  - name: virtuoso_logo
+  - name: investment-suite_logo
+  - name: rentcafe_logo
+  - name: reach-by-rentcafe_logo
+  - name: commercialcafe_logo
+  - name: elevate-suite_logo
+  - name: procure-to-pay-suite_logo
+  - name: energy-suite_logo
+  - name: aspire_logo
+  - name: rightsource_logo
+  - name: care-suite_logo
+  - name: matrix_logo
+  - name: yardi-kube_logo
+  - name: screeningworks-pro_logo
+  - name: corom_logo
+  - name: close_icon
+  - name: CMK P2P Marketplace Brochure
+  - name: brochure_type
+  - name: Walton Communities
+  - name: Arcadia Management Group, Inc.
+  - name: BH Properties
+  - name: Guardian Management, LLC
+  - name: facebook_icon
+  - name: x_icon
+  - name: linkedin_icon
+  - name: instagram_icon
+  - name: youtube_icon
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
