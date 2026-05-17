@@ -32,7 +32,7 @@ apis:
           https://raw.githubusercontent.com/api-evangelist/yardi/refs/heads/main/openapi/yardi-voyager-api-openapi.yml
       - type: Authentication
         url: https://www.yardi.com/platform/api/authentication/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://www.yardi.com/company/become-an-interface-partner/
       - type: Reference
         url: https://www.yardi.com/services/interfaces/standard-interface-options/
@@ -54,7 +54,7 @@ apis:
     properties:
       - type: Documentation
         url: https://www.yardi.com/services/interfaces/standard-interface-options/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://www.yardi.com/company/become-an-interface-partner/
   - name: Yardi RENTCafe API
     description: >-
@@ -74,9 +74,9 @@ apis:
     properties:
       - type: Documentation
         url: https://www.rentcafe.com/api/
-      - type: Terms of Service
+      - type: TermsOfService
         url: https://resources.yardi.com/legal/rc-api-tou/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://www.yardi.com/company/become-an-interface-partner/
   - name: Yardi Maintenance IQ API
     description: >-
@@ -95,7 +95,7 @@ apis:
     properties:
       - type: Documentation
         url: https://www.yardi.com/platform/api/maintenance/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://www.yardi.com/company/become-an-interface-partner/
   - name: Yardi Investment Manager API
     description: >-
@@ -113,7 +113,7 @@ apis:
     properties:
       - type: Documentation
         url: https://www.yardi.com/platform/api/investment/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://www.yardi.com/company/become-an-interface-partner/
   - name: Yardi Store Web Services API
     description: >-
@@ -134,7 +134,7 @@ apis:
         url: https://centershiftdevx.com/2015/01/22/sws2-api-documentation/
       - type: Reference
         url: https://centershiftdevx.com/2017/01/23/end-points/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://centershiftdevx.com/2017/04/16/overview-using-yardi-store-web-services-sws/
       - type: Support
         url: https://centershiftdevx.com/2011/06/20/contacting-centershift/
@@ -181,23 +181,23 @@ common:
     url: https://www.yardi.com/support/
   - type: Contact
     url: https://www.yardi.com/contact-us/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://resources.yardi.com/legal/privacy-statement/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.yardi.com/about-us/legal/terms-of-use/
-  - type: Status
+  - type: StatusPage
     url: https://status.yardi.com
   - type: Website
     url: https://www.yardi.com
   - type: Blog
     url: https://www.yardi.com/blog/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://www.yardi.com/company/become-an-interface-partner/
-  - type: Sign Up
+  - type: SignUp
     url: https://www.yardi.com/company/become-an-interface-partner/
   - type: Documentation
     url: https://www.yardi.com/services/interfaces/standard-interface-options/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/YardiSystems
   - type: Training
     url: https://www.yardi.com/company/training/
