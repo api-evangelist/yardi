@@ -1,0 +1,207 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Yardi Voyager API — Billing and Payments
+  description: 'Yardi Voyager API — Billing and Payments. 4 operations. Lead operation: Yardi Get budget data. Self-contained
+    Naftiko capability covering one Yardi business surface.'
+  tags:
+  - Yardi
+  - Billing and Payments
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    YARDI_API_KEY: YARDI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: voyager-billing-and-payments
+    baseUri: https://{server}.yardi.com/{clientUrl}/webservices
+    description: Yardi Voyager API — Billing and Payments business capability. Self-contained, no shared references.
+    resources:
+    - name: ItfResidentTransactions20.asmx-GetBudgetData_Login
+      path: /ItfResidentTransactions20.asmx/GetBudgetData_Login
+      operations:
+      - name: getbudgetdatalogin
+        method: POST
+        description: Yardi Get budget data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ItfResidentTransactions20.asmx-GetResidentTransactions_ByChargeDate_Login
+      path: /ItfResidentTransactions20.asmx/GetResidentTransactions_ByChargeDate_Login
+      operations:
+      - name: getresidenttransactionsbychargedatelogin
+        method: POST
+        description: Yardi Get resident transactions by charge date
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ItfResidentTransactions20.asmx-GetResidentTransactions_Login
+      path: /ItfResidentTransactions20.asmx/GetResidentTransactions_Login
+      operations:
+      - name: getresidenttransactionslogin
+        method: POST
+        description: Yardi Get resident transactions with login
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ItfResidentTransactions20.asmx-ImportResidentTransactions_Login
+      path: /ItfResidentTransactions20.asmx/ImportResidentTransactions_Login
+      operations:
+      - name: importresidenttransactionslogin
+        method: POST
+        description: Yardi Import resident transactions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.YARDI_USER}}'
+      password: '{{env.YARDI_PASS}}'
+  exposes:
+  - type: rest
+    namespace: voyager-billing-and-payments-rest
+    port: 8080
+    description: REST adapter for Yardi Voyager API — Billing and Payments. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/itfresidenttransactions20-asmx/getbudgetdata-login
+      name: itfresidenttransactions20-asmx-getbudgetdata-login
+      description: REST surface for ItfResidentTransactions20.asmx-GetBudgetData_Login.
+      operations:
+      - method: POST
+        name: getbudgetdatalogin
+        description: Yardi Get budget data
+        call: voyager-billing-and-payments.getbudgetdatalogin
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/itfresidenttransactions20-asmx/getresidenttransactions-bychargedate-login
+      name: itfresidenttransactions20-asmx-getresidenttransactions-bychargedate-login
+      description: REST surface for ItfResidentTransactions20.asmx-GetResidentTransactions_ByChargeDate_Login.
+      operations:
+      - method: POST
+        name: getresidenttransactionsbychargedatelogin
+        description: Yardi Get resident transactions by charge date
+        call: voyager-billing-and-payments.getresidenttransactionsbychargedatelogin
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/itfresidenttransactions20-asmx/getresidenttransactions-login
+      name: itfresidenttransactions20-asmx-getresidenttransactions-login
+      description: REST surface for ItfResidentTransactions20.asmx-GetResidentTransactions_Login.
+      operations:
+      - method: POST
+        name: getresidenttransactionslogin
+        description: Yardi Get resident transactions with login
+        call: voyager-billing-and-payments.getresidenttransactionslogin
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/itfresidenttransactions20-asmx/importresidenttransactions-login
+      name: itfresidenttransactions20-asmx-importresidenttransactions-login
+      description: REST surface for ItfResidentTransactions20.asmx-ImportResidentTransactions_Login.
+      operations:
+      - method: POST
+        name: importresidenttransactionslogin
+        description: Yardi Import resident transactions
+        call: voyager-billing-and-payments.importresidenttransactionslogin
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: voyager-billing-and-payments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Yardi Voyager API — Billing and Payments. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: yardi-get-budget-data
+      description: Yardi Get budget data
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: voyager-billing-and-payments.getbudgetdatalogin
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: yardi-get-resident-transactions-charge
+      description: Yardi Get resident transactions by charge date
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: voyager-billing-and-payments.getresidenttransactionsbychargedatelogin
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: yardi-get-resident-transactions-login
+      description: Yardi Get resident transactions with login
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: voyager-billing-and-payments.getresidenttransactionslogin
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: yardi-import-resident-transactions
+      description: Yardi Import resident transactions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: voyager-billing-and-payments.importresidenttransactionslogin
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

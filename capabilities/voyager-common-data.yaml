@@ -1,0 +1,207 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Yardi Voyager API — Common Data
+  description: 'Yardi Voyager API — Common Data. 4 operations. Lead operation: Yardi Get chart of accounts. Self-contained
+    Naftiko capability covering one Yardi business surface.'
+  tags:
+  - Yardi
+  - Common Data
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    YARDI_API_KEY: YARDI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: voyager-common-data
+    baseUri: https://{server}.yardi.com/{clientUrl}/webservices
+    description: Yardi Voyager API — Common Data business capability. Self-contained, no shared references.
+    resources:
+    - name: ItfCommonData.asmx-GetChartOfAccounts_Login
+      path: /ItfCommonData.asmx/GetChartOfAccounts_Login
+      operations:
+      - name: getchartofaccountslogin
+        method: POST
+        description: Yardi Get chart of accounts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ItfCommonData.asmx-GetPropertyConfigurations_Login
+      path: /ItfCommonData.asmx/GetPropertyConfigurations_Login
+      operations:
+      - name: getpropertyconfigurationslogin
+        method: POST
+        description: Yardi Get property configurations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ItfCommonData.asmx-GetTenants_Login
+      path: /ItfCommonData.asmx/GetTenants_Login
+      operations:
+      - name: gettenantslogin
+        method: POST
+        description: Yardi Get tenant data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ItfCommonData.asmx-GetUnitInformation_Login
+      path: /ItfCommonData.asmx/GetUnitInformation_Login
+      operations:
+      - name: getunitinformationlogin
+        method: POST
+        description: Yardi Get unit information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.YARDI_USER}}'
+      password: '{{env.YARDI_PASS}}'
+  exposes:
+  - type: rest
+    namespace: voyager-common-data-rest
+    port: 8080
+    description: REST adapter for Yardi Voyager API — Common Data. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/itfcommondata-asmx/getchartofaccounts-login
+      name: itfcommondata-asmx-getchartofaccounts-login
+      description: REST surface for ItfCommonData.asmx-GetChartOfAccounts_Login.
+      operations:
+      - method: POST
+        name: getchartofaccountslogin
+        description: Yardi Get chart of accounts
+        call: voyager-common-data.getchartofaccountslogin
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/itfcommondata-asmx/getpropertyconfigurations-login
+      name: itfcommondata-asmx-getpropertyconfigurations-login
+      description: REST surface for ItfCommonData.asmx-GetPropertyConfigurations_Login.
+      operations:
+      - method: POST
+        name: getpropertyconfigurationslogin
+        description: Yardi Get property configurations
+        call: voyager-common-data.getpropertyconfigurationslogin
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/itfcommondata-asmx/gettenants-login
+      name: itfcommondata-asmx-gettenants-login
+      description: REST surface for ItfCommonData.asmx-GetTenants_Login.
+      operations:
+      - method: POST
+        name: gettenantslogin
+        description: Yardi Get tenant data
+        call: voyager-common-data.gettenantslogin
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/itfcommondata-asmx/getunitinformation-login
+      name: itfcommondata-asmx-getunitinformation-login
+      description: REST surface for ItfCommonData.asmx-GetUnitInformation_Login.
+      operations:
+      - method: POST
+        name: getunitinformationlogin
+        description: Yardi Get unit information
+        call: voyager-common-data.getunitinformationlogin
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: voyager-common-data-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Yardi Voyager API — Common Data. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: yardi-get-chart-accounts
+      description: Yardi Get chart of accounts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: voyager-common-data.getchartofaccountslogin
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: yardi-get-property-configurations
+      description: Yardi Get property configurations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: voyager-common-data.getpropertyconfigurationslogin
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: yardi-get-tenant-data
+      description: Yardi Get tenant data
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: voyager-common-data.gettenantslogin
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: yardi-get-unit-information
+      description: Yardi Get unit information
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: voyager-common-data.getunitinformationlogin
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
