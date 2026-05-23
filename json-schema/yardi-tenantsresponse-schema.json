@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TenantsResponse",
+  "title": "TenantsResponse",
+  "type": "object",
+  "description": "SOAP response containing tenant data.",
+  "properties": {
+    "TenantsXmlResponse": {
+      "type": "string",
+      "description": "XML response containing tenant records"
+    }
+  }
+}

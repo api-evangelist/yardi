@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ChartOfAccountsResponse",
+  "title": "ChartOfAccountsResponse",
+  "type": "object",
+  "description": "SOAP response containing chart of accounts data.",
+  "properties": {
+    "ChartOfAccountsXmlResponse": {
+      "type": "string",
+      "description": "XML response containing account records"
+    }
+  }
+}

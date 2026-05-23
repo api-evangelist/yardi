@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ImportVendorInvoicesRequest",
+  "title": "ImportVendorInvoicesRequest",
+  "type": "object",
+  "description": "SOAP request for importing vendor invoices into Voyager accounts payable.",
+  "properties": {
+    "UserName": {
+      "type": "string",
+      "description": "Yardi API user name"
+    },
+    "Password": {
+      "type": "string",
+      "description": "Yardi API password"
+    },
+    "ServerName": {
+      "type": "string",
+      "description": "Yardi database server name"
+    },
+    "Database": {
+      "type": "string",
+      "description": "Yardi database name"
+    },
+    "Platform": {
+      "type": "string",
+      "description": "Database platform identifier"
+    },
+    "YardiPropertyId": {
+      "type": "string",
+      "description": "Yardi property identifier"
+    },
+    "InterfaceEntity": {
+      "type": "string",
+      "description": "Interface entity code"
+    },
+    "InterfaceLicense": {
+      "type": "string",
+      "description": "Interface license key"
+    },
+    "InvoiceXml": {
+      "type": "string",
+      "description": "XML payload containing vendor invoice data to import"
+    }
+  },
+  "required": [
+    "UserName",
+    "Password",
+    "ServerName",
+    "Database",
+    "Platform",
+    "YardiPropertyId",
+    "InterfaceEntity",
+    "InterfaceLicense",
+    "InvoiceXml"
+  ]
+}

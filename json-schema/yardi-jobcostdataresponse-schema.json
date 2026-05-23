@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/JobCostDataResponse",
+  "title": "JobCostDataResponse",
+  "type": "object",
+  "description": "SOAP response containing job cost tracking data.",
+  "properties": {
+    "JobCostDataXmlResponse": {
+      "type": "string",
+      "description": "XML response containing job cost records"
+    }
+  }
+}

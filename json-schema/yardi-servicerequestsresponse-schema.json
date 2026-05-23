@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ServiceRequestsResponse",
+  "title": "ServiceRequestsResponse",
+  "type": "object",
+  "description": "SOAP response containing service request and work order data.",
+  "properties": {
+    "ServiceRequestsXmlResponse": {
+      "type": "string",
+      "description": "XML response containing service request records"
+    }
+  }
+}

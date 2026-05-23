@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VendorInvoicesResponse",
+  "title": "VendorInvoicesResponse",
+  "type": "object",
+  "description": "SOAP response containing vendor invoice data.",
+  "properties": {
+    "VendorInvoicesXmlResponse": {
+      "type": "string",
+      "description": "XML response containing vendor invoice records"
+    }
+  }
+}

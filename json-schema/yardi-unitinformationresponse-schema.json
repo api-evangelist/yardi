@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UnitInformationResponse",
+  "title": "UnitInformationResponse",
+  "type": "object",
+  "description": "SOAP response containing unit information data.",
+  "properties": {
+    "UnitInformationXmlResponse": {
+      "type": "string",
+      "description": "XML response containing unit records"
+    }
+  }
+}

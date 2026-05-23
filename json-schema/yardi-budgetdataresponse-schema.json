@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BudgetDataResponse",
+  "title": "BudgetDataResponse",
+  "type": "object",
+  "description": "SOAP response containing budget data in XML format.",
+  "properties": {
+    "BudgetDataXmlResponse": {
+      "type": "string",
+      "description": "XML response containing budget records"
+    }
+  }
+}

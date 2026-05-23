@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ImportResponse",
+  "title": "ImportResponse",
+  "type": "object",
+  "description": "SOAP response confirming successful import of data.",
+  "properties": {
+    "ImportResult": {
+      "type": "string",
+      "description": "Import result status message"
+    },
+    "ErrorMessages": {
+      "type": "array",
+      "description": "List of error messages if any records failed to import",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

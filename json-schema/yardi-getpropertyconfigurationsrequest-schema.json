@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GetPropertyConfigurationsRequest",
+  "title": "GetPropertyConfigurationsRequest",
+  "type": "object",
+  "description": "SOAP request for retrieving property configuration data.",
+  "properties": {
+    "UserName": {
+      "type": "string",
+      "description": "Yardi API user name"
+    },
+    "Password": {
+      "type": "string",
+      "description": "Yardi API password"
+    },
+    "ServerName": {
+      "type": "string",
+      "description": "Yardi database server name"
+    },
+    "Database": {
+      "type": "string",
+      "description": "Yardi database name"
+    },
+    "Platform": {
+      "type": "string",
+      "description": "Database platform identifier"
+    },
+    "YardiPropertyId": {
+      "type": "string",
+      "description": "Yardi property identifier"
+    },
+    "InterfaceEntity": {
+      "type": "string",
+      "description": "Interface entity code"
+    },
+    "InterfaceLicense": {
+      "type": "string",
+      "description": "Interface license key"
+    }
+  },
+  "required": [
+    "UserName",
+    "Password",
+    "ServerName",
+    "Database",
+    "Platform",
+    "YardiPropertyId",
+    "InterfaceEntity",
+    "InterfaceLicense"
+  ]
+}

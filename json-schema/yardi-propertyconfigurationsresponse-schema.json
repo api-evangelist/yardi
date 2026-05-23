@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PropertyConfigurationsResponse",
+  "title": "PropertyConfigurationsResponse",
+  "type": "object",
+  "description": "SOAP response containing property configuration data.",
+  "properties": {
+    "PropertyConfigurationsXmlResponse": {
+      "type": "string",
+      "description": "XML response containing property configuration records"
+    }
+  }
+}

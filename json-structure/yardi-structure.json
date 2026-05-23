@@ -1,0 +1,387 @@
+{
+  "provider": "Yardi",
+  "providerId": "yardi",
+  "kind": "json-structure",
+  "description": "Structural overview of the Yardi API surface; extracted from openapi/.",
+  "schemaCount": 23,
+  "operationCount": 13,
+  "schemas": [
+    {
+      "name": "GetResidentTransactionsRequest",
+      "type": "object",
+      "propertyCount": 10,
+      "required": [
+        "UserName",
+        "Password",
+        "ServerName",
+        "Database",
+        "Platform",
+        "YardiPropertyId",
+        "InterfaceEntity",
+        "InterfaceLicense"
+      ]
+    },
+    {
+      "name": "GetResidentTransactionsByChargeDateRequest",
+      "type": "object",
+      "propertyCount": 10,
+      "required": [
+        "UserName",
+        "Password",
+        "ServerName",
+        "Database",
+        "Platform",
+        "YardiPropertyId",
+        "InterfaceEntity",
+        "InterfaceLicense"
+      ]
+    },
+    {
+      "name": "ImportResidentTransactionsRequest",
+      "type": "object",
+      "propertyCount": 9,
+      "required": [
+        "UserName",
+        "Password",
+        "ServerName",
+        "Database",
+        "Platform",
+        "YardiPropertyId",
+        "InterfaceEntity",
+        "InterfaceLicense",
+        "TransactionXml"
+      ]
+    },
+    {
+      "name": "GetBudgetDataRequest",
+      "type": "object",
+      "propertyCount": 10,
+      "required": [
+        "UserName",
+        "Password",
+        "ServerName",
+        "Database",
+        "Platform",
+        "YardiPropertyId",
+        "InterfaceEntity",
+        "InterfaceLicense"
+      ]
+    },
+    {
+      "name": "GetPropertyConfigurationsRequest",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "UserName",
+        "Password",
+        "ServerName",
+        "Database",
+        "Platform",
+        "YardiPropertyId",
+        "InterfaceEntity",
+        "InterfaceLicense"
+      ]
+    },
+    {
+      "name": "GetUnitInformationRequest",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "UserName",
+        "Password",
+        "ServerName",
+        "Database",
+        "Platform",
+        "YardiPropertyId",
+        "InterfaceEntity",
+        "InterfaceLicense"
+      ]
+    },
+    {
+      "name": "GetTenantsRequest",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "UserName",
+        "Password",
+        "ServerName",
+        "Database",
+        "Platform",
+        "YardiPropertyId",
+        "InterfaceEntity",
+        "InterfaceLicense"
+      ]
+    },
+    {
+      "name": "GetChartOfAccountsRequest",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "UserName",
+        "Password",
+        "ServerName",
+        "Database",
+        "Platform",
+        "YardiPropertyId",
+        "InterfaceEntity",
+        "InterfaceLicense"
+      ]
+    },
+    {
+      "name": "GetServiceRequestsRequest",
+      "type": "object",
+      "propertyCount": 10,
+      "required": [
+        "UserName",
+        "Password",
+        "ServerName",
+        "Database",
+        "Platform",
+        "YardiPropertyId",
+        "InterfaceEntity",
+        "InterfaceLicense"
+      ]
+    },
+    {
+      "name": "ImportServiceRequestsRequest",
+      "type": "object",
+      "propertyCount": 9,
+      "required": [
+        "UserName",
+        "Password",
+        "ServerName",
+        "Database",
+        "Platform",
+        "YardiPropertyId",
+        "InterfaceEntity",
+        "InterfaceLicense",
+        "ServiceRequestXml"
+      ]
+    },
+    {
+      "name": "GetVendorInvoicesRequest",
+      "type": "object",
+      "propertyCount": 10,
+      "required": [
+        "UserName",
+        "Password",
+        "ServerName",
+        "Database",
+        "Platform",
+        "YardiPropertyId",
+        "InterfaceEntity",
+        "InterfaceLicense"
+      ]
+    },
+    {
+      "name": "ImportVendorInvoicesRequest",
+      "type": "object",
+      "propertyCount": 9,
+      "required": [
+        "UserName",
+        "Password",
+        "ServerName",
+        "Database",
+        "Platform",
+        "YardiPropertyId",
+        "InterfaceEntity",
+        "InterfaceLicense",
+        "InvoiceXml"
+      ]
+    },
+    {
+      "name": "GetJobCostDataRequest",
+      "type": "object",
+      "propertyCount": 9,
+      "required": [
+        "UserName",
+        "Password",
+        "ServerName",
+        "Database",
+        "Platform",
+        "YardiPropertyId",
+        "InterfaceEntity",
+        "InterfaceLicense"
+      ]
+    },
+    {
+      "name": "TransactionResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "BudgetDataResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PropertyConfigurationsResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "UnitInformationResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "TenantsResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ChartOfAccountsResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ServiceRequestsResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "VendorInvoicesResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "JobCostDataResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ImportResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "POST",
+      "path": "/ItfResidentTransactions20.asmx/GetResidentTransactions_Login",
+      "operationId": "getResidentTransactionsLogin",
+      "summary": "Yardi Get resident transactions with login",
+      "tags": [
+        "Billing and Payments"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ItfResidentTransactions20.asmx/GetResidentTransactions_ByChargeDate_Login",
+      "operationId": "getResidentTransactionsByChargeDateLogin",
+      "summary": "Yardi Get resident transactions by charge date",
+      "tags": [
+        "Billing and Payments"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ItfResidentTransactions20.asmx/ImportResidentTransactions_Login",
+      "operationId": "importResidentTransactionsLogin",
+      "summary": "Yardi Import resident transactions",
+      "tags": [
+        "Billing and Payments"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ItfResidentTransactions20.asmx/GetBudgetData_Login",
+      "operationId": "getBudgetDataLogin",
+      "summary": "Yardi Get budget data",
+      "tags": [
+        "Billing and Payments"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ItfCommonData.asmx/GetPropertyConfigurations_Login",
+      "operationId": "getPropertyConfigurationsLogin",
+      "summary": "Yardi Get property configurations",
+      "tags": [
+        "Common Data"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ItfCommonData.asmx/GetUnitInformation_Login",
+      "operationId": "getUnitInformationLogin",
+      "summary": "Yardi Get unit information",
+      "tags": [
+        "Common Data"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ItfCommonData.asmx/GetTenants_Login",
+      "operationId": "getTenantsLogin",
+      "summary": "Yardi Get tenant data",
+      "tags": [
+        "Common Data"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ItfCommonData.asmx/GetChartOfAccounts_Login",
+      "operationId": "getChartOfAccountsLogin",
+      "summary": "Yardi Get chart of accounts",
+      "tags": [
+        "Common Data"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ItfServiceRequests.asmx/GetServiceRequests_Login",
+      "operationId": "getServiceRequestsLogin",
+      "summary": "Yardi Get service requests",
+      "tags": [
+        "Service Requests"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ItfServiceRequests.asmx/ImportServiceRequests_Login",
+      "operationId": "importServiceRequestsLogin",
+      "summary": "Yardi Import service requests",
+      "tags": [
+        "Service Requests"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ItfVendorInvoice.asmx/GetVendorInvoices_Login",
+      "operationId": "getVendorInvoicesLogin",
+      "summary": "Yardi Get vendor invoices",
+      "tags": [
+        "Vendor Invoicing"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ItfVendorInvoice.asmx/ImportVendorInvoices_Login",
+      "operationId": "importVendorInvoicesLogin",
+      "summary": "Yardi Import vendor invoices",
+      "tags": [
+        "Vendor Invoicing"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ItfJobCost.asmx/GetJobCostData_Login",
+      "operationId": "getJobCostDataLogin",
+      "summary": "Yardi Get job cost data",
+      "tags": [
+        "Job Cost"
+      ]
+    }
+  ]
+}

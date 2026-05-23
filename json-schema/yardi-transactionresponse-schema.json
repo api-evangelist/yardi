@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionResponse",
+  "title": "TransactionResponse",
+  "type": "object",
+  "description": "SOAP response containing resident transaction data in XML format.",
+  "properties": {
+    "TransactionXmlResponse": {
+      "type": "string",
+      "description": "XML response containing transaction records"
+    }
+  }
+}
