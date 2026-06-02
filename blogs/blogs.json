@@ -2,12 +2,20 @@
   "repo": "yardi",
   "feeds": [
     {
-      "source": "https://www.yardi.com/blog/",
+      "source": "https://www.yardi.com/feed/",
       "feed_url": "https://www.yardi.com/feed/",
-      "title": "Yardi",
-      "saved": 4
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.yardi.com",
+      "feed_url": "https://www.yardi.com/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
     }
   ],
-  "post_count": 17,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 22,
+  "fetched": "2026-06-01T23:35:02Z"
 }
