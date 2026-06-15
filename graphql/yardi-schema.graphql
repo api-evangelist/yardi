@@ -1,0 +1,1139 @@
+"""
+Yardi GraphQL API Schema
+Conceptual schema derived from Yardi Voyager REST API, covering property management,
+lease management, resident/tenant data, financial transactions, maintenance orders,
+commercial property, and investment portfolio analytics.
+"""
+
+scalar Date
+scalar DateTime
+scalar Decimal
+scalar JSON
+
+# ─────────────────────────────────────────────
+# Enumerations
+# ─────────────────────────────────────────────
+
+enum PropertyType {
+  RESIDENTIAL
+  COMMERCIAL
+  MIXED_USE
+  INDUSTRIAL
+  RETAIL
+  OFFICE
+  SELF_STORAGE
+  SENIOR_LIVING
+  AFFORDABLE_HOUSING
+  MILITARY_HOUSING
+  STUDENT_HOUSING
+}
+
+enum PropertyStatus {
+  ACTIVE
+  INACTIVE
+  UNDER_CONSTRUCTION
+  SOLD
+  PENDING
+}
+
+enum LeaseStatus {
+  ACTIVE
+  EXPIRED
+  PENDING
+  TERMINATED
+  RENEWED
+  NOTICE_TO_VACATE
+}
+
+enum LeaseType {
+  RESIDENTIAL
+  COMMERCIAL
+  MONTH_TO_MONTH
+  SHORT_TERM
+  LONG_TERM
+}
+
+enum ResidentStatus {
+  CURRENT
+  NOTICE
+  PAST
+  APPLICANT
+  APPROVED
+  DENIED
+  FUTURE
+}
+
+enum WorkOrderStatus {
+  OPEN
+  IN_PROGRESS
+  ON_HOLD
+  COMPLETED
+  CANCELLED
+}
+
+enum WorkOrderPriority {
+  LOW
+  NORMAL
+  HIGH
+  EMERGENCY
+}
+
+enum TransactionType {
+  CHARGE
+  PAYMENT
+  CREDIT
+  REFUND
+  ADJUSTMENT
+  DEPOSIT
+  LATE_FEE
+  NSF_FEE
+}
+
+enum PaymentMethod {
+  CHECK
+  ACH
+  CREDIT_CARD
+  DEBIT_CARD
+  MONEY_ORDER
+  CASH
+  WIRE_TRANSFER
+}
+
+enum UnitStatus {
+  VACANT
+  OCCUPIED
+  DOWN
+  MODEL
+  ADMIN
+  RESERVED
+}
+
+enum InspectionType {
+  MOVE_IN
+  MOVE_OUT
+  ROUTINE
+  ANNUAL
+  DRIVE_BY
+}
+
+enum InspectionStatus {
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum ApplicationStatus {
+  RECEIVED
+  IN_REVIEW
+  APPROVED
+  DENIED
+  WITHDRAWN
+  CANCELLED
+}
+
+enum InvestmentType {
+  EQUITY
+  DEBT
+  PREFERRED_EQUITY
+  MEZZANINE
+}
+
+enum DealStatus {
+  PROSPECT
+  ACTIVE
+  CLOSED
+  CANCELLED
+  ON_HOLD
+}
+
+enum VendorStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+  PENDING_APPROVAL
+}
+
+enum InvoiceStatus {
+  DRAFT
+  SUBMITTED
+  APPROVED
+  PAID
+  VOIDED
+  DISPUTED
+}
+
+enum AlertSeverity {
+  INFO
+  WARNING
+  CRITICAL
+}
+
+# ─────────────────────────────────────────────
+# Core Types
+# ─────────────────────────────────────────────
+
+type Address {
+  street1: String!
+  street2: String
+  city: String!
+  state: String!
+  postalCode: String!
+  country: String!
+  latitude: Float
+  longitude: Float
+}
+
+type ContactInfo {
+  phone: String
+  altPhone: String
+  fax: String
+  email: String
+  preferredContact: String
+}
+
+type MoneyAmount {
+  amount: Decimal!
+  currency: String!
+}
+
+type DateRange {
+  startDate: Date!
+  endDate: Date
+}
+
+# ─────────────────────────────────────────────
+# Property Management
+# ─────────────────────────────────────────────
+
+type Property {
+  id: ID!
+  code: String!
+  name: String!
+  type: PropertyType!
+  status: PropertyStatus!
+  address: Address!
+  contactInfo: ContactInfo
+  managementCompany: String
+  totalUnits: Int
+  occupiedUnits: Int
+  vacantUnits: Int
+  occupancyRate: Float
+  yearBuilt: Int
+  squareFootage: Float
+  amenities: [String!]
+  units: [Unit!]
+  buildings: [Building!]
+  leases: [Lease!]
+  maintenanceOrders: [WorkOrder!]
+  financials: PropertyFinancials
+  manager: Employee
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Building {
+  id: ID!
+  property: Property!
+  code: String!
+  name: String!
+  floors: Int
+  totalUnits: Int
+  yearBuilt: Int
+  squareFootage: Float
+  units: [Unit!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Unit {
+  id: ID!
+  property: Property!
+  building: Building
+  unitNumber: String!
+  floorPlan: FloorPlan
+  floor: Int
+  squareFootage: Float
+  bedrooms: Int
+  bathrooms: Float
+  status: UnitStatus!
+  marketRent: MoneyAmount
+  currentRent: MoneyAmount
+  features: [String!]
+  currentLease: Lease
+  leaseHistory: [Lease!]
+  inspections: [Inspection!]
+  workOrders: [WorkOrder!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type FloorPlan {
+  id: ID!
+  property: Property!
+  code: String!
+  name: String!
+  bedrooms: Int!
+  bathrooms: Float!
+  squareFootageMin: Float
+  squareFootageMax: Float
+  marketRent: MoneyAmount
+  units: [Unit!]
+}
+
+# ─────────────────────────────────────────────
+# Lease Management
+# ─────────────────────────────────────────────
+
+type Lease {
+  id: ID!
+  property: Property!
+  unit: Unit!
+  leaseNumber: String!
+  type: LeaseType!
+  status: LeaseStatus!
+  startDate: Date!
+  endDate: Date
+  moveInDate: Date
+  moveOutDate: Date
+  rentAmount: MoneyAmount!
+  securityDeposit: MoneyAmount
+  residents: [Resident!]
+  primaryResident: Resident
+  charges: [Charge!]
+  payments: [Payment!]
+  concessions: [Concession!]
+  renewalOptions: [RenewalOption!]
+  balance: MoneyAmount
+  noticeDate: Date
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type RenewalOption {
+  id: ID!
+  lease: Lease!
+  proposedRent: MoneyAmount!
+  termMonths: Int!
+  expirationDate: Date!
+  status: String!
+  offeredDate: Date
+  respondedDate: Date
+}
+
+type Concession {
+  id: ID!
+  lease: Lease!
+  description: String!
+  amount: MoneyAmount!
+  startDate: Date!
+  endDate: Date
+  type: String!
+}
+
+# ─────────────────────────────────────────────
+# Residents & Tenants
+# ─────────────────────────────────────────────
+
+type Resident {
+  id: ID!
+  tenantCode: String!
+  firstName: String!
+  lastName: String!
+  fullName: String!
+  status: ResidentStatus!
+  email: String
+  phone: String
+  altPhone: String
+  dateOfBirth: Date
+  ssn: String
+  driversLicense: String
+  employer: String
+  employerPhone: String
+  monthlyIncome: MoneyAmount
+  emergencyContacts: [EmergencyContact!]
+  currentLease: Lease
+  leaseHistory: [Lease!]
+  pets: [Pet!]
+  vehicles: [Vehicle!]
+  applications: [Application!]
+  balance: MoneyAmount
+  creditScore: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type EmergencyContact {
+  id: ID!
+  resident: Resident!
+  name: String!
+  relationship: String!
+  phone: String!
+  altPhone: String
+  email: String
+}
+
+type Pet {
+  id: ID!
+  resident: Resident!
+  name: String!
+  type: String!
+  breed: String
+  weight: Float
+  color: String
+  vaccinated: Boolean
+  depositPaid: Boolean
+  monthlyFee: MoneyAmount
+}
+
+type Vehicle {
+  id: ID!
+  resident: Resident!
+  make: String!
+  model: String!
+  year: Int
+  color: String
+  licensePlate: String!
+  state: String!
+  parkingSpace: String
+}
+
+# ─────────────────────────────────────────────
+# Applications
+# ─────────────────────────────────────────────
+
+type Application {
+  id: ID!
+  applicationNumber: String!
+  property: Property!
+  unit: Unit
+  floorPlan: FloorPlan
+  status: ApplicationStatus!
+  submittedDate: DateTime!
+  desiredMoveIn: Date
+  desiredLeaseTerm: Int
+  applicants: [Applicant!]
+  primaryApplicant: Applicant
+  totalMonthlyIncome: MoneyAmount
+  applicationFee: MoneyAmount
+  feePaid: Boolean
+  backgroundCheckStatus: String
+  creditCheckStatus: String
+  notes: String
+  decidedDate: DateTime
+  decidedBy: Employee
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Applicant {
+  id: ID!
+  application: Application!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phone: String!
+  dateOfBirth: Date
+  ssn: String
+  employer: String
+  monthlyIncome: MoneyAmount
+  isPrimary: Boolean!
+  creditScore: Int
+  backgroundCheckPassed: Boolean
+}
+
+# ─────────────────────────────────────────────
+# Financial Transactions
+# ─────────────────────────────────────────────
+
+type Charge {
+  id: ID!
+  lease: Lease
+  property: Property!
+  type: TransactionType!
+  description: String!
+  amount: MoneyAmount!
+  dueDate: Date!
+  postedDate: Date
+  glAccount: String
+  isPaid: Boolean!
+  paymentId: ID
+  createdAt: DateTime!
+}
+
+type Payment {
+  id: ID!
+  lease: Lease!
+  property: Property!
+  resident: Resident
+  amount: MoneyAmount!
+  method: PaymentMethod!
+  referenceNumber: String
+  postedDate: Date!
+  effectiveDate: Date!
+  processedDate: DateTime
+  status: String!
+  returnReason: String
+  charges: [Charge!]
+  createdAt: DateTime!
+}
+
+type PropertyFinancials {
+  property: Property!
+  period: DateRange!
+  grossPotentialRent: MoneyAmount!
+  effectiveGrossIncome: MoneyAmount!
+  vacancyLoss: MoneyAmount!
+  concessions: MoneyAmount!
+  operatingExpenses: MoneyAmount!
+  netOperatingIncome: MoneyAmount!
+  capitalizationRate: Float
+  occupancyRate: Float!
+}
+
+type GLAccount {
+  id: ID!
+  accountNumber: String!
+  name: String!
+  type: String!
+  subType: String
+  isActive: Boolean!
+  description: String
+  balance: MoneyAmount
+}
+
+type BudgetEntry {
+  id: ID!
+  property: Property!
+  glAccount: GLAccount!
+  year: Int!
+  period: Int!
+  budgetAmount: MoneyAmount!
+  actualAmount: MoneyAmount
+  variance: MoneyAmount
+}
+
+# ─────────────────────────────────────────────
+# Maintenance & Work Orders
+# ─────────────────────────────────────────────
+
+type WorkOrder {
+  id: ID!
+  workOrderNumber: String!
+  property: Property!
+  unit: Unit
+  status: WorkOrderStatus!
+  priority: WorkOrderPriority!
+  category: String!
+  description: String!
+  requestedBy: Resident
+  assignedTo: Employee
+  vendor: Vendor
+  scheduledDate: DateTime
+  completedDate: DateTime
+  estimatedCost: MoneyAmount
+  actualCost: MoneyAmount
+  parts: [WorkOrderPart!]
+  laborHours: Float
+  notes: [WorkOrderNote!]
+  inspections: [Inspection!]
+  permitsRequired: Boolean
+  permitNumber: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type WorkOrderPart {
+  id: ID!
+  workOrder: WorkOrder!
+  description: String!
+  quantity: Float!
+  unitCost: MoneyAmount!
+  totalCost: MoneyAmount!
+  vendor: Vendor
+}
+
+type WorkOrderNote {
+  id: ID!
+  workOrder: WorkOrder!
+  note: String!
+  author: Employee!
+  isPublic: Boolean!
+  createdAt: DateTime!
+}
+
+type Inspection {
+  id: ID!
+  property: Property!
+  unit: Unit
+  type: InspectionType!
+  status: InspectionStatus!
+  scheduledDate: DateTime
+  completedDate: DateTime
+  inspector: Employee
+  resident: Resident
+  areas: [InspectionArea!]
+  overallCondition: String
+  notes: String
+  images: [String!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type InspectionArea {
+  id: ID!
+  inspection: Inspection!
+  name: String!
+  condition: String!
+  items: [InspectionItem!]
+  notes: String
+}
+
+type InspectionItem {
+  id: ID!
+  area: InspectionArea!
+  name: String!
+  condition: String!
+  notes: String
+  images: [String!]
+  repairRequired: Boolean!
+  estimatedRepairCost: MoneyAmount
+}
+
+# ─────────────────────────────────────────────
+# Commercial Real Estate
+# ─────────────────────────────────────────────
+
+type CommercialProperty {
+  id: ID!
+  property: Property!
+  class: String
+  totalRentableArea: Float
+  commonAreaFactor: Float
+  parkingSpaces: Int
+  parkingRatio: Float
+  zoning: String
+  tenants: [CommercialTenant!]
+  leases: [CommercialLease!]
+  rentRoll: [RentRollEntry!]
+}
+
+type CommercialTenant {
+  id: ID!
+  companyName: String!
+  contactName: String!
+  email: String
+  phone: String
+  address: Address
+  industry: String
+  creditRating: String
+  leases: [CommercialLease!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type CommercialLease {
+  id: ID!
+  property: Property!
+  unit: Unit!
+  tenant: CommercialTenant!
+  leaseNumber: String!
+  status: LeaseStatus!
+  startDate: Date!
+  endDate: Date!
+  baseRent: MoneyAmount!
+  rentableArea: Float!
+  rentPerSquareFoot: Decimal!
+  escalations: [RentEscalation!]
+  options: [LeaseOption!]
+  camCharges: MoneyAmount
+  insuranceRequirements: String
+  exclusiveUse: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type RentEscalation {
+  id: ID!
+  lease: CommercialLease!
+  effectiveDate: Date!
+  escalationType: String!
+  escalationValue: Decimal!
+  newRentAmount: MoneyAmount
+}
+
+type LeaseOption {
+  id: ID!
+  lease: CommercialLease!
+  type: String!
+  exerciseByDate: Date!
+  termMonths: Int
+  rentAmount: MoneyAmount
+  conditions: String
+  exercised: Boolean!
+  exercisedDate: Date
+}
+
+type RentRollEntry {
+  id: ID!
+  property: Property!
+  unit: Unit!
+  tenant: CommercialTenant
+  lease: CommercialLease
+  rentableArea: Float!
+  baseRent: MoneyAmount!
+  annualRent: MoneyAmount!
+  rentPerSquareFoot: Decimal!
+  leaseStart: Date
+  leaseEnd: Date
+  asOfDate: Date!
+}
+
+# ─────────────────────────────────────────────
+# Investment Management
+# ─────────────────────────────────────────────
+
+type InvestmentFund {
+  id: ID!
+  name: String!
+  code: String!
+  type: InvestmentType!
+  status: String!
+  inceptionDate: Date!
+  targetSize: MoneyAmount
+  committedCapital: MoneyAmount
+  calledCapital: MoneyAmount
+  distributedCapital: MoneyAmount
+  nav: MoneyAmount
+  investors: [Investor!]
+  deals: [Deal!]
+  assets: [Property!]
+  returns: FundReturns
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Investor {
+  id: ID!
+  name: String!
+  type: String!
+  contactName: String
+  email: String
+  phone: String
+  address: Address
+  investments: [Investment!]
+  totalCommitted: MoneyAmount
+  totalCalled: MoneyAmount
+  totalDistributed: MoneyAmount
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Investment {
+  id: ID!
+  fund: InvestmentFund!
+  investor: Investor!
+  type: InvestmentType!
+  committedAmount: MoneyAmount!
+  calledAmount: MoneyAmount!
+  distributedAmount: MoneyAmount!
+  currentValue: MoneyAmount
+  irr: Float
+  multiple: Float
+  investmentDate: Date!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Deal {
+  id: ID!
+  fund: InvestmentFund
+  name: String!
+  status: DealStatus!
+  type: String!
+  property: Property
+  acquisitionPrice: MoneyAmount
+  closingDate: Date
+  holdPeriodYears: Int
+  projectedIrr: Float
+  projectedMultiple: Float
+  actualIrr: Float
+  actualMultiple: Float
+  notes: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type FundReturns {
+  fund: InvestmentFund!
+  asOfDate: Date!
+  irr: Float
+  multiple: Float
+  dpi: Float
+  rvpi: Float
+  tvpi: Float
+  totalDistributed: MoneyAmount
+  currentNav: MoneyAmount
+}
+
+# ─────────────────────────────────────────────
+# Vendors & Procurement
+# ─────────────────────────────────────────────
+
+type Vendor {
+  id: ID!
+  code: String!
+  name: String!
+  status: VendorStatus!
+  type: String!
+  contactName: String
+  email: String
+  phone: String
+  address: Address
+  taxId: String
+  licenseNumber: String
+  licenseExpiration: Date
+  insuranceCertificate: String
+  insuranceExpiration: Date
+  paymentTerms: String
+  glAccount: String
+  invoices: [Invoice!]
+  workOrders: [WorkOrder!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Invoice {
+  id: ID!
+  vendor: Vendor!
+  property: Property
+  invoiceNumber: String!
+  status: InvoiceStatus!
+  invoiceDate: Date!
+  dueDate: Date!
+  amount: MoneyAmount!
+  description: String!
+  glAccount: GLAccount
+  workOrder: WorkOrder
+  approvedBy: Employee
+  approvedDate: DateTime
+  paidDate: Date
+  checkNumber: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+# ─────────────────────────────────────────────
+# Employees
+# ─────────────────────────────────────────────
+
+type Employee {
+  id: ID!
+  employeeNumber: String!
+  firstName: String!
+  lastName: String!
+  fullName: String!
+  email: String!
+  phone: String
+  title: String
+  department: String
+  role: String
+  properties: [Property!]
+  isActive: Boolean!
+  hireDate: Date
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+# ─────────────────────────────────────────────
+# Reporting & Analytics
+# ─────────────────────────────────────────────
+
+type OccupancyReport {
+  property: Property!
+  asOfDate: Date!
+  totalUnits: Int!
+  occupiedUnits: Int!
+  vacantUnits: Int!
+  downUnits: Int!
+  modelUnits: Int!
+  occupancyRate: Float!
+  physicalOccupancyRate: Float!
+  economicOccupancyRate: Float!
+}
+
+type DelinquencyReport {
+  property: Property!
+  asOfDate: Date!
+  totalDelinquent: MoneyAmount!
+  delinquentLeases: [DelinquencyEntry!]
+  delinquencyRate: Float!
+}
+
+type DelinquencyEntry {
+  lease: Lease!
+  resident: Resident!
+  balance: MoneyAmount!
+  daysDelinquent: Int!
+  lastPaymentDate: Date
+  lastPaymentAmount: MoneyAmount
+}
+
+type Alert {
+  id: ID!
+  property: Property
+  severity: AlertSeverity!
+  type: String!
+  message: String!
+  isRead: Boolean!
+  createdAt: DateTime!
+}
+
+# ─────────────────────────────────────────────
+# Connection / Pagination Types
+# ─────────────────────────────────────────────
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+  totalCount: Int!
+}
+
+type PropertyConnection {
+  nodes: [Property!]!
+  pageInfo: PageInfo!
+}
+
+type UnitConnection {
+  nodes: [Unit!]!
+  pageInfo: PageInfo!
+}
+
+type LeaseConnection {
+  nodes: [Lease!]!
+  pageInfo: PageInfo!
+}
+
+type ResidentConnection {
+  nodes: [Resident!]!
+  pageInfo: PageInfo!
+}
+
+type WorkOrderConnection {
+  nodes: [WorkOrder!]!
+  pageInfo: PageInfo!
+}
+
+type VendorConnection {
+  nodes: [Vendor!]!
+  pageInfo: PageInfo!
+}
+
+type InvoiceConnection {
+  nodes: [Invoice!]!
+  pageInfo: PageInfo!
+}
+
+# ─────────────────────────────────────────────
+# Input Types
+# ─────────────────────────────────────────────
+
+input PropertyFilter {
+  type: PropertyType
+  status: PropertyStatus
+  city: String
+  state: String
+  managementCompany: String
+}
+
+input LeaseFilter {
+  status: LeaseStatus
+  type: LeaseType
+  propertyId: ID
+  startDateFrom: Date
+  startDateTo: Date
+  endDateFrom: Date
+  endDateTo: Date
+}
+
+input ResidentFilter {
+  status: ResidentStatus
+  propertyId: ID
+  leaseId: ID
+}
+
+input WorkOrderFilter {
+  status: WorkOrderStatus
+  priority: WorkOrderPriority
+  propertyId: ID
+  unitId: ID
+  assignedToId: ID
+  createdFrom: DateTime
+  createdTo: DateTime
+}
+
+input VendorFilter {
+  status: VendorStatus
+  type: String
+}
+
+input CreateWorkOrderInput {
+  propertyId: ID!
+  unitId: ID
+  priority: WorkOrderPriority!
+  category: String!
+  description: String!
+  requestedById: ID
+  assignedToId: ID
+  vendorId: ID
+  scheduledDate: DateTime
+  estimatedCost: Decimal
+}
+
+input UpdateWorkOrderInput {
+  status: WorkOrderStatus
+  priority: WorkOrderPriority
+  assignedToId: ID
+  vendorId: ID
+  scheduledDate: DateTime
+  completedDate: DateTime
+  actualCost: Decimal
+  laborHours: Float
+  notes: String
+}
+
+input CreatePaymentInput {
+  leaseId: ID!
+  amount: Decimal!
+  currency: String!
+  method: PaymentMethod!
+  referenceNumber: String
+  effectiveDate: Date!
+  chargeIds: [ID!]
+}
+
+input CreateLeaseInput {
+  propertyId: ID!
+  unitId: ID!
+  type: LeaseType!
+  startDate: Date!
+  endDate: Date
+  moveInDate: Date
+  rentAmount: Decimal!
+  currency: String!
+  securityDeposit: Decimal
+  residentIds: [ID!]!
+  primaryResidentId: ID!
+}
+
+# ─────────────────────────────────────────────
+# Root Types
+# ─────────────────────────────────────────────
+
+type Query {
+  # Properties
+  property(id: ID!): Property
+  properties(filter: PropertyFilter, first: Int, after: String): PropertyConnection!
+
+  # Buildings & Units
+  building(id: ID!): Building
+  unit(id: ID!): Unit
+  units(propertyId: ID!, filter: PropertyFilter, first: Int, after: String): UnitConnection!
+  floorPlan(id: ID!): FloorPlan
+  floorPlans(propertyId: ID!): [FloorPlan!]!
+
+  # Leases
+  lease(id: ID!): Lease
+  leases(filter: LeaseFilter, first: Int, after: String): LeaseConnection!
+
+  # Residents
+  resident(id: ID!): Resident
+  residents(filter: ResidentFilter, first: Int, after: String): ResidentConnection!
+
+  # Applications
+  application(id: ID!): Application
+  applications(propertyId: ID, status: ApplicationStatus): [Application!]!
+
+  # Work Orders
+  workOrder(id: ID!): WorkOrder
+  workOrders(filter: WorkOrderFilter, first: Int, after: String): WorkOrderConnection!
+
+  # Inspections
+  inspection(id: ID!): Inspection
+  inspections(propertyId: ID!, unitId: ID): [Inspection!]!
+
+  # Commercial
+  commercialProperty(propertyId: ID!): CommercialProperty
+  commercialLease(id: ID!): CommercialLease
+  rentRoll(propertyId: ID!, asOfDate: Date!): [RentRollEntry!]!
+
+  # Financials
+  charges(leaseId: ID!): [Charge!]!
+  payments(leaseId: ID!, from: Date, to: Date): [Payment!]!
+  glAccount(id: ID!): GLAccount
+  glAccounts(propertyId: ID): [GLAccount!]!
+  budgetEntries(propertyId: ID!, year: Int!): [BudgetEntry!]!
+
+  # Vendors & Invoices
+  vendor(id: ID!): Vendor
+  vendors(filter: VendorFilter, first: Int, after: String): VendorConnection!
+  invoice(id: ID!): Invoice
+  invoices(vendorId: ID, propertyId: ID, status: InvoiceStatus, first: Int, after: String): InvoiceConnection!
+
+  # Investment
+  investmentFund(id: ID!): InvestmentFund
+  investmentFunds: [InvestmentFund!]!
+  investor(id: ID!): Investor
+  investors: [Investor!]!
+  deal(id: ID!): Deal
+  deals(fundId: ID, status: DealStatus): [Deal!]!
+
+  # Employees
+  employee(id: ID!): Employee
+  employees(propertyId: ID): [Employee!]!
+
+  # Reports
+  occupancyReport(propertyId: ID!, asOfDate: Date!): OccupancyReport!
+  delinquencyReport(propertyId: ID!, asOfDate: Date!): DelinquencyReport!
+
+  # Alerts
+  alerts(propertyId: ID, severity: AlertSeverity, unreadOnly: Boolean): [Alert!]!
+}
+
+type Mutation {
+  # Work Orders
+  createWorkOrder(input: CreateWorkOrderInput!): WorkOrder!
+  updateWorkOrder(id: ID!, input: UpdateWorkOrderInput!): WorkOrder!
+  deleteWorkOrder(id: ID!): Boolean!
+
+  # Payments
+  createPayment(input: CreatePaymentInput!): Payment!
+  voidPayment(id: ID!): Payment!
+
+  # Leases
+  createLease(input: CreateLeaseInput!): Lease!
+  renewLease(leaseId: ID!, newEndDate: Date!, newRentAmount: Decimal): Lease!
+  terminateLease(leaseId: ID!, terminationDate: Date!, reason: String): Lease!
+
+  # Alerts
+  markAlertRead(id: ID!): Alert!
+  markAllAlertsRead(propertyId: ID): Boolean!
+
+  # Inspections
+  scheduleInspection(propertyId: ID!, unitId: ID, type: InspectionType!, scheduledDate: DateTime!, inspectorId: ID): Inspection!
+  completeInspection(id: ID!, overallCondition: String!, notes: String): Inspection!
+
+  # Invoices
+  approveInvoice(id: ID!): Invoice!
+  voidInvoice(id: ID!, reason: String!): Invoice!
+}
+
+type Subscription {
+  workOrderStatusChanged(propertyId: ID!): WorkOrder!
+  newPaymentReceived(propertyId: ID!): Payment!
+  newMaintenanceRequest(propertyId: ID!): WorkOrder!
+  leaseStatusChanged(propertyId: ID!): Lease!
+  alertCreated(propertyId: ID, severity: AlertSeverity): Alert!
+}
