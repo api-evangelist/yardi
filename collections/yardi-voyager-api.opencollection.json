@@ -1,0 +1,200 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yardi Voyager API",
+    "version": "20.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Billing and Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Yardi Get resident transactions with login",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfResidentTransactions20.asmx/GetResidentTransactions_Login"
+          },
+          "docs": "Retrieves resident transaction records for a specified property and date range. Requires authentication credentials passed in the SOAP request body. Returns billing, payment, and charge history for residents."
+        },
+        {
+          "info": {
+            "name": "Yardi Get resident transactions by charge date",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfResidentTransactions20.asmx/GetResidentTransactions_ByChargeDate_Login"
+          },
+          "docs": "Retrieves resident transaction records filtered by charge date for a specified property. Returns billing and payment records within the specified charge date range."
+        },
+        {
+          "info": {
+            "name": "Yardi Import resident transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfResidentTransactions20.asmx/ImportResidentTransactions_Login"
+          },
+          "docs": "Imports resident transaction records including charges, payments, and credits into the Voyager system for a specified property. Used for batch processing of financial transactions from external systems."
+        },
+        {
+          "info": {
+            "name": "Yardi Get budget data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfResidentTransactions20.asmx/GetBudgetData_Login"
+          },
+          "docs": "Retrieves budget data for a specified property, including approved budgets, actual vs. budget comparisons, and variance data for accounting periods."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Common Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Yardi Get property configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfCommonData.asmx/GetPropertyConfigurations_Login"
+          },
+          "docs": "Retrieves property configuration data including property details, unit types, amenities, and management settings. Used for synchronizing property master data with external systems."
+        },
+        {
+          "info": {
+            "name": "Yardi Get unit information",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfCommonData.asmx/GetUnitInformation_Login"
+          },
+          "docs": "Retrieves detailed unit information for a specified property including unit numbers, types, square footage, bedroom and bathroom counts, occupancy status, and market rents."
+        },
+        {
+          "info": {
+            "name": "Yardi Get tenant data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfCommonData.asmx/GetTenants_Login"
+          },
+          "docs": "Retrieves tenant records for a specified property, including tenant contact information, lease details, move-in dates, and account status."
+        },
+        {
+          "info": {
+            "name": "Yardi Get chart of accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfCommonData.asmx/GetChartOfAccounts_Login"
+          },
+          "docs": "Retrieves the chart of accounts for a specified property or entity, including account numbers, descriptions, types, and hierarchy."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Service Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Yardi Get service requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfServiceRequests.asmx/GetServiceRequests_Login"
+          },
+          "docs": "Retrieves service request and work order records for a specified property, including request details, status, priority, assigned technician, and completion information."
+        },
+        {
+          "info": {
+            "name": "Yardi Import service requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfServiceRequests.asmx/ImportServiceRequests_Login"
+          },
+          "docs": "Creates or updates service request and work order records in the Voyager system. Used for integrating maintenance management data from external systems."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Vendor Invoicing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Yardi Get vendor invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfVendorInvoice.asmx/GetVendorInvoices_Login"
+          },
+          "docs": "Retrieves vendor invoice records for a specified property or entity, including invoice amounts, dates, approval status, and payment information."
+        },
+        {
+          "info": {
+            "name": "Yardi Import vendor invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfVendorInvoice.asmx/ImportVendorInvoices_Login"
+          },
+          "docs": "Imports vendor invoice records into the Voyager accounts payable system. Supports creating new invoices and updating existing ones for batch processing from external procurement systems."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Job Cost",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Yardi Get job cost data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfJobCost.asmx/GetJobCostData_Login"
+          },
+          "docs": "Retrieves job cost tracking data for construction and renovation projects, including budgets, commitments, actual costs, and variance reporting."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
