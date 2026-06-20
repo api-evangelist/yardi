@@ -4,7 +4,7 @@ description: Yardi develops and supports industry-leading investment and propert
   management software for all types and sizes of real estate companies. The platform
   includes solutions for residential, commercial, public housing, affordable housing,
   and military housing management.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/yardi/refs/heads/main/apis.yml
 created: '2025-01-01'
 modified: '2026-05-19'
