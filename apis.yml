@@ -190,7 +190,7 @@ common:
   url: https://www.yardi.com/blog/
 - type: GettingStarted
   url: https://www.yardi.com/company/become-an-interface-partner/
-- type: SignUp
+- type: Signup
   url: https://www.yardi.com/company/become-an-interface-partner/
 - type: Documentation
   url: https://www.yardi.com/services/interfaces/standard-interface-options/
