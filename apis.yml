@@ -168,6 +168,10 @@ apis:
   - type: Documentation
     url: https://www.yardi.com/product/ehr/
 common:
+- type: DomainSecurity
+  url: security/yardi-domain-security.yml
+- type: Authentication
+  url: authentication/yardi-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/yardi-systems
 - type: Portal

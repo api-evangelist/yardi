@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/yardi-voyager-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: soapAuth
+  type: http
+  scheme: basic
+  description: SOAP authentication using UserName, Password, and ServerName parameters passed
+    within the SOAP request body. Credentials are provided by the Yardi Standard Interface Partnership
+    Program.
+  sources:
+  - openapi/yardi-voyager-api-openapi.yml
