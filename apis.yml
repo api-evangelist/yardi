@@ -168,6 +168,8 @@ apis:
   - type: Documentation
     url: https://www.yardi.com/product/ehr/
 common:
+- type: AgenticAccess
+  url: agentic-access/yardi-agentic-access.yml
 - type: DomainSecurity
   url: security/yardi-domain-security.yml
 - type: Authentication
