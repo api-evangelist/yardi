@@ -1,0 +1,106 @@
+openapi: 3.1.0
+info:
+  title: Yardi Voyager Billing and Payments Job Cost API
+  description: Core property management platform API providing access to accounting, operations, and reporting functionality for real estate portfolios. Yardi Voyager uses SOAP-based web services defined via WSDL, with interfaces for billing and payments, common data, service requests, vendor invoicing, job cost, and commercial data export. This OpenAPI specification documents the primary web service operations available through the Voyager Standard Interface Partnership Program.
+  version: '20.0'
+  contact:
+    name: Yardi Systems
+    url: https://www.yardi.com/support/
+  termsOfService: https://www.yardi.com/about-us/legal/terms-of-use/
+servers:
+- url: https://{server}.yardi.com/{clientUrl}/webservices
+  description: Yardi Voyager Web Services Server
+  variables:
+    server:
+      default: www.yardiasp13
+      description: Yardi hosting server. Specific server varies by client deployment.
+    clientUrl:
+      default: '{client}'
+      description: Client-specific URL path. Obtain from Yardi representative or check in Voyager under Administration > About > URL.
+security:
+- soapAuth: []
+tags:
+- name: Job Cost
+  description: Operations for managing job cost tracking, budgets, and construction project financials. Accessed via the ItfJobCost web service interface.
+paths:
+  /ItfJobCost.asmx/GetJobCostData_Login:
+    post:
+      operationId: getJobCostDataLogin
+      summary: Yardi Get job cost data
+      description: Retrieves job cost tracking data for construction and renovation projects, including budgets, commitments, actual costs, and variance reporting.
+      tags:
+      - Job Cost
+      requestBody:
+        required: true
+        content:
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetJobCostDataRequest'
+      responses:
+        '200':
+          description: Successful response with job cost data
+          content:
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/JobCostDataResponse'
+        '401':
+          description: Authentication failed
+        '500':
+          description: Server error processing the SOAP request
+components:
+  schemas:
+    GetJobCostDataRequest:
+      type: object
+      description: SOAP request for retrieving job cost tracking data.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+        JobId:
+          type: string
+          description: Job or project identifier
+      required:
+      - UserName
+      - Password
+      - ServerName
+      - Database
+      - Platform
+      - YardiPropertyId
+      - InterfaceEntity
+      - InterfaceLicense
+    JobCostDataResponse:
+      type: object
+      description: SOAP response containing job cost tracking data.
+      properties:
+        JobCostDataXmlResponse:
+          type: string
+          description: XML response containing job cost records
+  securitySchemes:
+    soapAuth:
+      type: http
+      scheme: basic
+      description: SOAP authentication using UserName, Password, and ServerName parameters passed within the SOAP request body. Credentials are provided by the Yardi Standard Interface Partnership Program.
+externalDocs:
+  description: Yardi Platform API Documentation
+  url: https://www.yardi.com/platform/api/
