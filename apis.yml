@@ -1,126 +1,104 @@
 aid: yardi
 name: Yardi
-description: Yardi develops and supports industry-leading investment and property
-  management software for all types and sizes of real estate companies. The platform
-  includes solutions for residential, commercial, public housing, affordable housing,
-  and military housing management.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+description: >-
+  Yardi Systems, Inc. (Goleta, California) builds the investment and property
+  management software that residential, commercial, affordable housing, public
+  housing, military housing, self-storage, coworking and senior living operators run
+  as their system of record — Voyager, Breeze, RentCafe, Elevate, Investment Suite,
+  Matrix, Kube and Virtuoso. It sits on the systems-of-record rung of the real estate
+  value chain: the ledger and operating platform a landlord or asset manager runs on,
+  not a listing portal and not a registry operator.
+
+  Its API posture, stated honestly, is licensed-access-only and partner-gated. There
+  is no public developer portal — developer., developers., api. and docs. hosts do not
+  resolve on yardi.com, and the /platform/ and /platform/api/ paths previously
+  catalogued here return HTTP 404. Real interfaces exist in volume, but only behind
+  the Voyager Standard Interface Partnership Program (SIPP): an application, a signed
+  Data Exchange Agreement per interface type, a company at least two years old with
+  three or more active Voyager clients, and an annual license fee per interface that
+  is in some cases charged per transaction. A development sandbox is provided only
+  after acceptance. The public "find an interface partner" page is a directory of
+  450+ already-accepted vendors across twelve interface categories, not documentation
+  — its only calls to action are "Talk to sales" and "Contact us".
+
+  Three public, machine-readable or anonymously readable surfaces do exist, and none
+  of them is the Voyager API. Yardi ships a first-party MCP server, the Virtuoso
+  Connector, whose OAuth 2.1 authorization contract is published anonymously on
+  mcp.virtuoso.ai even though its tool list is not. status.yardi.com runs a full
+  Atlassian Statuspage with an unauthenticated JSON API across 134 components in 16
+  product groups. And centershiftdevx.com, the legacy CenterShift developer site
+  carried forward into Yardi Store, still serves genuine SWS2 endpoint documentation
+  to anonymous readers — the only Yardi property that does.
+
+  Every OpenAPI, JSON Schema, GraphQL schema, Postman collection and derived
+  governance artifact in this repository was written by API Evangelist from Yardi's
+  own interface naming and public partner documentation. Yardi publishes no OpenAPI,
+  no WSDL, no OData $metadata and no machine-readable contract of any kind.
+accessModel:
+  pricing: enterprise
+  onboarding: approval
+  trial: false
+  try_now: false
+  public: false
+  label: >-
+    Enterprise · Partner-gated (SIPP application, Data Exchange Agreement per
+    interface, annual per-interface fee, 3+ active Voyager clients required)
+  confidence: high
+  source:
+  - https://www.yardi.com/company/become-an-interface-partner/
+  - https://www.yardi.com/company/find-an-interface-partner/
+  generated: '2026-07-28'
+  method: researched
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/yardi.png
 url: https://raw.githubusercontent.com/api-evangelist/yardi/refs/heads/main/apis.yml
 created: '2025-01-01'
-modified: '2026-05-19'
+modified: '2026-07-28'
 specificationVersion: '0.19'
 apis:
-- name: Yardi Voyager API
-  description: Core property management platform API providing access to accounting,
-    operations, and reporting functionality for real estate portfolios. Yardi Voyager
-    uses SOAP-based web services defined via WSDL, with interfaces for billing and
-    payments, common data, service requests, vendor invoicing, job cost, and commercial
-    data export.
-  image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
-  humanURL: https://www.yardi.com/products/voyager/
-  baseURL: https://api.yardi.com
+- aid: yardi:yardi-virtuoso-connector-mcp
+  name: Yardi Virtuoso Connector (MCP)
+  description: >-
+    Yardi's first-party Model Context Protocol server, announced in early access on
+    2025-09-10 and described as generally available in Virtuoso Enterprise on
+    2026-06-16. Listed on the Anthropic connector directory as Read & Write in the
+    Financial services category. Published capabilities are portfolio performance
+    analysis across properties and markets, financial data including Net Operating
+    Income comparisons, work order management and tracking, invoice review and
+    approval workflows, quarterly business review support, and budget forecasting.
+    Authorization is real and anonymously discoverable — RFC 9728 protected-resource
+    metadata and RFC 8414 authorization-server metadata on mcp.virtuoso.ai publish an
+    OAuth 2.1 authorization-code flow with PKCE S256, refresh tokens and dynamic
+    client registration. Those scopes carry identity only; Yardi states data access
+    follows the caller's existing Yardi user permissions. The tool list is not
+    anonymously introspectable and the technical documentation returns HTTP 401, so no
+    tool names or input schemas are asserted here. Access requires a licensed,
+    configured Virtuoso Enterprise tenancy — there is no trial and no developer
+    sandbox. This is the most agent-ready surface Yardi operates.
+  humanURL: https://claude.com/connectors/yardi-virtuoso
+  baseURL: https://mcp.virtuoso.ai
   tags:
-  - Accounting
-  - Commercial
+  - MCP
+  - AI
+  - Agents
   - Property Management
-  - Real Estate
-  - Residential
+  - Investment Management
   properties:
-  - type: Documentation
-    url: https://www.yardi.com/platform/api/
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/yardi/refs/heads/main/openapi/yardi-voyager-api-openapi.yml
-  - type: Authentication
-    url: https://www.yardi.com/platform/api/authentication/
-  - type: GettingStarted
-    url: https://www.yardi.com/company/become-an-interface-partner/
-  - type: Reference
-    url: https://www.yardi.com/services/interfaces/standard-interface-options/
-  - url: graphql/yardi-graphql.md
-    type: GraphQL
-- name: Yardi Voyager Commercial Data API
-  description: Web service interface that provides the ability to export commercial
-    data from Yardi Voyager databases, including property, unit, lease, and rent roll
-    information. Built on the OSCRE standard with Yardi-specific extensions, this
-    API expands existing services geared towards financial transactions and facilities
-    management.
-  image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
-  humanURL: https://www.yardi.com/news/press-releases/yardi-adds-commercial-data-interface-to-voyager-standard-interface-partnership-program/
-  baseURL: https://api.yardi.com
-  tags:
-  - Commercial
-  - Data Export
-  - Leasing
-  - OSCRE
-  properties:
-  - type: Documentation
-    url: https://www.yardi.com/services/interfaces/standard-interface-options/
-  - type: GettingStarted
-    url: https://www.yardi.com/company/become-an-interface-partner/
-- name: Yardi RENTCafe API
-  description: API for online rental applications, payments, and resident portal functionality
-    for multifamily properties. RENTCafe APIv2 provides transaction-based pricing
-    with an annual price cap, enabling vendors to integrate leasing, marketing, and
-    resident services into their applications.
-  image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
-  humanURL: https://www.rentcafe.com/
-  baseURL: https://api.rentcafe.com
-  tags:
-  - Applications
-  - Multifamily
-  - Payments
-  - Portal
-  - Residents
-  properties:
-  - type: Documentation
-    url: https://www.rentcafe.com/api/
-  - type: TermsOfService
-    url: https://resources.yardi.com/legal/rc-api-tou/
-  - type: GettingStarted
-    url: https://www.yardi.com/company/become-an-interface-partner/
-- name: Yardi Maintenance IQ API
-  description: Maintenance and work order management API enabling integration with
-    maintenance operations, service requests, and vendor management. Part of the Voyager
-    Standard Interface Partnership Program, this API supports creating and updating
-    work orders between Yardi and third-party systems.
-  image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
-  humanURL: https://www.yardi.com/products/maintenance-iq/
-  baseURL: https://api.yardi.com/maintenance
-  tags:
-  - Facilities
-  - Maintenance
-  - Vendors
-  - Work Orders
-  properties:
-  - type: Documentation
-    url: https://www.yardi.com/platform/api/maintenance/
-  - type: GettingStarted
-    url: https://www.yardi.com/company/become-an-interface-partner/
-- name: Yardi Investment Manager API
-  description: API for investment and asset management functions including deal tracking,
-    investor reporting, and portfolio analytics. Provides programmatic access to investment
-    management data within the Yardi Voyager platform.
-  image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
-  humanURL: https://www.yardi.com/products/investment-manager/
-  baseURL: https://api.yardi.com/investment
-  tags:
-  - Analytics
-  - Asset Management
-  - Investment
-  - Reporting
-  properties:
-  - type: Documentation
-    url: https://www.yardi.com/platform/api/investment/
-  - type: GettingStarted
-    url: https://www.yardi.com/company/become-an-interface-partner/
-- name: Yardi Store Web Services API
-  description: SOAP-based API for Yardi's self-storage management platform, formerly
-    known as CenterShift. The SWS2 API provides tokenized authentication and access
-    to store management methods for creating custom applications and websites that
-    interact with Yardi Store Enterprise and Store Advantage systems.
-  image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
+  - type: About
+    url: https://www.yardi.com/news/press-releases/yardi-adds-virtuoso-connector-for-claude-to-its-ai-platform/
+  - type: WellKnown
+    url: https://mcp.virtuoso.ai/.well-known/oauth-protected-resource
+- aid: yardi:yardi-store-web-services-api
+  name: Yardi Store Web Services API (SWS2)
+  description: >-
+    SOAP-based API for Yardi's self-storage management platform, formerly CenterShift.
+    SWS2 provides tokenized authentication and store management methods for building
+    custom applications and websites against Yardi Store Enterprise and Store
+    Advantage. Notable as the only Yardi interface with genuine developer
+    documentation readable by an anonymous visitor — the legacy centershiftdevx.com
+    site publishes an endpoint list, an authentication overview and support contacts.
+    The documentation has not been updated since 2017 and the site is not linked from
+    yardi.com.
   humanURL: https://centershiftdevx.com/
-  baseURL: https://api.yardi.com
   tags:
   - Reservations
   - Self Storage
@@ -135,12 +113,15 @@ apis:
     url: https://centershiftdevx.com/2017/04/16/overview-using-yardi-store-web-services-sws/
   - type: Support
     url: https://centershiftdevx.com/2011/06/20/contacting-centershift/
-- name: Yardi Kube API
-  description: API and webhook integration for Yardi Kube, the coworking and flexible
-    workspace management platform. Enables connecting third-party applications with
-    Yardi Kube for member management, billing, space booking, access control, and
-    CRM integrations.
-  image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
+- aid: yardi:yardi-kube-api
+  name: Yardi Kube API
+  description: >-
+    API and webhook integration for Yardi Kube, the coworking and flexible workspace
+    management platform, covering member management, billing, space booking, access
+    control and CRM integrations. The integrations page is public and the api.
+    yardikube.com host resolves, but no reference documentation, endpoint list or
+    machine-readable contract is published — access is arranged through Yardi Kube
+    account management.
   humanURL: https://www.yardikube.com/integrations-api/
   baseURL: https://api.yardikube.com
   tags:
@@ -151,14 +132,66 @@ apis:
   properties:
   - type: Documentation
     url: https://www.yardikube.com/integrations-api/
-- name: Yardi Senior Living EHR API
-  description: Interface API for Yardi's Electronic Health Records platform designed
-    for senior living communities. Supports secure data exchange with pharmacy networks,
-    laboratory systems, and other healthcare partners through standardized interfaces
-    including NCPDP 10.6 SCRIPT compliance.
-  image: https://www.yardi.com/wp-content/uploads/2023/01/yardi-logo.svg
+- aid: yardi:yardi-voyager-commercial-data-api
+  name: Yardi Voyager Commercial Data Interface
+  description: >-
+    Voyager Standard Interface that exports commercial data from Yardi Voyager
+    databases — property, unit, lease and rent roll information — built on the OSCRE
+    standard with Yardi-specific extensions. Announced by press release; no endpoint
+    list, WSDL or specification is published publicly. Access requires acceptance into
+    the Interface Partnership Program and a Data Exchange Agreement for the Commercial
+    interface type.
+  humanURL: https://www.yardi.com/company/find-an-interface-partner/
+  tags:
+  - Commercial
+  - Data Export
+  - Leasing
+  - OSCRE
+  properties:
+  - type: About
+    url: https://www.yardi.com/news/press-releases/yardi-adds-commercial-data-interface-to-voyager-standard-interface-partnership-program/
+  - type: Documentation
+    url: https://www.yardi.com/company/find-an-interface-partner/
+  - type: GettingStarted
+    url: https://www.yardi.com/company/become-an-interface-partner/
+- aid: yardi:yardi-rentcafe-api
+  name: RentCafe API
+  description: >-
+    The RentCafe marketing, leasing and resident-services API. Yardi's published
+    RentCafe API Terms of Use names concrete operations in its Schedule A —
+    getapartmentavailability, getfloorplans, getunitpricingdetails, getpropertydetails,
+    getamenities, getofficehours, createlead, getavailableslots and createappointment —
+    and states that use "is by way of that certain RentCafe API Access Agreement
+    between you and Yardi Systems, Inc." Access is restricted to vendors serving
+    "Common Clients" (entities that are clients of both Yardi and the vendor), and the
+    vendor may not pass Common Client Data to third parties. The Terms of Use is the
+    only public artifact: no base URL, reference documentation, OpenAPI document or
+    self-serve signup is published, api.rentcafe.com and www.rentcafe.com/api/ both
+    return HTTP 403 to anonymous clients.
+  humanURL: https://resources.yardi.com/legal/rc-api-tou/
+  tags:
+  - Applications
+  - Multifamily
+  - Payments
+  - Portal
+  - Residents
+  properties:
+  - type: TermsOfService
+    url: https://resources.yardi.com/legal/rc-api-tou/
+  - type: Documentation
+    url: https://www.yardi.com/product/rentcafe-resident-portal/
+  - type: GettingStarted
+    url: https://www.yardi.com/company/become-an-interface-partner/
+- aid: yardi:yardi-senior-living-ehr-api
+  name: Yardi Senior Living EHR Interface
+  description: >-
+    Voyager Standard Interface for Yardi's Electronic Health Records platform for
+    senior living communities, supporting data exchange with pharmacy networks,
+    laboratory systems and other healthcare partners through standardized interfaces
+    including NCPDP 10.6 SCRIPT. Listed as the "Senior Living EHR/eMAR" interface
+    category on the partner directory. No endpoint documentation is published; access
+    is partner-gated.
   humanURL: https://www.yardi.com/product/ehr/
-  baseURL: https://api.yardi.com
   tags:
   - EHR
   - Healthcare
@@ -167,100 +200,272 @@ apis:
   properties:
   - type: Documentation
     url: https://www.yardi.com/product/ehr/
+  - type: GettingStarted
+    url: https://www.yardi.com/company/become-an-interface-partner/
+- aid: yardi:yardi-billing-and-payments-api
+  name: Yardi Billing and Payments Interface
+  description: >-
+    Operations for managing resident transactions, charges, payments, credits and
+    billing data, accessed via the ItfResidentTransactions20 Voyager web service
+    interface. Yardi publishes no specification for this interface; the OpenAPI in
+    this repository was written by API Evangelist from Yardi's interface naming and
+    public partner documentation, and has not been validated against a live endpoint.
+    The Voyager service address is client-specific
+    (https://{server}.yardi.com/{client}/webservices) and is issued only to accepted
+    Interface Partnership Program vendors.
+  humanURL: https://www.yardi.com/suite/voyager-suite/
+  tags:
+  - Billing and Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/yardi-billing-and-payments-api-openapi.yml
+  - type: Documentation
+    url: https://www.yardi.com/company/find-an-interface-partner/
+  - type: GettingStarted
+    url: https://www.yardi.com/company/become-an-interface-partner/
+  x-provenance:
+    provider_published: false
+    derived_by: API Evangelist
+    method: derived
+    basis: Yardi Voyager Standard Interface naming and public partner documentation
+    validated_against_live_endpoint: false
+    artifacts:
+    - openapi/yardi-billing-and-payments-api-openapi.yml
+    - postman/yardi-billing-and-payments-api.postman_collection.json
+- aid: yardi:yardi-common-data-api
+  name: Yardi Common Data Interface
+  description: >-
+    Operations for retrieving shared property management data including properties,
+    units, tenants and chart of accounts, accessed via the ItfCommonData Voyager web
+    service interface. Yardi publishes no specification for this interface; the
+    OpenAPI in this repository was written by API Evangelist from Yardi's interface
+    naming and public partner documentation, and has not been validated against a live
+    endpoint.
+  humanURL: https://www.yardi.com/suite/voyager-suite/
+  tags:
+  - Common Data
+  properties:
+  - type: OpenAPI
+    url: openapi/yardi-common-data-api-openapi.yml
+  - type: Documentation
+    url: https://www.yardi.com/company/find-an-interface-partner/
+  - type: GettingStarted
+    url: https://www.yardi.com/company/become-an-interface-partner/
+  x-provenance:
+    provider_published: false
+    derived_by: API Evangelist
+    method: derived
+    basis: Yardi Voyager Standard Interface naming and public partner documentation
+    validated_against_live_endpoint: false
+    artifacts:
+    - openapi/yardi-common-data-api-openapi.yml
+    - postman/yardi-common-data-api.postman_collection.json
+- aid: yardi:yardi-job-cost-api
+  name: Yardi Job Cost Interface
+  description: >-
+    Operations for job cost tracking, budgets and construction project financials,
+    accessed via the ItfJobCost Voyager web service interface. Corresponds to the
+    "Construction API" interface category on Yardi's partner directory. Yardi
+    publishes no specification for this interface; the OpenAPI in this repository was
+    written by API Evangelist from Yardi's interface naming and public partner
+    documentation, and has not been validated against a live endpoint.
+  humanURL: https://www.yardi.com/suite/voyager-suite/
+  tags:
+  - Job Cost
+  properties:
+  - type: OpenAPI
+    url: openapi/yardi-job-cost-api-openapi.yml
+  - type: Documentation
+    url: https://www.yardi.com/company/find-an-interface-partner/
+  - type: GettingStarted
+    url: https://www.yardi.com/company/become-an-interface-partner/
+  x-provenance:
+    provider_published: false
+    derived_by: API Evangelist
+    method: derived
+    basis: Yardi Voyager Standard Interface naming and public partner documentation
+    validated_against_live_endpoint: false
+    artifacts:
+    - openapi/yardi-job-cost-api-openapi.yml
+    - postman/yardi-job-cost-api.postman_collection.json
+- aid: yardi:yardi-service-requests-api
+  name: Yardi Service Requests Interface
+  description: >-
+    Operations for creating and managing maintenance work orders and service requests,
+    accessed via the ItfServiceRequests Voyager web service interface. Corresponds to
+    the "Maintenance API" interface category on Yardi's partner directory. Yardi
+    publishes no specification for this interface; the OpenAPI in this repository was
+    written by API Evangelist from Yardi's interface naming and public partner
+    documentation, and has not been validated against a live endpoint.
+  humanURL: https://www.yardi.com/suite/voyager-suite/
+  tags:
+  - Service Requests
+  - Maintenance
+  - Work Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/yardi-service-requests-api-openapi.yml
+  - type: Documentation
+    url: https://www.yardi.com/company/find-an-interface-partner/
+  - type: GettingStarted
+    url: https://www.yardi.com/company/become-an-interface-partner/
+  x-provenance:
+    provider_published: false
+    derived_by: API Evangelist
+    method: derived
+    basis: Yardi Voyager Standard Interface naming and public partner documentation
+    validated_against_live_endpoint: false
+    artifacts:
+    - openapi/yardi-service-requests-api-openapi.yml
+    - postman/yardi-service-requests-api.postman_collection.json
+- aid: yardi:yardi-vendor-invoicing-api
+  name: Yardi Vendor Invoicing Interface
+  description: >-
+    Operations for vendor invoices, purchase orders and accounts payable transactions,
+    accessed via the ItfVendorInvoice Voyager web service interface. Corresponds to the
+    "Payables API" interface category on Yardi's partner directory. Yardi publishes no
+    specification for this interface; the OpenAPI in this repository was written by API
+    Evangelist from Yardi's interface naming and public partner documentation, and has
+    not been validated against a live endpoint.
+  humanURL: https://www.yardi.com/suite/voyager-suite/
+  tags:
+  - Vendor Invoicing
+  - Payables
+  properties:
+  - type: OpenAPI
+    url: openapi/yardi-vendor-invoicing-api-openapi.yml
+  - type: Documentation
+    url: https://www.yardi.com/company/find-an-interface-partner/
+  - type: GettingStarted
+    url: https://www.yardi.com/company/become-an-interface-partner/
+  x-provenance:
+    provider_published: false
+    derived_by: API Evangelist
+    method: derived
+    basis: Yardi Voyager Standard Interface naming and public partner documentation
+    validated_against_live_endpoint: false
+    artifacts:
+    - openapi/yardi-vendor-invoicing-api-openapi.yml
+    - postman/yardi-vendor-invoicing-api.postman_collection.json
+x-provenance:
+  summary: >-
+    Yardi publishes no machine-readable API contract of any kind — no OpenAPI, no
+    WSDL, no OData $metadata, no AsyncAPI. Every specification and derived artifact in
+    this repository was authored by API Evangelist from Yardi's public interface naming
+    and partner documentation. None of it should be credited to Yardi as
+    provider-published, and none of it has been validated against a live Yardi
+    endpoint.
+  provider_published_artifacts:
+  - https://resources.yardi.com/legal/rc-api-tou/
+  - https://centershiftdevx.com/2017/01/23/end-points/
+  - https://status.yardi.com/api
+  - https://mcp.virtuoso.ai/.well-known/oauth-protected-resource
+  ae_derived_artifacts:
+  - openapi/
+  - json-schema/
+  - json-structure/
+  - json-ld/
+  - graphql/
+  - postman/
+  - collections/
+  - examples/
+  - agentic-access/
+  - authentication/
+  - rules/
+  - vocabulary/
+  - finops/
+  - plans/
+  - rate-limits/
+  verified: '2026-07-28'
 common:
+- type: Website
+  url: https://www.yardi.com
+- type: Documentation
+  url: https://www.yardi.com/company/find-an-interface-partner/
+- type: GettingStarted
+  url: https://www.yardi.com/company/become-an-interface-partner/
+- type: Partners
+  url: https://www.yardi.com/company/find-an-interface-partner/
+- type: StatusPage
+  url: https://status.yardi.com/
+- type: StatusAPI
+  url: https://status.yardi.com/api
+- type: MCPServer
+  url: https://mcp.virtuoso.ai
+- type: WellKnown
+  url: https://mcp.virtuoso.ai/.well-known/oauth-protected-resource
 - type: AgenticAccess
   url: agentic-access/yardi-agentic-access.yml
 - type: DomainSecurity
   url: security/yardi-domain-security.yml
 - type: Authentication
   url: authentication/yardi-authentication.yml
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/yardi/overview
+- type: Compliance
+  url: https://www.yardi.com/company/cloud-security/
 - type: LinkedIn
   url: https://www.linkedin.com/company/yardi-systems
-- type: Portal
-  url: https://www.yardi.com/platform/
-- type: Developer Resources
-  url: https://www.yardi.com/platform/api/
-- type: Support
-  url: https://www.yardi.com/support/
-- type: Contact
-  url: https://www.yardi.com/contact-us/
-- type: PrivacyPolicy
-  url: https://resources.yardi.com/legal/privacy-statement/
-- type: TermsOfService
-  url: https://www.yardi.com/about-us/legal/terms-of-use/
-- type: StatusPage
-  url: https://status.yardi.com
-- type: Website
-  url: https://www.yardi.com
-- type: Blog
-  url: https://www.yardi.com/blog/
-- type: GettingStarted
-  url: https://www.yardi.com/company/become-an-interface-partner/
-- type: Signup
-  url: https://www.yardi.com/company/become-an-interface-partner/
-- type: Documentation
-  url: https://www.yardi.com/services/interfaces/standard-interface-options/
 - type: GitHubOrganization
   url: https://github.com/YardiSystems
+- type: PrivacyPolicy
+  url: https://resources.yardi.com/legal/privacy-statement/
+- type: Legal
+  url: https://www.yardi.com/company/legal/
+- type: Support
+  url: https://www.yardi.com/company/technical-support/
+- type: Login
+  url: https://clientcentral.yardi.com/
 - type: Training
   url: https://www.yardi.com/company/training/
-- type: Login
-  url: https://www.yardi.com/company/technical-support/
 - type: Integrations
   url: https://www.yardi.com/product/marketplace/
-integrations:
-- name: yardi_logo
-- name: down_icon
-- name: search_icon
-- name: support_icon
-- name: globe_icon
-- name: yardi_icon
-- name: voyager_icon
-- name: breeze_icon
-- name: virtuoso_icon
-- name: investment-suite_icon
-- name: rentcafe_icon
-- name: reach-by-rentcafe_icon
-- name: commercialcafe_icon
-- name: elevate-suite_icon
-- name: procure-to-pay-suite_icon
-- name: energy-suite_icon
-- name: aspire_icon
-- name: rightsource_icon
-- name: care-suite_icon
-- name: matrix_icon
-- name: yardi-kube_icon
-- name: screeningworks-pro_icon
-- name: corom_icon
-- name: voyager_logo
-- name: breeze_logo
-- name: virtuoso_logo
-- name: investment-suite_logo
-- name: rentcafe_logo
-- name: reach-by-rentcafe_logo
-- name: commercialcafe_logo
-- name: elevate-suite_logo
-- name: procure-to-pay-suite_logo
-- name: energy-suite_logo
-- name: aspire_logo
-- name: rightsource_logo
-- name: care-suite_logo
-- name: matrix_logo
-- name: yardi-kube_logo
-- name: screeningworks-pro_logo
-- name: corom_logo
-- name: close_icon
-- name: CMK P2P Marketplace Brochure
-- name: brochure_type
-- name: Walton Communities
-- name: Arcadia Management Group, Inc.
-- name: BH Properties
-- name: Guardian Management, LLC
-- name: facebook_icon
-- name: x_icon
-- name: linkedin_icon
-- name: instagram_icon
-- name: youtube_icon
+- type: Blog
+  url: https://www.yardi.com/blog/
+- type: News
+  url: https://www.yardi.com/news/
+notes: |
+  Corrected 2026-07-28 after a fresh review of Yardi's actual public posture.
+
+  Removed as fabricated — these paths were catalogued but do not exist:
+    - https://www.yardi.com/platform/                     (HTTP 404, was "Portal")
+    - https://www.yardi.com/platform/api/                 (HTTP 404, was "Documentation"
+                                                           on 5 entries and "Developer
+                                                           Resources" in common)
+    - https://www.yardi.com/platform/api/authentication/  (HTTP 404, was "Authentication"
+                                                           on 5 entries)
+    - https://www.yardi.com/platform/api/maintenance/     (HTTP 404)
+    - https://www.yardi.com/platform/api/investment/      (redirects to a marketing page,
+                                                           not API documentation)
+    - baseURL https://api.yardi.com                       (does not resolve; was asserted
+                                                           on 8 entries, plus invented
+                                                           /maintenance and /investment
+                                                           paths)
+    - https://www.yardi.com/products/voyager/             (HTTP 404; real page is
+                                                           /suite/voyager-suite/)
+    - https://www.yardi.com/support/                      (HTTP 404)
+    - https://www.yardi.com/contact-us/                   (HTTP 403)
+    - https://www.yardi.com/about-us/legal/terms-of-use/  (HTTP 403)
+    - https://www.rentcafe.com/api/                       (HTTP 403, no longer serves docs)
+    - baseURL https://api.rentcafe.com                    (HTTP 403)
+
+  Removed as unevidenced APIs — marketing products with no evidence of a named,
+  separately documented API:
+    - Yardi Maintenance IQ API   (maintenance is an interface category, covered by the
+                                  Service Requests interface entry)
+    - Yardi Investment Manager API
+
+  accessModel corrected from onboarding: self-serve to onboarding: approval. There is
+  no signup of any kind; the previous "Signup" property pointed at a partner
+  application form and has been removed.
+
+  The GitHubOrganization link is retained for completeness but carries no API value —
+  github.com/YardiSystems holds 13 repositories, all forks of third-party projects
+  (quill, FileSaver.js, websocketd, bolt.diy, rrule). Yardi publishes no first-party
+  API artifacts there.
+
+  See also all/yardi-canada, which was researched to this standard on 2026-07-26, and
+  all/yardi-propware.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -269,8 +474,10 @@ tags:
 - Commercial Real Estate
 - Coworking
 - Investment Management
+- MCP
 - Multifamily
 - Property Management
+- PropTech
 - Real Estate
 - Residential
 - Self Storage
