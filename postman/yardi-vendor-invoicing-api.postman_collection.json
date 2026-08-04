@@ -1,0 +1,468 @@
+{
+  "info": {
+    "_postman_id": "65fef545-2dd8-4048-9bdf-cac2fe414214",
+    "name": "Yardi Voyager Billing and Payments Vendor Invoicing API",
+    "description": "Core property management platform API providing access to accounting, operations, and reporting functionality for real estate portfolios. Yardi Voyager uses SOAP-based web services defined via WSDL, with interfaces for billing and payments, common data, service requests, vendor invoicing, job cost, and commercial data export. This OpenAPI specification documents the primary web service operations available through the Voyager Standard Interface Partnership Program.\n\nContact Support:\n Name: Yardi Systems",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:36:11.000Z",
+    "updatedAt": "2026-07-28T03:36:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-65fef545-2dd8-4048-9bdf-cac2fe414214"
+  },
+  "item": [
+    {
+      "name": "ItfVendorInvoice.asmx",
+      "item": [
+        {
+          "name": "GetVendorInvoices_Login",
+          "item": [
+            {
+              "name": "Yardi Get vendor invoices",
+              "id": "9db95f27-2cfd-4465-8809-ac1d0a5d8804",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <FromDate>(string)</FromDate>\n  <ToDate>(string)</ToDate>\n</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ItfVendorInvoice.asmx/GetVendorInvoices_Login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ItfVendorInvoice.asmx",
+                    "GetVendorInvoices_Login"
+                  ]
+                },
+                "description": "Retrieves vendor invoice records for a specified property or entity, including invoice amounts, dates, approval status, and payment information."
+              },
+              "response": [
+                {
+                  "id": "e632083e-bcf5-41ed-9547-e915b79ebfec",
+                  "name": "Successful response with vendor invoice data",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <FromDate>(string)</FromDate>\n  <ToDate>(string)</ToDate>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfVendorInvoice.asmx/GetVendorInvoices_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfVendorInvoice.asmx",
+                        "GetVendorInvoices_Login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <VendorInvoicesXmlResponse>(string)</VendorInvoicesXmlResponse>\n</element>",
+                  "createdAt": "2026-07-28T03:36:12.000Z",
+                  "updatedAt": "2026-07-28T03:36:12.000Z",
+                  "uid": "35240-e632083e-bcf5-41ed-9547-e915b79ebfec"
+                },
+                {
+                  "id": "ea5598a4-f192-4d9b-a480-e616357d3167",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <FromDate>(string)</FromDate>\n  <ToDate>(string)</ToDate>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfVendorInvoice.asmx/GetVendorInvoices_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfVendorInvoice.asmx",
+                        "GetVendorInvoices_Login"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:12.000Z",
+                  "updatedAt": "2026-07-28T03:36:12.000Z",
+                  "uid": "35240-ea5598a4-f192-4d9b-a480-e616357d3167"
+                },
+                {
+                  "id": "78c3526a-d3c0-48bf-bece-933acd55dd16",
+                  "name": "Server error processing the SOAP request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <FromDate>(string)</FromDate>\n  <ToDate>(string)</ToDate>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfVendorInvoice.asmx/GetVendorInvoices_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfVendorInvoice.asmx",
+                        "GetVendorInvoices_Login"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:12.000Z",
+                  "updatedAt": "2026-07-28T03:36:12.000Z",
+                  "uid": "35240-78c3526a-d3c0-48bf-bece-933acd55dd16"
+                }
+              ],
+              "createdAt": "2026-07-28T03:36:12.000Z",
+              "updatedAt": "2026-07-28T03:36:12.000Z",
+              "uid": "35240-9db95f27-2cfd-4465-8809-ac1d0a5d8804"
+            }
+          ],
+          "id": "fe79b78f-0d2b-43f9-98ff-c1e1deccd9ec",
+          "createdAt": "2026-07-28T03:36:12.000Z",
+          "updatedAt": "2026-07-28T03:36:12.000Z",
+          "uid": "35240-fe79b78f-0d2b-43f9-98ff-c1e1deccd9ec"
+        },
+        {
+          "name": "ImportVendorInvoices_Login",
+          "item": [
+            {
+              "name": "Yardi Import vendor invoices",
+              "id": "b5eb2b3e-8769-439d-976e-9f6b5e301d4f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <InvoiceXml>(string)</InvoiceXml>\n</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ItfVendorInvoice.asmx/ImportVendorInvoices_Login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ItfVendorInvoice.asmx",
+                    "ImportVendorInvoices_Login"
+                  ]
+                },
+                "description": "Imports vendor invoice records into the Voyager accounts payable system. Supports creating new invoices and updating existing ones for batch processing from external procurement systems."
+              },
+              "response": [
+                {
+                  "id": "37d80c50-8f31-4483-a5ce-a850c0ab3a88",
+                  "name": "Successful import confirmation",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <InvoiceXml>(string)</InvoiceXml>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfVendorInvoice.asmx/ImportVendorInvoices_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfVendorInvoice.asmx",
+                        "ImportVendorInvoices_Login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <ImportResult>(string)</ImportResult>\n  <ErrorMessages>(string)</ErrorMessages>\n  <ErrorMessages>(string)</ErrorMessages>\n</element>",
+                  "createdAt": "2026-07-28T03:36:12.000Z",
+                  "updatedAt": "2026-07-28T03:36:12.000Z",
+                  "uid": "35240-37d80c50-8f31-4483-a5ce-a850c0ab3a88"
+                },
+                {
+                  "id": "16a0420d-1661-4c59-b656-1b452045fc11",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <InvoiceXml>(string)</InvoiceXml>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfVendorInvoice.asmx/ImportVendorInvoices_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfVendorInvoice.asmx",
+                        "ImportVendorInvoices_Login"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:12.000Z",
+                  "updatedAt": "2026-07-28T03:36:12.000Z",
+                  "uid": "35240-16a0420d-1661-4c59-b656-1b452045fc11"
+                },
+                {
+                  "id": "447115ed-e535-4394-a01d-3f65f653b251",
+                  "name": "Server error processing the SOAP request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <InvoiceXml>(string)</InvoiceXml>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfVendorInvoice.asmx/ImportVendorInvoices_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfVendorInvoice.asmx",
+                        "ImportVendorInvoices_Login"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:12.000Z",
+                  "updatedAt": "2026-07-28T03:36:12.000Z",
+                  "uid": "35240-447115ed-e535-4394-a01d-3f65f653b251"
+                }
+              ],
+              "createdAt": "2026-07-28T03:36:12.000Z",
+              "updatedAt": "2026-07-28T03:36:12.000Z",
+              "uid": "35240-b5eb2b3e-8769-439d-976e-9f6b5e301d4f"
+            }
+          ],
+          "id": "a02c2afa-4266-4a35-94c3-7d7cd93e464e",
+          "createdAt": "2026-07-28T03:36:12.000Z",
+          "updatedAt": "2026-07-28T03:36:12.000Z",
+          "uid": "35240-a02c2afa-4266-4a35-94c3-7d7cd93e464e"
+        }
+      ],
+      "id": "de454bd9-a8e8-454d-b594-db882f39ca97",
+      "createdAt": "2026-07-28T03:36:12.000Z",
+      "updatedAt": "2026-07-28T03:36:12.000Z",
+      "uid": "35240-de454bd9-a8e8-454d-b594-db882f39ca97"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "server",
+      "value": "www.yardiasp13"
+    },
+    {
+      "key": "clientUrl",
+      "value": "{client}"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{server}}.yardi.com/{{clientUrl}}/webservices"
+    }
+  ]
+}

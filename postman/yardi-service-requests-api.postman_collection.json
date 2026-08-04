@@ -1,0 +1,468 @@
+{
+  "info": {
+    "_postman_id": "cf90dc4d-2318-43ff-bccc-b313c1ea03aa",
+    "name": "Yardi Voyager Billing and Payments Service Requests API",
+    "description": "Core property management platform API providing access to accounting, operations, and reporting functionality for real estate portfolios. Yardi Voyager uses SOAP-based web services defined via WSDL, with interfaces for billing and payments, common data, service requests, vendor invoicing, job cost, and commercial data export. This OpenAPI specification documents the primary web service operations available through the Voyager Standard Interface Partnership Program.\n\nContact Support:\n Name: Yardi Systems",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:36:10.000Z",
+    "updatedAt": "2026-07-28T03:36:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cf90dc4d-2318-43ff-bccc-b313c1ea03aa"
+  },
+  "item": [
+    {
+      "name": "ItfServiceRequests.asmx",
+      "item": [
+        {
+          "name": "GetServiceRequests_Login",
+          "item": [
+            {
+              "name": "Yardi Get service requests",
+              "id": "c9b2d784-9ad3-4f67-9523-c55bcc5834e5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <FromDate>(string)</FromDate>\n  <ToDate>(string)</ToDate>\n</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ItfServiceRequests.asmx/GetServiceRequests_Login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ItfServiceRequests.asmx",
+                    "GetServiceRequests_Login"
+                  ]
+                },
+                "description": "Retrieves service request and work order records for a specified property, including request details, status, priority, assigned technician, and completion information."
+              },
+              "response": [
+                {
+                  "id": "5d437979-28e6-4790-b072-5072ce60bdf4",
+                  "name": "Successful response with service request data",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <FromDate>(string)</FromDate>\n  <ToDate>(string)</ToDate>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfServiceRequests.asmx/GetServiceRequests_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfServiceRequests.asmx",
+                        "GetServiceRequests_Login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <ServiceRequestsXmlResponse>(string)</ServiceRequestsXmlResponse>\n</element>",
+                  "createdAt": "2026-07-28T03:36:11.000Z",
+                  "updatedAt": "2026-07-28T03:36:11.000Z",
+                  "uid": "35240-5d437979-28e6-4790-b072-5072ce60bdf4"
+                },
+                {
+                  "id": "1ca04c6b-d3f7-4aaa-90aa-c10da02b22c0",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <FromDate>(string)</FromDate>\n  <ToDate>(string)</ToDate>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfServiceRequests.asmx/GetServiceRequests_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfServiceRequests.asmx",
+                        "GetServiceRequests_Login"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:11.000Z",
+                  "updatedAt": "2026-07-28T03:36:11.000Z",
+                  "uid": "35240-1ca04c6b-d3f7-4aaa-90aa-c10da02b22c0"
+                },
+                {
+                  "id": "79795bd2-3b1b-4682-a8c4-31fdd56a3016",
+                  "name": "Server error processing the SOAP request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <FromDate>(string)</FromDate>\n  <ToDate>(string)</ToDate>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfServiceRequests.asmx/GetServiceRequests_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfServiceRequests.asmx",
+                        "GetServiceRequests_Login"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:11.000Z",
+                  "updatedAt": "2026-07-28T03:36:11.000Z",
+                  "uid": "35240-79795bd2-3b1b-4682-a8c4-31fdd56a3016"
+                }
+              ],
+              "createdAt": "2026-07-28T03:36:11.000Z",
+              "updatedAt": "2026-07-28T03:36:11.000Z",
+              "uid": "35240-c9b2d784-9ad3-4f67-9523-c55bcc5834e5"
+            }
+          ],
+          "id": "1cae3285-8a71-4b98-a6b4-99ec074f3546",
+          "createdAt": "2026-07-28T03:36:11.000Z",
+          "updatedAt": "2026-07-28T03:36:11.000Z",
+          "uid": "35240-1cae3285-8a71-4b98-a6b4-99ec074f3546"
+        },
+        {
+          "name": "ImportServiceRequests_Login",
+          "item": [
+            {
+              "name": "Yardi Import service requests",
+              "id": "cd97335a-eb00-4732-a1ee-f5a92ee968e9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <ServiceRequestXml>(string)</ServiceRequestXml>\n</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ItfServiceRequests.asmx/ImportServiceRequests_Login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ItfServiceRequests.asmx",
+                    "ImportServiceRequests_Login"
+                  ]
+                },
+                "description": "Creates or updates service request and work order records in the Voyager system. Used for integrating maintenance management data from external systems."
+              },
+              "response": [
+                {
+                  "id": "3fc918f1-59b8-463a-8304-c359b16e97be",
+                  "name": "Successful import confirmation",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <ServiceRequestXml>(string)</ServiceRequestXml>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfServiceRequests.asmx/ImportServiceRequests_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfServiceRequests.asmx",
+                        "ImportServiceRequests_Login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <ImportResult>(string)</ImportResult>\n  <ErrorMessages>(string)</ErrorMessages>\n  <ErrorMessages>(string)</ErrorMessages>\n</element>",
+                  "createdAt": "2026-07-28T03:36:11.000Z",
+                  "updatedAt": "2026-07-28T03:36:11.000Z",
+                  "uid": "35240-3fc918f1-59b8-463a-8304-c359b16e97be"
+                },
+                {
+                  "id": "31ab8611-c0a5-42bb-b870-4c43db00d56b",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <ServiceRequestXml>(string)</ServiceRequestXml>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfServiceRequests.asmx/ImportServiceRequests_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfServiceRequests.asmx",
+                        "ImportServiceRequests_Login"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:11.000Z",
+                  "updatedAt": "2026-07-28T03:36:11.000Z",
+                  "uid": "35240-31ab8611-c0a5-42bb-b870-4c43db00d56b"
+                },
+                {
+                  "id": "ea861ce9-b542-41f4-a4dc-fafa342177bb",
+                  "name": "Server error processing the SOAP request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <ServiceRequestXml>(string)</ServiceRequestXml>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfServiceRequests.asmx/ImportServiceRequests_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfServiceRequests.asmx",
+                        "ImportServiceRequests_Login"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:11.000Z",
+                  "updatedAt": "2026-07-28T03:36:11.000Z",
+                  "uid": "35240-ea861ce9-b542-41f4-a4dc-fafa342177bb"
+                }
+              ],
+              "createdAt": "2026-07-28T03:36:11.000Z",
+              "updatedAt": "2026-07-28T03:36:11.000Z",
+              "uid": "35240-cd97335a-eb00-4732-a1ee-f5a92ee968e9"
+            }
+          ],
+          "id": "d6e188db-72c5-42ee-815d-2610c430fedd",
+          "createdAt": "2026-07-28T03:36:11.000Z",
+          "updatedAt": "2026-07-28T03:36:11.000Z",
+          "uid": "35240-d6e188db-72c5-42ee-815d-2610c430fedd"
+        }
+      ],
+      "id": "799f9871-30ad-4baf-bc07-15b956bdf7ef",
+      "createdAt": "2026-07-28T03:36:11.000Z",
+      "updatedAt": "2026-07-28T03:36:11.000Z",
+      "uid": "35240-799f9871-30ad-4baf-bc07-15b956bdf7ef"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "server",
+      "value": "www.yardiasp13"
+    },
+    {
+      "key": "clientUrl",
+      "value": "{client}"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{server}}.yardi.com/{{clientUrl}}/webservices"
+    }
+  ]
+}

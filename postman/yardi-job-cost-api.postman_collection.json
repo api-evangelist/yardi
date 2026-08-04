@@ -1,0 +1,260 @@
+{
+  "info": {
+    "_postman_id": "ed3af946-2463-4a41-bbe5-1d90fbfefc93",
+    "name": "Yardi Voyager Billing and Payments Job Cost API",
+    "description": "Core property management platform API providing access to accounting, operations, and reporting functionality for real estate portfolios. Yardi Voyager uses SOAP-based web services defined via WSDL, with interfaces for billing and payments, common data, service requests, vendor invoicing, job cost, and commercial data export. This OpenAPI specification documents the primary web service operations available through the Voyager Standard Interface Partnership Program.\n\nContact Support:\n Name: Yardi Systems",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:36:10.000Z",
+    "updatedAt": "2026-07-28T03:36:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ed3af946-2463-4a41-bbe5-1d90fbfefc93"
+  },
+  "item": [
+    {
+      "name": "ItfJobCost.asmx",
+      "item": [
+        {
+          "name": "GetJobCostData_Login",
+          "item": [
+            {
+              "name": "Yardi Get job cost data",
+              "id": "01bc50f6-da0d-4ef2-96c0-18dd83dfb50a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <JobId>(string)</JobId>\n</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ItfJobCost.asmx/GetJobCostData_Login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ItfJobCost.asmx",
+                    "GetJobCostData_Login"
+                  ]
+                },
+                "description": "Retrieves job cost tracking data for construction and renovation projects, including budgets, commitments, actual costs, and variance reporting."
+              },
+              "response": [
+                {
+                  "id": "82b40496-6a14-4706-8156-930b5983323c",
+                  "name": "Successful response with job cost data",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <JobId>(string)</JobId>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfJobCost.asmx/GetJobCostData_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfJobCost.asmx",
+                        "GetJobCostData_Login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <JobCostDataXmlResponse>(string)</JobCostDataXmlResponse>\n</element>",
+                  "createdAt": "2026-07-28T03:36:10.000Z",
+                  "updatedAt": "2026-07-28T03:36:10.000Z",
+                  "uid": "35240-82b40496-6a14-4706-8156-930b5983323c"
+                },
+                {
+                  "id": "debbeb4b-c990-4d71-ab15-44342b508f5c",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <JobId>(string)</JobId>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfJobCost.asmx/GetJobCostData_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfJobCost.asmx",
+                        "GetJobCostData_Login"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:10.000Z",
+                  "updatedAt": "2026-07-28T03:36:10.000Z",
+                  "uid": "35240-debbeb4b-c990-4d71-ab15-44342b508f5c"
+                },
+                {
+                  "id": "c37d51d3-72e5-40ab-99f0-c6fb0c1e6a54",
+                  "name": "Server error processing the SOAP request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <JobId>(string)</JobId>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfJobCost.asmx/GetJobCostData_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfJobCost.asmx",
+                        "GetJobCostData_Login"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:10.000Z",
+                  "updatedAt": "2026-07-28T03:36:10.000Z",
+                  "uid": "35240-c37d51d3-72e5-40ab-99f0-c6fb0c1e6a54"
+                }
+              ],
+              "createdAt": "2026-07-28T03:36:10.000Z",
+              "updatedAt": "2026-07-28T03:36:10.000Z",
+              "uid": "35240-01bc50f6-da0d-4ef2-96c0-18dd83dfb50a"
+            }
+          ],
+          "id": "e6d647c7-c47e-4fd7-b073-ec481e9fb2cc",
+          "createdAt": "2026-07-28T03:36:10.000Z",
+          "updatedAt": "2026-07-28T03:36:10.000Z",
+          "uid": "35240-e6d647c7-c47e-4fd7-b073-ec481e9fb2cc"
+        }
+      ],
+      "id": "c8d456b0-2cf9-4e4f-95ed-53cf18eeccfc",
+      "createdAt": "2026-07-28T03:36:10.000Z",
+      "updatedAt": "2026-07-28T03:36:10.000Z",
+      "uid": "35240-c8d456b0-2cf9-4e4f-95ed-53cf18eeccfc"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "server",
+      "value": "www.yardiasp13"
+    },
+    {
+      "key": "clientUrl",
+      "value": "{client}"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{server}}.yardi.com/{{clientUrl}}/webservices"
+    }
+  ]
+}

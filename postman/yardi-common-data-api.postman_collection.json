@@ -1,0 +1,884 @@
+{
+  "info": {
+    "_postman_id": "293572a8-edea-4a44-9959-9ad30caed267",
+    "name": "Yardi Voyager Billing and Payments Common Data API",
+    "description": "Core property management platform API providing access to accounting, operations, and reporting functionality for real estate portfolios. Yardi Voyager uses SOAP-based web services defined via WSDL, with interfaces for billing and payments, common data, service requests, vendor invoicing, job cost, and commercial data export. This OpenAPI specification documents the primary web service operations available through the Voyager Standard Interface Partnership Program.\n\nContact Support:\n Name: Yardi Systems",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:36:07.000Z",
+    "updatedAt": "2026-07-28T03:36:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-293572a8-edea-4a44-9959-9ad30caed267"
+  },
+  "item": [
+    {
+      "name": "ItfCommonData.asmx",
+      "item": [
+        {
+          "name": "GetPropertyConfigurations_Login",
+          "item": [
+            {
+              "name": "Yardi Get property configurations",
+              "id": "354c97ce-143e-4e13-a457-93d875ccfac0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ItfCommonData.asmx/GetPropertyConfigurations_Login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ItfCommonData.asmx",
+                    "GetPropertyConfigurations_Login"
+                  ]
+                },
+                "description": "Retrieves property configuration data including property details, unit types, amenities, and management settings. Used for synchronizing property master data with external systems."
+              },
+              "response": [
+                {
+                  "id": "968acca6-dcc4-41cb-b6ea-6af9e46371c4",
+                  "name": "Successful response with property configuration data",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfCommonData.asmx/GetPropertyConfigurations_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfCommonData.asmx",
+                        "GetPropertyConfigurations_Login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <PropertyConfigurationsXmlResponse>(string)</PropertyConfigurationsXmlResponse>\n</element>",
+                  "createdAt": "2026-07-28T03:36:08.000Z",
+                  "updatedAt": "2026-07-28T03:36:08.000Z",
+                  "uid": "35240-968acca6-dcc4-41cb-b6ea-6af9e46371c4"
+                },
+                {
+                  "id": "b45b4211-fd1a-4e0a-b0ef-af5cbc5d7fd0",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfCommonData.asmx/GetPropertyConfigurations_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfCommonData.asmx",
+                        "GetPropertyConfigurations_Login"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:08.000Z",
+                  "updatedAt": "2026-07-28T03:36:08.000Z",
+                  "uid": "35240-b45b4211-fd1a-4e0a-b0ef-af5cbc5d7fd0"
+                },
+                {
+                  "id": "e2bed001-69e7-4999-b857-2307c39f2824",
+                  "name": "Server error processing the SOAP request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfCommonData.asmx/GetPropertyConfigurations_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfCommonData.asmx",
+                        "GetPropertyConfigurations_Login"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:08.000Z",
+                  "updatedAt": "2026-07-28T03:36:08.000Z",
+                  "uid": "35240-e2bed001-69e7-4999-b857-2307c39f2824"
+                }
+              ],
+              "createdAt": "2026-07-28T03:36:08.000Z",
+              "updatedAt": "2026-07-28T03:36:08.000Z",
+              "uid": "35240-354c97ce-143e-4e13-a457-93d875ccfac0"
+            }
+          ],
+          "id": "a0d8c5dd-7bf8-40ce-8817-fe64cea2c598",
+          "createdAt": "2026-07-28T03:36:08.000Z",
+          "updatedAt": "2026-07-28T03:36:08.000Z",
+          "uid": "35240-a0d8c5dd-7bf8-40ce-8817-fe64cea2c598"
+        },
+        {
+          "name": "GetUnitInformation_Login",
+          "item": [
+            {
+              "name": "Yardi Get unit information",
+              "id": "5c72afd2-129a-4dd5-8c27-a0f132069415",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ItfCommonData.asmx/GetUnitInformation_Login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ItfCommonData.asmx",
+                    "GetUnitInformation_Login"
+                  ]
+                },
+                "description": "Retrieves detailed unit information for a specified property including unit numbers, types, square footage, bedroom and bathroom counts, occupancy status, and market rents."
+              },
+              "response": [
+                {
+                  "id": "939e36c3-7533-4042-8473-5268a621d008",
+                  "name": "Successful response with unit information",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfCommonData.asmx/GetUnitInformation_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfCommonData.asmx",
+                        "GetUnitInformation_Login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UnitInformationXmlResponse>(string)</UnitInformationXmlResponse>\n</element>",
+                  "createdAt": "2026-07-28T03:36:08.000Z",
+                  "updatedAt": "2026-07-28T03:36:08.000Z",
+                  "uid": "35240-939e36c3-7533-4042-8473-5268a621d008"
+                },
+                {
+                  "id": "6177ee57-141b-440f-bae5-f1856f297f0f",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfCommonData.asmx/GetUnitInformation_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfCommonData.asmx",
+                        "GetUnitInformation_Login"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:08.000Z",
+                  "updatedAt": "2026-07-28T03:36:08.000Z",
+                  "uid": "35240-6177ee57-141b-440f-bae5-f1856f297f0f"
+                },
+                {
+                  "id": "e9d9ccbd-d8ac-4952-bb7c-959e9db0266b",
+                  "name": "Server error processing the SOAP request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfCommonData.asmx/GetUnitInformation_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfCommonData.asmx",
+                        "GetUnitInformation_Login"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:08.000Z",
+                  "updatedAt": "2026-07-28T03:36:08.000Z",
+                  "uid": "35240-e9d9ccbd-d8ac-4952-bb7c-959e9db0266b"
+                }
+              ],
+              "createdAt": "2026-07-28T03:36:08.000Z",
+              "updatedAt": "2026-07-28T03:36:08.000Z",
+              "uid": "35240-5c72afd2-129a-4dd5-8c27-a0f132069415"
+            }
+          ],
+          "id": "de5d359c-67fd-46c5-a5c4-083a3ccf09aa",
+          "createdAt": "2026-07-28T03:36:08.000Z",
+          "updatedAt": "2026-07-28T03:36:08.000Z",
+          "uid": "35240-de5d359c-67fd-46c5-a5c4-083a3ccf09aa"
+        },
+        {
+          "name": "GetTenants_Login",
+          "item": [
+            {
+              "name": "Yardi Get tenant data",
+              "id": "a4278afa-ed55-4d05-b836-aec3e0286197",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ItfCommonData.asmx/GetTenants_Login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ItfCommonData.asmx",
+                    "GetTenants_Login"
+                  ]
+                },
+                "description": "Retrieves tenant records for a specified property, including tenant contact information, lease details, move-in dates, and account status."
+              },
+              "response": [
+                {
+                  "id": "39755007-8786-4d26-a925-35c41757b4ae",
+                  "name": "Successful response with tenant data",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfCommonData.asmx/GetTenants_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfCommonData.asmx",
+                        "GetTenants_Login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <TenantsXmlResponse>(string)</TenantsXmlResponse>\n</element>",
+                  "createdAt": "2026-07-28T03:36:08.000Z",
+                  "updatedAt": "2026-07-28T03:36:08.000Z",
+                  "uid": "35240-39755007-8786-4d26-a925-35c41757b4ae"
+                },
+                {
+                  "id": "c03b7996-76b4-4fa0-8acd-450b792de311",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfCommonData.asmx/GetTenants_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfCommonData.asmx",
+                        "GetTenants_Login"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:08.000Z",
+                  "updatedAt": "2026-07-28T03:36:08.000Z",
+                  "uid": "35240-c03b7996-76b4-4fa0-8acd-450b792de311"
+                },
+                {
+                  "id": "279d7b21-e0ce-449a-9a50-15a07fced448",
+                  "name": "Server error processing the SOAP request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfCommonData.asmx/GetTenants_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfCommonData.asmx",
+                        "GetTenants_Login"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:08.000Z",
+                  "updatedAt": "2026-07-28T03:36:08.000Z",
+                  "uid": "35240-279d7b21-e0ce-449a-9a50-15a07fced448"
+                }
+              ],
+              "createdAt": "2026-07-28T03:36:08.000Z",
+              "updatedAt": "2026-07-28T03:36:08.000Z",
+              "uid": "35240-a4278afa-ed55-4d05-b836-aec3e0286197"
+            }
+          ],
+          "id": "ec04ed8a-aa46-4a83-b8da-e149bef3f908",
+          "createdAt": "2026-07-28T03:36:08.000Z",
+          "updatedAt": "2026-07-28T03:36:08.000Z",
+          "uid": "35240-ec04ed8a-aa46-4a83-b8da-e149bef3f908"
+        },
+        {
+          "name": "GetChartOfAccounts_Login",
+          "item": [
+            {
+              "name": "Yardi Get chart of accounts",
+              "id": "38497f81-0efe-4ca6-81a8-365378547e2c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ItfCommonData.asmx/GetChartOfAccounts_Login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ItfCommonData.asmx",
+                    "GetChartOfAccounts_Login"
+                  ]
+                },
+                "description": "Retrieves the chart of accounts for a specified property or entity, including account numbers, descriptions, types, and hierarchy."
+              },
+              "response": [
+                {
+                  "id": "2c72feb3-ae1c-464a-bc07-ab564a6c12d1",
+                  "name": "Successful response with chart of accounts",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfCommonData.asmx/GetChartOfAccounts_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfCommonData.asmx",
+                        "GetChartOfAccounts_Login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <ChartOfAccountsXmlResponse>(string)</ChartOfAccountsXmlResponse>\n</element>",
+                  "createdAt": "2026-07-28T03:36:08.000Z",
+                  "updatedAt": "2026-07-28T03:36:08.000Z",
+                  "uid": "35240-2c72feb3-ae1c-464a-bc07-ab564a6c12d1"
+                },
+                {
+                  "id": "7c13221d-aa3b-4066-80e2-eaca5d757a10",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfCommonData.asmx/GetChartOfAccounts_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfCommonData.asmx",
+                        "GetChartOfAccounts_Login"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:08.000Z",
+                  "updatedAt": "2026-07-28T03:36:08.000Z",
+                  "uid": "35240-7c13221d-aa3b-4066-80e2-eaca5d757a10"
+                },
+                {
+                  "id": "4697a4cd-cc19-4e63-b17e-9cfaee557101",
+                  "name": "Server error processing the SOAP request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfCommonData.asmx/GetChartOfAccounts_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfCommonData.asmx",
+                        "GetChartOfAccounts_Login"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:08.000Z",
+                  "updatedAt": "2026-07-28T03:36:08.000Z",
+                  "uid": "35240-4697a4cd-cc19-4e63-b17e-9cfaee557101"
+                }
+              ],
+              "createdAt": "2026-07-28T03:36:08.000Z",
+              "updatedAt": "2026-07-28T03:36:08.000Z",
+              "uid": "35240-38497f81-0efe-4ca6-81a8-365378547e2c"
+            }
+          ],
+          "id": "1fba2823-8bba-43b3-9675-04f0a22f17a0",
+          "createdAt": "2026-07-28T03:36:08.000Z",
+          "updatedAt": "2026-07-28T03:36:08.000Z",
+          "uid": "35240-1fba2823-8bba-43b3-9675-04f0a22f17a0"
+        }
+      ],
+      "id": "827e0861-1b0a-41c1-9559-0f787e01c9f3",
+      "createdAt": "2026-07-28T03:36:08.000Z",
+      "updatedAt": "2026-07-28T03:36:08.000Z",
+      "uid": "35240-827e0861-1b0a-41c1-9559-0f787e01c9f3"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "server",
+      "value": "www.yardiasp13"
+    },
+    {
+      "key": "clientUrl",
+      "value": "{client}"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{server}}.yardi.com/{{clientUrl}}/webservices"
+    }
+  ]
+}

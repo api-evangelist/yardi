@@ -9,13 +9,13 @@
       "method": "feed"
     },
     {
-      "source": "https://www.yardi.com",
-      "feed_url": "https://www.yardi.com/feed/",
+      "source": "https://www.yardi.com/product/marketplace/",
+      "feed_url": "https://www.yardi.com/product/marketplace/feed/",
       "title": "",
       "saved": 0,
       "method": "discovered"
     }
   ],
-  "post_count": 38,
-  "fetched": "2026-07-11T11:50:51Z"
+  "post_count": 42,
+  "fetched": "2026-08-01T15:49:00Z"
 }

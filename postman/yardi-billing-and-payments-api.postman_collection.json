@@ -1,0 +1,884 @@
+{
+  "info": {
+    "_postman_id": "a838b676-0bad-4d5e-85f8-f12c8fd0fcab",
+    "name": "Yardi Voyager Billing and Payments API",
+    "description": "Core property management platform API providing access to accounting, operations, and reporting functionality for real estate portfolios. Yardi Voyager uses SOAP-based web services defined via WSDL, with interfaces for billing and payments, common data, service requests, vendor invoicing, job cost, and commercial data export. This OpenAPI specification documents the primary web service operations available through the Voyager Standard Interface Partnership Program.\n\nContact Support:\n Name: Yardi Systems",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:36:04.000Z",
+    "updatedAt": "2026-07-28T03:36:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a838b676-0bad-4d5e-85f8-f12c8fd0fcab"
+  },
+  "item": [
+    {
+      "name": "ItfResidentTransactions20.asmx",
+      "item": [
+        {
+          "name": "GetResidentTransactions_Login",
+          "item": [
+            {
+              "name": "Yardi Get resident transactions with login",
+              "id": "6655e57e-4008-4408-961a-f321d62c73a3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <FromDate>(string)</FromDate>\n  <ToDate>(string)</ToDate>\n</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ItfResidentTransactions20.asmx/GetResidentTransactions_Login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ItfResidentTransactions20.asmx",
+                    "GetResidentTransactions_Login"
+                  ]
+                },
+                "description": "Retrieves resident transaction records for a specified property and date range. Requires authentication credentials passed in the SOAP request body. Returns billing, payment, and charge history for residents."
+              },
+              "response": [
+                {
+                  "id": "51ac7181-c0aa-4445-b3e6-b80e7a0f4dde",
+                  "name": "Successful response with resident transaction data",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <FromDate>(string)</FromDate>\n  <ToDate>(string)</ToDate>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfResidentTransactions20.asmx/GetResidentTransactions_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfResidentTransactions20.asmx",
+                        "GetResidentTransactions_Login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <TransactionXmlResponse>(string)</TransactionXmlResponse>\n</element>",
+                  "createdAt": "2026-07-28T03:36:05.000Z",
+                  "updatedAt": "2026-07-28T03:36:05.000Z",
+                  "uid": "35240-51ac7181-c0aa-4445-b3e6-b80e7a0f4dde"
+                },
+                {
+                  "id": "66b5339d-43d5-450e-8452-fe232ee173ec",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <FromDate>(string)</FromDate>\n  <ToDate>(string)</ToDate>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfResidentTransactions20.asmx/GetResidentTransactions_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfResidentTransactions20.asmx",
+                        "GetResidentTransactions_Login"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:05.000Z",
+                  "updatedAt": "2026-07-28T03:36:05.000Z",
+                  "uid": "35240-66b5339d-43d5-450e-8452-fe232ee173ec"
+                },
+                {
+                  "id": "845b0c3c-b337-40be-9eed-62cd79bef816",
+                  "name": "Server error processing the SOAP request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <FromDate>(string)</FromDate>\n  <ToDate>(string)</ToDate>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfResidentTransactions20.asmx/GetResidentTransactions_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfResidentTransactions20.asmx",
+                        "GetResidentTransactions_Login"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:05.000Z",
+                  "updatedAt": "2026-07-28T03:36:05.000Z",
+                  "uid": "35240-845b0c3c-b337-40be-9eed-62cd79bef816"
+                }
+              ],
+              "createdAt": "2026-07-28T03:36:05.000Z",
+              "updatedAt": "2026-07-28T03:36:05.000Z",
+              "uid": "35240-6655e57e-4008-4408-961a-f321d62c73a3"
+            }
+          ],
+          "id": "a7d68a92-d4fc-48b6-b61d-141bd4fe0ea2",
+          "createdAt": "2026-07-28T03:36:05.000Z",
+          "updatedAt": "2026-07-28T03:36:05.000Z",
+          "uid": "35240-a7d68a92-d4fc-48b6-b61d-141bd4fe0ea2"
+        },
+        {
+          "name": "GetResidentTransactions_ByChargeDate_Login",
+          "item": [
+            {
+              "name": "Yardi Get resident transactions by charge date",
+              "id": "3cabc22d-1701-412a-bfd3-30b3fb9ab03a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <ChargeFromDate>(string)</ChargeFromDate>\n  <ChargeToDate>(string)</ChargeToDate>\n</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ItfResidentTransactions20.asmx/GetResidentTransactions_ByChargeDate_Login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ItfResidentTransactions20.asmx",
+                    "GetResidentTransactions_ByChargeDate_Login"
+                  ]
+                },
+                "description": "Retrieves resident transaction records filtered by charge date for a specified property. Returns billing and payment records within the specified charge date range."
+              },
+              "response": [
+                {
+                  "id": "16ba0f8b-430d-424a-b40d-456a2df0f98c",
+                  "name": "Successful response with filtered transaction data",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <ChargeFromDate>(string)</ChargeFromDate>\n  <ChargeToDate>(string)</ChargeToDate>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfResidentTransactions20.asmx/GetResidentTransactions_ByChargeDate_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfResidentTransactions20.asmx",
+                        "GetResidentTransactions_ByChargeDate_Login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <TransactionXmlResponse>(string)</TransactionXmlResponse>\n</element>",
+                  "createdAt": "2026-07-28T03:36:05.000Z",
+                  "updatedAt": "2026-07-28T03:36:05.000Z",
+                  "uid": "35240-16ba0f8b-430d-424a-b40d-456a2df0f98c"
+                },
+                {
+                  "id": "73592d3e-76e6-407c-95a8-c11f19b8cd6e",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <ChargeFromDate>(string)</ChargeFromDate>\n  <ChargeToDate>(string)</ChargeToDate>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfResidentTransactions20.asmx/GetResidentTransactions_ByChargeDate_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfResidentTransactions20.asmx",
+                        "GetResidentTransactions_ByChargeDate_Login"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:05.000Z",
+                  "updatedAt": "2026-07-28T03:36:05.000Z",
+                  "uid": "35240-73592d3e-76e6-407c-95a8-c11f19b8cd6e"
+                },
+                {
+                  "id": "3a467b34-ca68-4317-b32c-815304dfe6ba",
+                  "name": "Server error processing the SOAP request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <ChargeFromDate>(string)</ChargeFromDate>\n  <ChargeToDate>(string)</ChargeToDate>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfResidentTransactions20.asmx/GetResidentTransactions_ByChargeDate_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfResidentTransactions20.asmx",
+                        "GetResidentTransactions_ByChargeDate_Login"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:05.000Z",
+                  "updatedAt": "2026-07-28T03:36:05.000Z",
+                  "uid": "35240-3a467b34-ca68-4317-b32c-815304dfe6ba"
+                }
+              ],
+              "createdAt": "2026-07-28T03:36:05.000Z",
+              "updatedAt": "2026-07-28T03:36:05.000Z",
+              "uid": "35240-3cabc22d-1701-412a-bfd3-30b3fb9ab03a"
+            }
+          ],
+          "id": "89010855-08e3-4144-9a5f-4bb783963e0a",
+          "createdAt": "2026-07-28T03:36:05.000Z",
+          "updatedAt": "2026-07-28T03:36:05.000Z",
+          "uid": "35240-89010855-08e3-4144-9a5f-4bb783963e0a"
+        },
+        {
+          "name": "ImportResidentTransactions_Login",
+          "item": [
+            {
+              "name": "Yardi Import resident transactions",
+              "id": "21b9435d-331b-4259-9088-7ad8bfe201cb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <TransactionXml>(string)</TransactionXml>\n</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ItfResidentTransactions20.asmx/ImportResidentTransactions_Login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ItfResidentTransactions20.asmx",
+                    "ImportResidentTransactions_Login"
+                  ]
+                },
+                "description": "Imports resident transaction records including charges, payments, and credits into the Voyager system for a specified property. Used for batch processing of financial transactions from external systems."
+              },
+              "response": [
+                {
+                  "id": "8bbbfe9d-88f3-4c4c-803d-7c9ef5bd0383",
+                  "name": "Successful import confirmation",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <TransactionXml>(string)</TransactionXml>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfResidentTransactions20.asmx/ImportResidentTransactions_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfResidentTransactions20.asmx",
+                        "ImportResidentTransactions_Login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <ImportResult>(string)</ImportResult>\n  <ErrorMessages>(string)</ErrorMessages>\n  <ErrorMessages>(string)</ErrorMessages>\n</element>",
+                  "createdAt": "2026-07-28T03:36:05.000Z",
+                  "updatedAt": "2026-07-28T03:36:05.000Z",
+                  "uid": "35240-8bbbfe9d-88f3-4c4c-803d-7c9ef5bd0383"
+                },
+                {
+                  "id": "b933b1ed-9f1f-404d-b953-2b81169d99b4",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <TransactionXml>(string)</TransactionXml>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfResidentTransactions20.asmx/ImportResidentTransactions_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfResidentTransactions20.asmx",
+                        "ImportResidentTransactions_Login"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:05.000Z",
+                  "updatedAt": "2026-07-28T03:36:05.000Z",
+                  "uid": "35240-b933b1ed-9f1f-404d-b953-2b81169d99b4"
+                },
+                {
+                  "id": "95158854-bfe6-4cae-b443-628936fdab01",
+                  "name": "Server error processing the SOAP request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <TransactionXml>(string)</TransactionXml>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfResidentTransactions20.asmx/ImportResidentTransactions_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfResidentTransactions20.asmx",
+                        "ImportResidentTransactions_Login"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:05.000Z",
+                  "updatedAt": "2026-07-28T03:36:05.000Z",
+                  "uid": "35240-95158854-bfe6-4cae-b443-628936fdab01"
+                }
+              ],
+              "createdAt": "2026-07-28T03:36:05.000Z",
+              "updatedAt": "2026-07-28T03:36:05.000Z",
+              "uid": "35240-21b9435d-331b-4259-9088-7ad8bfe201cb"
+            }
+          ],
+          "id": "6deeb351-5005-49e5-88af-7388f28362e8",
+          "createdAt": "2026-07-28T03:36:05.000Z",
+          "updatedAt": "2026-07-28T03:36:05.000Z",
+          "uid": "35240-6deeb351-5005-49e5-88af-7388f28362e8"
+        },
+        {
+          "name": "GetBudgetData_Login",
+          "item": [
+            {
+              "name": "Yardi Get budget data",
+              "id": "40942825-1830-4c24-88e6-2412e7974072",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <BudgetName>(string)</BudgetName>\n  <FiscalYear>(string)</FiscalYear>\n</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ItfResidentTransactions20.asmx/GetBudgetData_Login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ItfResidentTransactions20.asmx",
+                    "GetBudgetData_Login"
+                  ]
+                },
+                "description": "Retrieves budget data for a specified property, including approved budgets, actual vs. budget comparisons, and variance data for accounting periods."
+              },
+              "response": [
+                {
+                  "id": "abbb75dc-eebe-4255-849d-bbf37f59b139",
+                  "name": "Successful response with budget data",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <BudgetName>(string)</BudgetName>\n  <FiscalYear>(string)</FiscalYear>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfResidentTransactions20.asmx/GetBudgetData_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfResidentTransactions20.asmx",
+                        "GetBudgetData_Login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <BudgetDataXmlResponse>(string)</BudgetDataXmlResponse>\n</element>",
+                  "createdAt": "2026-07-28T03:36:05.000Z",
+                  "updatedAt": "2026-07-28T03:36:05.000Z",
+                  "uid": "35240-abbb75dc-eebe-4255-849d-bbf37f59b139"
+                },
+                {
+                  "id": "469c8a2b-1358-49d0-919a-f53b251f45c9",
+                  "name": "Authentication failed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <BudgetName>(string)</BudgetName>\n  <FiscalYear>(string)</FiscalYear>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfResidentTransactions20.asmx/GetBudgetData_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfResidentTransactions20.asmx",
+                        "GetBudgetData_Login"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:05.000Z",
+                  "updatedAt": "2026-07-28T03:36:05.000Z",
+                  "uid": "35240-469c8a2b-1358-49d0-919a-f53b251f45c9"
+                },
+                {
+                  "id": "6be3a683-22bb-406c-b431-182be60f1036",
+                  "name": "Server error processing the SOAP request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <BudgetName>(string)</BudgetName>\n  <FiscalYear>(string)</FiscalYear>\n</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ItfResidentTransactions20.asmx/GetBudgetData_Login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ItfResidentTransactions20.asmx",
+                        "GetBudgetData_Login"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:05.000Z",
+                  "updatedAt": "2026-07-28T03:36:05.000Z",
+                  "uid": "35240-6be3a683-22bb-406c-b431-182be60f1036"
+                }
+              ],
+              "createdAt": "2026-07-28T03:36:05.000Z",
+              "updatedAt": "2026-07-28T03:36:05.000Z",
+              "uid": "35240-40942825-1830-4c24-88e6-2412e7974072"
+            }
+          ],
+          "id": "3e09f278-5686-4c4a-bd32-25848ea21520",
+          "createdAt": "2026-07-28T03:36:05.000Z",
+          "updatedAt": "2026-07-28T03:36:05.000Z",
+          "uid": "35240-3e09f278-5686-4c4a-bd32-25848ea21520"
+        }
+      ],
+      "id": "535e408c-dcdb-44b7-822a-ae3b6b7ddf36",
+      "createdAt": "2026-07-28T03:36:05.000Z",
+      "updatedAt": "2026-07-28T03:36:05.000Z",
+      "uid": "35240-535e408c-dcdb-44b7-822a-ae3b6b7ddf36"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "server",
+      "value": "www.yardiasp13"
+    },
+    {
+      "key": "clientUrl",
+      "value": "{client}"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{server}}.yardi.com/{{clientUrl}}/webservices"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "provider": "yardi",
+  "sources": [
+    "yardi-billing-and-payments-api-openapi.yml",
+    "yardi-common-data-api-openapi.yml",
+    "yardi-job-cost-api-openapi.yml",
+    "yardi-service-requests-api-openapi.yml",
+    "yardi-vendor-invoicing-api-openapi.yml"
+  ],
+  "outputs": [
+    "yardi-billing-and-payments-api-openapi.yml",
+    "yardi-common-data-api-openapi.yml",
+    "yardi-job-cost-api-openapi.yml",
+    "yardi-service-requests-api-openapi.yml",
+    "yardi-vendor-invoicing-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
