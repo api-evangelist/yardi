@@ -53,7 +53,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/yardi.png
 url: https://raw.githubusercontent.com/api-evangelist/yardi/refs/heads/main/apis.yml
 created: '2025-01-01'
 modified: '2026-07-28'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: yardi:yardi-virtuoso-connector-mcp
   name: Yardi Virtuoso Connector (MCP)
