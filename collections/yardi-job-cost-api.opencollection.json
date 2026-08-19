@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yardi Voyager Billing and Payments Job Cost API",
+    "version": "20.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Job Cost",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Yardi Get job cost data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfJobCost.asmx/GetJobCostData_Login"
+          },
+          "docs": "Retrieves job cost tracking data for construction and renovation projects, including budgets, commitments, actual costs, and variance reporting."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

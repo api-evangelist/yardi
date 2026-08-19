@@ -1,0 +1,312 @@
+{
+  "item": [
+    {
+      "id": "9bba14f7-7918-4aac-bdee-1fa41e4a3dbc",
+      "name": "Job Cost",
+      "description": {
+        "content": "Operations for managing job cost tracking, budgets, and construction project financials. Accessed via the ItfJobCost web service interface.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "07fad95f-4460-45d6-9923-15b2e96a38dd",
+          "name": "Yardi Get job cost data",
+          "request": {
+            "name": "Yardi Get job cost data",
+            "description": {
+              "content": "Retrieves job cost tracking data for construction and renovation projects, including budgets, commitments, actual costs, and variance reporting.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ItfJobCost.asmx",
+                "GetJobCostData_Login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Yardi hosting server. Specific server varies by client deployment.",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                },
+                {
+                  "description": "Client-specific URL path. Obtain from Yardi representative or check in Voyager under Administration > About > URL.",
+                  "type": "any",
+                  "value": "{{clientUrl}}",
+                  "key": "clientUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/xml"
+              },
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <JobId>(string)</JobId>\n</element>",
+              "options": {
+                "raw": {
+                  "language": "xml"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6890cb7c-9628-431c-b745-4f84bf730c01",
+              "name": "Successful response with job cost data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ItfJobCost.asmx",
+                    "GetJobCostData_Login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Yardi hosting server. Specific server varies by client deployment.",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    },
+                    {
+                      "description": "Client-specific URL path. Obtain from Yardi representative or check in Voyager under Administration > About > URL.",
+                      "type": "any",
+                      "value": "{{clientUrl}}",
+                      "key": "clientUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <JobId>(string)</JobId>\n</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <JobCostDataXmlResponse>(string)</JobCostDataXmlResponse>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "7db5706a-efb5-4fd8-9e65-1b686f7514f7",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ItfJobCost.asmx",
+                    "GetJobCostData_Login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Yardi hosting server. Specific server varies by client deployment.",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    },
+                    {
+                      "description": "Client-specific URL path. Obtain from Yardi representative or check in Voyager under Administration > About > URL.",
+                      "type": "any",
+                      "value": "{{clientUrl}}",
+                      "key": "clientUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <JobId>(string)</JobId>\n</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "beedc77e-357a-43a7-99dd-99fe4a0caea5",
+              "name": "Server error processing the SOAP request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ItfJobCost.asmx",
+                    "GetJobCostData_Login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Yardi hosting server. Specific server varies by client deployment.",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    },
+                    {
+                      "description": "Client-specific URL path. Obtain from Yardi representative or check in Voyager under Administration > About > URL.",
+                      "type": "any",
+                      "value": "{{clientUrl}}",
+                      "key": "clientUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <JobId>(string)</JobId>\n</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Yardi hosting server. Specific server varies by client deployment.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "www.yardiasp13",
+      "key": "server"
+    },
+    {
+      "description": {
+        "content": "Client-specific URL path. Obtain from Yardi representative or check in Voyager under Administration > About > URL.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "{client}",
+      "key": "clientUrl"
+    },
+    {
+      "type": "string",
+      "value": "https://{{server}}.yardi.com/{{clientUrl}}/webservices",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d6eefc1d-528f-4bb0-a63a-9d48248b51a3",
+    "name": "Yardi Voyager Billing and Payments Job Cost API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Core property management platform API providing access to accounting, operations, and reporting functionality for real estate portfolios. Yardi Voyager uses SOAP-based web services defined via WSDL, with interfaces for billing and payments, common data, service requests, vendor invoicing, job cost, and commercial data export. This OpenAPI specification documents the primary web service operations available through the Voyager Standard Interface Partnership Program.\n\nContact Support:\n Name: Yardi Systems",
+      "type": "text/plain"
+    }
+  }
+}

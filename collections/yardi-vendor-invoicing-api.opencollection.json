@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yardi Voyager Billing and Payments Vendor Invoicing API",
+    "version": "20.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Vendor Invoicing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Yardi Get vendor invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfVendorInvoice.asmx/GetVendorInvoices_Login"
+          },
+          "docs": "Retrieves vendor invoice records for a specified property or entity, including invoice amounts, dates, approval status, and payment information."
+        },
+        {
+          "info": {
+            "name": "Yardi Import vendor invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfVendorInvoice.asmx/ImportVendorInvoices_Login"
+          },
+          "docs": "Imports vendor invoice records into the Voyager accounts payable system. Supports creating new invoices and updating existing ones for batch processing from external procurement systems."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

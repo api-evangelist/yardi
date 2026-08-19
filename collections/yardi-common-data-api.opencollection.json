@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yardi Voyager Billing and Payments Common Data API",
+    "version": "20.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Common Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Yardi Get property configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfCommonData.asmx/GetPropertyConfigurations_Login"
+          },
+          "docs": "Retrieves property configuration data including property details, unit types, amenities, and management settings. Used for synchronizing property master data with external systems."
+        },
+        {
+          "info": {
+            "name": "Yardi Get unit information",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfCommonData.asmx/GetUnitInformation_Login"
+          },
+          "docs": "Retrieves detailed unit information for a specified property including unit numbers, types, square footage, bedroom and bathroom counts, occupancy status, and market rents."
+        },
+        {
+          "info": {
+            "name": "Yardi Get tenant data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfCommonData.asmx/GetTenants_Login"
+          },
+          "docs": "Retrieves tenant records for a specified property, including tenant contact information, lease details, move-in dates, and account status."
+        },
+        {
+          "info": {
+            "name": "Yardi Get chart of accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfCommonData.asmx/GetChartOfAccounts_Login"
+          },
+          "docs": "Retrieves the chart of accounts for a specified property or entity, including account numbers, descriptions, types, and hierarchy."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

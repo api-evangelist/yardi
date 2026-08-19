@@ -1,0 +1,561 @@
+{
+  "item": [
+    {
+      "id": "31656776-872f-410f-890b-775e7cff6a70",
+      "name": "Vendor Invoicing",
+      "description": {
+        "content": "Operations for managing vendor invoices, purchase orders, and accounts payable transactions. Accessed via the ItfVendorInvoice web service interface.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "22cb0cb8-d7da-4c08-a8ff-0a76f0d648a7",
+          "name": "Yardi Get vendor invoices",
+          "request": {
+            "name": "Yardi Get vendor invoices",
+            "description": {
+              "content": "Retrieves vendor invoice records for a specified property or entity, including invoice amounts, dates, approval status, and payment information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ItfVendorInvoice.asmx",
+                "GetVendorInvoices_Login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Yardi hosting server. Specific server varies by client deployment.",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                },
+                {
+                  "description": "Client-specific URL path. Obtain from Yardi representative or check in Voyager under Administration > About > URL.",
+                  "type": "any",
+                  "value": "{{clientUrl}}",
+                  "key": "clientUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/xml"
+              },
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <FromDate>(string)</FromDate>\n  <ToDate>(string)</ToDate>\n</element>",
+              "options": {
+                "raw": {
+                  "language": "xml"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "67c3aabc-9b1b-4584-97d0-7bcc2e53a04e",
+              "name": "Successful response with vendor invoice data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ItfVendorInvoice.asmx",
+                    "GetVendorInvoices_Login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Yardi hosting server. Specific server varies by client deployment.",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    },
+                    {
+                      "description": "Client-specific URL path. Obtain from Yardi representative or check in Voyager under Administration > About > URL.",
+                      "type": "any",
+                      "value": "{{clientUrl}}",
+                      "key": "clientUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <FromDate>(string)</FromDate>\n  <ToDate>(string)</ToDate>\n</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <VendorInvoicesXmlResponse>(string)</VendorInvoicesXmlResponse>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "55b0d67d-7093-4536-aa20-f3d5277cb243",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ItfVendorInvoice.asmx",
+                    "GetVendorInvoices_Login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Yardi hosting server. Specific server varies by client deployment.",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    },
+                    {
+                      "description": "Client-specific URL path. Obtain from Yardi representative or check in Voyager under Administration > About > URL.",
+                      "type": "any",
+                      "value": "{{clientUrl}}",
+                      "key": "clientUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <FromDate>(string)</FromDate>\n  <ToDate>(string)</ToDate>\n</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f9cc348e-1347-4f65-8f58-e3b65e465afb",
+              "name": "Server error processing the SOAP request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ItfVendorInvoice.asmx",
+                    "GetVendorInvoices_Login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Yardi hosting server. Specific server varies by client deployment.",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    },
+                    {
+                      "description": "Client-specific URL path. Obtain from Yardi representative or check in Voyager under Administration > About > URL.",
+                      "type": "any",
+                      "value": "{{clientUrl}}",
+                      "key": "clientUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <FromDate>(string)</FromDate>\n  <ToDate>(string)</ToDate>\n</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a7bd120-aa2f-4f3b-b5c5-dc615e70bf14",
+          "name": "Yardi Import vendor invoices",
+          "request": {
+            "name": "Yardi Import vendor invoices",
+            "description": {
+              "content": "Imports vendor invoice records into the Voyager accounts payable system. Supports creating new invoices and updating existing ones for batch processing from external procurement systems.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ItfVendorInvoice.asmx",
+                "ImportVendorInvoices_Login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Yardi hosting server. Specific server varies by client deployment.",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                },
+                {
+                  "description": "Client-specific URL path. Obtain from Yardi representative or check in Voyager under Administration > About > URL.",
+                  "type": "any",
+                  "value": "{{clientUrl}}",
+                  "key": "clientUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/xml"
+              },
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <InvoiceXml>(string)</InvoiceXml>\n</element>",
+              "options": {
+                "raw": {
+                  "language": "xml"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b9cd9ff0-6ff3-429a-8c8d-d4bda549a382",
+              "name": "Successful import confirmation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ItfVendorInvoice.asmx",
+                    "ImportVendorInvoices_Login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Yardi hosting server. Specific server varies by client deployment.",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    },
+                    {
+                      "description": "Client-specific URL path. Obtain from Yardi representative or check in Voyager under Administration > About > URL.",
+                      "type": "any",
+                      "value": "{{clientUrl}}",
+                      "key": "clientUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <InvoiceXml>(string)</InvoiceXml>\n</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <ImportResult>(string)</ImportResult>\n  <ErrorMessages>(string)</ErrorMessages>\n  <ErrorMessages>(string)</ErrorMessages>\n</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "f419ba5d-55c4-41af-8637-69ad311e1f3f",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ItfVendorInvoice.asmx",
+                    "ImportVendorInvoices_Login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Yardi hosting server. Specific server varies by client deployment.",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    },
+                    {
+                      "description": "Client-specific URL path. Obtain from Yardi representative or check in Voyager under Administration > About > URL.",
+                      "type": "any",
+                      "value": "{{clientUrl}}",
+                      "key": "clientUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <InvoiceXml>(string)</InvoiceXml>\n</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "089280c5-1afa-403b-a3ee-0a1d6afdcd2a",
+              "name": "Server error processing the SOAP request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ItfVendorInvoice.asmx",
+                    "ImportVendorInvoices_Login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Yardi hosting server. Specific server varies by client deployment.",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    },
+                    {
+                      "description": "Client-specific URL path. Obtain from Yardi representative or check in Voyager under Administration > About > URL.",
+                      "type": "any",
+                      "value": "{{clientUrl}}",
+                      "key": "clientUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <UserName>(string)</UserName>\n  <Password>(string)</Password>\n  <ServerName>(string)</ServerName>\n  <Database>(string)</Database>\n  <Platform>(string)</Platform>\n  <YardiPropertyId>(string)</YardiPropertyId>\n  <InterfaceEntity>(string)</InterfaceEntity>\n  <InterfaceLicense>(string)</InterfaceLicense>\n  <InvoiceXml>(string)</InvoiceXml>\n</element>",
+                  "options": {
+                    "raw": {
+                      "language": "xml"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Yardi hosting server. Specific server varies by client deployment.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "www.yardiasp13",
+      "key": "server"
+    },
+    {
+      "description": {
+        "content": "Client-specific URL path. Obtain from Yardi representative or check in Voyager under Administration > About > URL.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "{client}",
+      "key": "clientUrl"
+    },
+    {
+      "type": "string",
+      "value": "https://{{server}}.yardi.com/{{clientUrl}}/webservices",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "34622012-eb1c-452a-9ad0-d19fe0d9a98a",
+    "name": "Yardi Voyager Billing and Payments Vendor Invoicing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Core property management platform API providing access to accounting, operations, and reporting functionality for real estate portfolios. Yardi Voyager uses SOAP-based web services defined via WSDL, with interfaces for billing and payments, common data, service requests, vendor invoicing, job cost, and commercial data export. This OpenAPI specification documents the primary web service operations available through the Voyager Standard Interface Partnership Program.\n\nContact Support:\n Name: Yardi Systems",
+      "type": "text/plain"
+    }
+  }
+}

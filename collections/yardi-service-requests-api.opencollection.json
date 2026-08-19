@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yardi Voyager Billing and Payments Service Requests API",
+    "version": "20.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Service Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Yardi Get service requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfServiceRequests.asmx/GetServiceRequests_Login"
+          },
+          "docs": "Retrieves service request and work order records for a specified property, including request details, status, priority, assigned technician, and completion information."
+        },
+        {
+          "info": {
+            "name": "Yardi Import service requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfServiceRequests.asmx/ImportServiceRequests_Login"
+          },
+          "docs": "Creates or updates service request and work order records in the Voyager system. Used for integrating maintenance management data from external systems."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

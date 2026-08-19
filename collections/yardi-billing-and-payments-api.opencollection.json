@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yardi Voyager Billing and Payments API",
+    "version": "20.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Billing and Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Yardi Get resident transactions with login",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfResidentTransactions20.asmx/GetResidentTransactions_Login"
+          },
+          "docs": "Retrieves resident transaction records for a specified property and date range. Requires authentication credentials passed in the SOAP request body. Returns billing, payment, and charge history for residents."
+        },
+        {
+          "info": {
+            "name": "Yardi Get resident transactions by charge date",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfResidentTransactions20.asmx/GetResidentTransactions_ByChargeDate_Login"
+          },
+          "docs": "Retrieves resident transaction records filtered by charge date for a specified property. Returns billing and payment records within the specified charge date range."
+        },
+        {
+          "info": {
+            "name": "Yardi Import resident transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfResidentTransactions20.asmx/ImportResidentTransactions_Login"
+          },
+          "docs": "Imports resident transaction records including charges, payments, and credits into the Voyager system for a specified property. Used for batch processing of financial transactions from external systems."
+        },
+        {
+          "info": {
+            "name": "Yardi Get budget data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}.yardi.com/{clientUrl}/webservices/ItfResidentTransactions20.asmx/GetBudgetData_Login"
+          },
+          "docs": "Retrieves budget data for a specified property, including approved budgets, actual vs. budget comparisons, and variance data for accounting periods."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
