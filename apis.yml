@@ -78,6 +78,12 @@ apis:
   baseURL: https://mcp.virtuoso.ai
   tags:
   - MCP
+  - Artificial Intelligence
+  - Agents
+  - Property Management
+  - Investment Management
+  tags_raw:
+  - MCP
   - AI
   - Agents
   - Property Management
@@ -126,6 +132,11 @@ apis:
   baseURL: https://api.yardikube.com
   tags:
   - Booking
+  - Co-Working
+  - Flexible Workspace
+  - Webhook
+  tags_raw:
+  - Booking
   - Coworking
   - Flexible Workspace
   - Webhooks
@@ -170,6 +181,12 @@ apis:
     return HTTP 403 to anonymous clients.
   humanURL: https://resources.yardi.com/legal/rc-api-tou/
   tags:
+  - Application
+  - Multifamily
+  - Payments
+  - Portal
+  - Residents
+  tags_raw:
   - Applications
   - Multifamily
   - Payments
@@ -470,6 +487,19 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 tags:
+- Accounting
+- Commercial Real Estate
+- Co-Working
+- Investment Management
+- MCP
+- Multifamily
+- Property Management
+- PropTech
+- Real-Estate
+- Residential
+- Self Storage
+- Senior Living
+tags_raw:
 - Accounting
 - Commercial Real Estate
 - Coworking
