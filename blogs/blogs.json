@@ -5,7 +5,7 @@
       "source": "https://www.yardi.com/feed/",
       "feed_url": "https://www.yardi.com/feed/",
       "title": "",
-      "saved": 2,
+      "saved": 0,
       "method": "feed"
     },
     {
@@ -23,6 +23,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 48,
-  "fetched": "2026-08-15T12:11:08Z"
+  "post_count": 51,
+  "fetched": "2026-08-22T20:20:02Z"
 }
