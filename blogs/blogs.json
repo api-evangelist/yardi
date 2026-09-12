@@ -2,13 +2,15 @@
   "repo": "yardi",
   "feeds": [
     {
+      "source": "https://www.yardi.com/product/marketplace/",
+      "error": "HTTPError"
+    },
+    {
       "source": "https://www.yardi.com/feed/",
       "feed_url": "https://www.yardi.com/feed/",
       "title": "",
-      "saved": 0,
-      "method": "feed",
-      "nature": "vendor-blog",
-      "nature_basis": "path_blog"
+      "saved": 1,
+      "method": "feed"
     },
     {
       "source": "https://www.yardi.com/product/marketplace/feed/",
@@ -16,17 +18,10 @@
       "title": "",
       "saved": 0,
       "method": "feed"
-    },
-    {
-      "source": "https://www.yardi.com/product/marketplace/",
-      "feed_url": "https://www.yardi.com/product/marketplace/feed/",
-      "title": "",
-      "saved": 0,
-      "method": "discovered"
     }
   ],
-  "post_count": 52,
-  "fetched": "2026-08-30T22:33:40Z",
+  "post_count": 53,
+  "fetched": "2026-09-06T19:17:18Z",
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
   "feed_nature_note": "Whether these posts are the vendor publishing or its support community, decided on the URL path grammar of the saved posts -- not the hostname, which carries both on Khoros, and not author diversity, which flags large vendor blogs as forums. 'undetermined' means undetermined."
