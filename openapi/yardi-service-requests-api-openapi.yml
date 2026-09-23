@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Yardi Voyager Billing and Payments Service Requests API
+  title: Yardi Voyager Service Requests API
   description: Core property management platform API providing access to accounting, operations, and reporting functionality for real estate portfolios. Yardi Voyager uses SOAP-based web services defined via WSDL, with interfaces for billing and payments, common data, service requests, vendor invoicing, job cost, and commercial data export. This OpenAPI specification documents the primary web service operations available through the Voyager Standard Interface Partnership Program.
   version: '20.0'
   contact:
@@ -73,6 +73,54 @@ paths:
           description: Server error processing the SOAP request
 components:
   schemas:
+    ImportServiceRequestsRequest:
+      type: object
+      description: SOAP request for creating or updating service requests in Voyager.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+        ServiceRequestXml:
+          type: string
+          description: XML payload containing service request data to import
+      required:
+      - UserName
+      - Password
+      - ServerName
+      - Database
+      - Platform
+      - YardiPropertyId
+      - InterfaceEntity
+      - InterfaceLicense
+      - ServiceRequestXml
+    ServiceRequestsResponse:
+      type: object
+      description: SOAP response containing service request and work order data.
+      properties:
+        ServiceRequestsXmlResponse:
+          type: string
+          description: XML response containing service request records
     GetServiceRequestsRequest:
       type: object
       description: SOAP request for retrieving service requests and work orders.
@@ -118,13 +166,6 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
-    ServiceRequestsResponse:
-      type: object
-      description: SOAP response containing service request and work order data.
-      properties:
-        ServiceRequestsXmlResponse:
-          type: string
-          description: XML response containing service request records
     ImportResponse:
       type: object
       description: SOAP response confirming successful import of data.
@@ -137,47 +178,6 @@ components:
           description: List of error messages if any records failed to import
           items:
             type: string
-    ImportServiceRequestsRequest:
-      type: object
-      description: SOAP request for creating or updating service requests in Voyager.
-      properties:
-        UserName:
-          type: string
-          description: Yardi API user name
-        Password:
-          type: string
-          description: Yardi API password
-        ServerName:
-          type: string
-          description: Yardi database server name
-        Database:
-          type: string
-          description: Yardi database name
-        Platform:
-          type: string
-          description: Database platform identifier
-        YardiPropertyId:
-          type: string
-          description: Yardi property identifier
-        InterfaceEntity:
-          type: string
-          description: Interface entity code
-        InterfaceLicense:
-          type: string
-          description: Interface license key
-        ServiceRequestXml:
-          type: string
-          description: XML payload containing service request data to import
-      required:
-      - UserName
-      - Password
-      - ServerName
-      - Database
-      - Platform
-      - YardiPropertyId
-      - InterfaceEntity
-      - InterfaceLicense
-      - ServiceRequestXml
   securitySchemes:
     soapAuth:
       type: http

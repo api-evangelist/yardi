@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Yardi Voyager Billing and Payments Vendor Invoicing API
+  title: Yardi Voyager Vendor Invoicing API
   description: Core property management platform API providing access to accounting, operations, and reporting functionality for real estate portfolios. Yardi Voyager uses SOAP-based web services defined via WSDL, with interfaces for billing and payments, common data, service requests, vendor invoicing, job cost, and commercial data export. This OpenAPI specification documents the primary web service operations available through the Voyager Standard Interface Partnership Program.
   version: '20.0'
   contact:
@@ -85,54 +85,6 @@ components:
           description: List of error messages if any records failed to import
           items:
             type: string
-    ImportVendorInvoicesRequest:
-      type: object
-      description: SOAP request for importing vendor invoices into Voyager accounts payable.
-      properties:
-        UserName:
-          type: string
-          description: Yardi API user name
-        Password:
-          type: string
-          description: Yardi API password
-        ServerName:
-          type: string
-          description: Yardi database server name
-        Database:
-          type: string
-          description: Yardi database name
-        Platform:
-          type: string
-          description: Database platform identifier
-        YardiPropertyId:
-          type: string
-          description: Yardi property identifier
-        InterfaceEntity:
-          type: string
-          description: Interface entity code
-        InterfaceLicense:
-          type: string
-          description: Interface license key
-        InvoiceXml:
-          type: string
-          description: XML payload containing vendor invoice data to import
-      required:
-      - UserName
-      - Password
-      - ServerName
-      - Database
-      - Platform
-      - YardiPropertyId
-      - InterfaceEntity
-      - InterfaceLicense
-      - InvoiceXml
-    VendorInvoicesResponse:
-      type: object
-      description: SOAP response containing vendor invoice data.
-      properties:
-        VendorInvoicesXmlResponse:
-          type: string
-          description: XML response containing vendor invoice records
     GetVendorInvoicesRequest:
       type: object
       description: SOAP request for retrieving vendor invoice records.
@@ -178,6 +130,54 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
+    VendorInvoicesResponse:
+      type: object
+      description: SOAP response containing vendor invoice data.
+      properties:
+        VendorInvoicesXmlResponse:
+          type: string
+          description: XML response containing vendor invoice records
+    ImportVendorInvoicesRequest:
+      type: object
+      description: SOAP request for importing vendor invoices into Voyager accounts payable.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+        InvoiceXml:
+          type: string
+          description: XML payload containing vendor invoice data to import
+      required:
+      - UserName
+      - Password
+      - ServerName
+      - Database
+      - Platform
+      - YardiPropertyId
+      - InterfaceEntity
+      - InterfaceLicense
+      - InvoiceXml
   securitySchemes:
     soapAuth:
       type: http

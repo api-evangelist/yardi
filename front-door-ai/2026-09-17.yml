@@ -1,0 +1,29 @@
+# Front Door AI Index — yardi — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: yardi
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.yardi.com
+  final_host: www.yardi.com
+  ownership: own
+  owner: yardi
+  shares_host_with:
+  - yardi-propware
+  inherited_from: null
+  verdict: scored
+  score: 17
+  host_score: 17
+  density: 5.4
+  words: 3149
+  tiers:
+    agentic: 1
+    core: 16
+    model: 0
+  ambiguous: 3
+  top_terms:
+    AI: 16
+    smart: 2
+    agentic: 1
+    predictive: 1

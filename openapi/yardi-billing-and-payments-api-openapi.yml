@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Yardi Voyager Billing and Payments API
   description: Core property management platform API providing access to accounting, operations, and reporting functionality for real estate portfolios. Yardi Voyager uses SOAP-based web services defined via WSDL, with interfaces for billing and payments, common data, service requests, vendor invoicing, job cost, and commercial data export. This OpenAPI specification documents the primary web service operations available through the Voyager Standard Interface Partnership Program.
@@ -121,13 +121,51 @@ paths:
           description: Server error processing the SOAP request
 components:
   schemas:
-    BudgetDataResponse:
+    GetResidentTransactionsByChargeDateRequest:
       type: object
-      description: SOAP response containing budget data in XML format.
+      description: SOAP request for retrieving resident transactions filtered by charge date.
       properties:
-        BudgetDataXmlResponse:
+        UserName:
           type: string
-          description: XML response containing budget records
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+        ChargeFromDate:
+          type: string
+          format: date
+          description: Start charge date for filtering
+        ChargeToDate:
+          type: string
+          format: date
+          description: End charge date for filtering
+      required:
+      - UserName
+      - Password
+      - ServerName
+      - Database
+      - Platform
+      - YardiPropertyId
+      - InterfaceEntity
+      - InterfaceLicense
     GetResidentTransactionsRequest:
       type: object
       description: SOAP request for retrieving resident transactions within a date range.
@@ -176,18 +214,13 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
-    ImportResponse:
+    BudgetDataResponse:
       type: object
-      description: SOAP response confirming successful import of data.
+      description: SOAP response containing budget data in XML format.
       properties:
-        ImportResult:
+        BudgetDataXmlResponse:
           type: string
-          description: Import result status message
-        ErrorMessages:
-          type: array
-          description: List of error messages if any records failed to import
-          items:
-            type: string
+          description: XML response containing budget records
     TransactionResponse:
       type: object
       description: SOAP response containing resident transaction data in XML format.
@@ -195,51 +228,6 @@ components:
         TransactionXmlResponse:
           type: string
           description: XML response containing transaction records
-    GetResidentTransactionsByChargeDateRequest:
-      type: object
-      description: SOAP request for retrieving resident transactions filtered by charge date.
-      properties:
-        UserName:
-          type: string
-          description: Yardi API user name
-        Password:
-          type: string
-          description: Yardi API password
-        ServerName:
-          type: string
-          description: Yardi database server name
-        Database:
-          type: string
-          description: Yardi database name
-        Platform:
-          type: string
-          description: Database platform identifier
-        YardiPropertyId:
-          type: string
-          description: Yardi property identifier
-        InterfaceEntity:
-          type: string
-          description: Interface entity code
-        InterfaceLicense:
-          type: string
-          description: Interface license key
-        ChargeFromDate:
-          type: string
-          format: date
-          description: Start charge date for filtering
-        ChargeToDate:
-          type: string
-          format: date
-          description: End charge date for filtering
-      required:
-      - UserName
-      - Password
-      - ServerName
-      - Database
-      - Platform
-      - YardiPropertyId
-      - InterfaceEntity
-      - InterfaceLicense
     ImportResidentTransactionsRequest:
       type: object
       description: SOAP request for importing resident transactions into Voyager.
@@ -281,6 +269,18 @@ components:
       - InterfaceEntity
       - InterfaceLicense
       - TransactionXml
+    ImportResponse:
+      type: object
+      description: SOAP response confirming successful import of data.
+      properties:
+        ImportResult:
+          type: string
+          description: Import result status message
+        ErrorMessages:
+          type: array
+          description: List of error messages if any records failed to import
+          items:
+            type: string
     GetBudgetDataRequest:
       type: object
       description: SOAP request for retrieving budget data for a property.

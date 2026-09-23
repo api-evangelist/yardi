@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Yardi Voyager Billing and Payments Job Cost API
+  title: Yardi Voyager Job Cost API
   description: Core property management platform API providing access to accounting, operations, and reporting functionality for real estate portfolios. Yardi Voyager uses SOAP-based web services defined via WSDL, with interfaces for billing and payments, common data, service requests, vendor invoicing, job cost, and commercial data export. This OpenAPI specification documents the primary web service operations available through the Voyager Standard Interface Partnership Program.
   version: '20.0'
   contact:
@@ -49,6 +49,13 @@ paths:
           description: Server error processing the SOAP request
 components:
   schemas:
+    JobCostDataResponse:
+      type: object
+      description: SOAP response containing job cost tracking data.
+      properties:
+        JobCostDataXmlResponse:
+          type: string
+          description: XML response containing job cost records
     GetJobCostDataRequest:
       type: object
       description: SOAP request for retrieving job cost tracking data.
@@ -89,13 +96,6 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
-    JobCostDataResponse:
-      type: object
-      description: SOAP response containing job cost tracking data.
-      properties:
-        JobCostDataXmlResponse:
-          type: string
-          description: XML response containing job cost records
   securitySchemes:
     soapAuth:
       type: http
