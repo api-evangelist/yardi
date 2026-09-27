@@ -73,6 +73,25 @@ paths:
           description: Server error processing the SOAP request
 components:
   schemas:
+    ImportResponse:
+      type: object
+      description: SOAP response confirming successful import of data.
+      properties:
+        ImportResult:
+          type: string
+          description: Import result status message
+        ErrorMessages:
+          type: array
+          description: List of error messages if any records failed to import
+          items:
+            type: string
+    ServiceRequestsResponse:
+      type: object
+      description: SOAP response containing service request and work order data.
+      properties:
+        ServiceRequestsXmlResponse:
+          type: string
+          description: XML response containing service request records
     ImportServiceRequestsRequest:
       type: object
       description: SOAP request for creating or updating service requests in Voyager.
@@ -114,13 +133,6 @@ components:
       - InterfaceEntity
       - InterfaceLicense
       - ServiceRequestXml
-    ServiceRequestsResponse:
-      type: object
-      description: SOAP response containing service request and work order data.
-      properties:
-        ServiceRequestsXmlResponse:
-          type: string
-          description: XML response containing service request records
     GetServiceRequestsRequest:
       type: object
       description: SOAP request for retrieving service requests and work orders.
@@ -166,18 +178,6 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
-    ImportResponse:
-      type: object
-      description: SOAP response confirming successful import of data.
-      properties:
-        ImportResult:
-          type: string
-          description: Import result status message
-        ErrorMessages:
-          type: array
-          description: List of error messages if any records failed to import
-          items:
-            type: string
   securitySchemes:
     soapAuth:
       type: http

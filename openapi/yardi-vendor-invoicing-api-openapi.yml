@@ -73,6 +73,13 @@ paths:
           description: Server error processing the SOAP request
 components:
   schemas:
+    VendorInvoicesResponse:
+      type: object
+      description: SOAP response containing vendor invoice data.
+      properties:
+        VendorInvoicesXmlResponse:
+          type: string
+          description: XML response containing vendor invoice records
     ImportResponse:
       type: object
       description: SOAP response confirming successful import of data.
@@ -130,13 +137,6 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
-    VendorInvoicesResponse:
-      type: object
-      description: SOAP response containing vendor invoice data.
-      properties:
-        VendorInvoicesXmlResponse:
-          type: string
-          description: XML response containing vendor invoice records
     ImportVendorInvoicesRequest:
       type: object
       description: SOAP request for importing vendor invoices into Voyager accounts payable.

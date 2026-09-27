@@ -121,51 +121,18 @@ paths:
           description: Server error processing the SOAP request
 components:
   schemas:
-    GetResidentTransactionsByChargeDateRequest:
+    ImportResponse:
       type: object
-      description: SOAP request for retrieving resident transactions filtered by charge date.
+      description: SOAP response confirming successful import of data.
       properties:
-        UserName:
+        ImportResult:
           type: string
-          description: Yardi API user name
-        Password:
-          type: string
-          description: Yardi API password
-        ServerName:
-          type: string
-          description: Yardi database server name
-        Database:
-          type: string
-          description: Yardi database name
-        Platform:
-          type: string
-          description: Database platform identifier
-        YardiPropertyId:
-          type: string
-          description: Yardi property identifier
-        InterfaceEntity:
-          type: string
-          description: Interface entity code
-        InterfaceLicense:
-          type: string
-          description: Interface license key
-        ChargeFromDate:
-          type: string
-          format: date
-          description: Start charge date for filtering
-        ChargeToDate:
-          type: string
-          format: date
-          description: End charge date for filtering
-      required:
-      - UserName
-      - Password
-      - ServerName
-      - Database
-      - Platform
-      - YardiPropertyId
-      - InterfaceEntity
-      - InterfaceLicense
+          description: Import result status message
+        ErrorMessages:
+          type: array
+          description: List of error messages if any records failed to import
+          items:
+            type: string
     GetResidentTransactionsRequest:
       type: object
       description: SOAP request for retrieving resident transactions within a date range.
@@ -214,23 +181,9 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
-    BudgetDataResponse:
+    GetResidentTransactionsByChargeDateRequest:
       type: object
-      description: SOAP response containing budget data in XML format.
-      properties:
-        BudgetDataXmlResponse:
-          type: string
-          description: XML response containing budget records
-    TransactionResponse:
-      type: object
-      description: SOAP response containing resident transaction data in XML format.
-      properties:
-        TransactionXmlResponse:
-          type: string
-          description: XML response containing transaction records
-    ImportResidentTransactionsRequest:
-      type: object
-      description: SOAP request for importing resident transactions into Voyager.
+      description: SOAP request for retrieving resident transactions filtered by charge date.
       properties:
         UserName:
           type: string
@@ -256,9 +209,14 @@ components:
         InterfaceLicense:
           type: string
           description: Interface license key
-        TransactionXml:
+        ChargeFromDate:
           type: string
-          description: XML payload containing transaction data to import
+          format: date
+          description: Start charge date for filtering
+        ChargeToDate:
+          type: string
+          format: date
+          description: End charge date for filtering
       required:
       - UserName
       - Password
@@ -268,19 +226,20 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
-      - TransactionXml
-    ImportResponse:
+    TransactionResponse:
       type: object
-      description: SOAP response confirming successful import of data.
+      description: SOAP response containing resident transaction data in XML format.
       properties:
-        ImportResult:
+        TransactionXmlResponse:
           type: string
-          description: Import result status message
-        ErrorMessages:
-          type: array
-          description: List of error messages if any records failed to import
-          items:
-            type: string
+          description: XML response containing transaction records
+    BudgetDataResponse:
+      type: object
+      description: SOAP response containing budget data in XML format.
+      properties:
+        BudgetDataXmlResponse:
+          type: string
+          description: XML response containing budget records
     GetBudgetDataRequest:
       type: object
       description: SOAP request for retrieving budget data for a property.
@@ -324,6 +283,47 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
+    ImportResidentTransactionsRequest:
+      type: object
+      description: SOAP request for importing resident transactions into Voyager.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+        TransactionXml:
+          type: string
+          description: XML payload containing transaction data to import
+      required:
+      - UserName
+      - Password
+      - ServerName
+      - Database
+      - Platform
+      - YardiPropertyId
+      - InterfaceEntity
+      - InterfaceLicense
+      - TransactionXml
   securitySchemes:
     soapAuth:
       type: http

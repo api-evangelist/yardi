@@ -49,13 +49,6 @@ paths:
           description: Server error processing the SOAP request
 components:
   schemas:
-    JobCostDataResponse:
-      type: object
-      description: SOAP response containing job cost tracking data.
-      properties:
-        JobCostDataXmlResponse:
-          type: string
-          description: XML response containing job cost records
     GetJobCostDataRequest:
       type: object
       description: SOAP request for retrieving job cost tracking data.
@@ -96,6 +89,13 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
+    JobCostDataResponse:
+      type: object
+      description: SOAP response containing job cost tracking data.
+      properties:
+        JobCostDataXmlResponse:
+          type: string
+          description: XML response containing job cost records
   securitySchemes:
     soapAuth:
       type: http
