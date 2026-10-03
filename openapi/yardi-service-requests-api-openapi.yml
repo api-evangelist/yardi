@@ -85,13 +85,6 @@ components:
           description: List of error messages if any records failed to import
           items:
             type: string
-    ServiceRequestsResponse:
-      type: object
-      description: SOAP response containing service request and work order data.
-      properties:
-        ServiceRequestsXmlResponse:
-          type: string
-          description: XML response containing service request records
     ImportServiceRequestsRequest:
       type: object
       description: SOAP request for creating or updating service requests in Voyager.
@@ -178,6 +171,13 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
+    ServiceRequestsResponse:
+      type: object
+      description: SOAP response containing service request and work order data.
+      properties:
+        ServiceRequestsXmlResponse:
+          type: string
+          description: XML response containing service request records
   securitySchemes:
     soapAuth:
       type: http

@@ -121,57 +121,13 @@ paths:
           description: Server error processing the SOAP request
 components:
   schemas:
-    ChartOfAccountsResponse:
+    PropertyConfigurationsResponse:
       type: object
-      description: SOAP response containing chart of accounts data.
+      description: SOAP response containing property configuration data.
       properties:
-        ChartOfAccountsXmlResponse:
+        PropertyConfigurationsXmlResponse:
           type: string
-          description: XML response containing account records
-    GetChartOfAccountsRequest:
-      type: object
-      description: SOAP request for retrieving the chart of accounts.
-      properties:
-        UserName:
-          type: string
-          description: Yardi API user name
-        Password:
-          type: string
-          description: Yardi API password
-        ServerName:
-          type: string
-          description: Yardi database server name
-        Database:
-          type: string
-          description: Yardi database name
-        Platform:
-          type: string
-          description: Database platform identifier
-        YardiPropertyId:
-          type: string
-          description: Yardi property identifier
-        InterfaceEntity:
-          type: string
-          description: Interface entity code
-        InterfaceLicense:
-          type: string
-          description: Interface license key
-      required:
-      - UserName
-      - Password
-      - ServerName
-      - Database
-      - Platform
-      - YardiPropertyId
-      - InterfaceEntity
-      - InterfaceLicense
-    UnitInformationResponse:
-      type: object
-      description: SOAP response containing unit information data.
-      properties:
-        UnitInformationXmlResponse:
-          type: string
-          description: XML response containing unit records
+          description: XML response containing property configuration records
     TenantsResponse:
       type: object
       description: SOAP response containing tenant data.
@@ -179,6 +135,13 @@ components:
         TenantsXmlResponse:
           type: string
           description: XML response containing tenant records
+    UnitInformationResponse:
+      type: object
+      description: SOAP response containing unit information data.
+      properties:
+        UnitInformationXmlResponse:
+          type: string
+          description: XML response containing unit records
     GetUnitInformationRequest:
       type: object
       description: SOAP request for retrieving unit information for a property.
@@ -216,16 +179,16 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
-    PropertyConfigurationsResponse:
+    ChartOfAccountsResponse:
       type: object
-      description: SOAP response containing property configuration data.
+      description: SOAP response containing chart of accounts data.
       properties:
-        PropertyConfigurationsXmlResponse:
+        ChartOfAccountsXmlResponse:
           type: string
-          description: XML response containing property configuration records
-    GetPropertyConfigurationsRequest:
+          description: XML response containing account records
+    GetTenantsRequest:
       type: object
-      description: SOAP request for retrieving property configuration data.
+      description: SOAP request for retrieving tenant data for a property.
       properties:
         UserName:
           type: string
@@ -260,9 +223,46 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
-    GetTenantsRequest:
+    GetChartOfAccountsRequest:
       type: object
-      description: SOAP request for retrieving tenant data for a property.
+      description: SOAP request for retrieving the chart of accounts.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+      required:
+      - UserName
+      - Password
+      - ServerName
+      - Database
+      - Platform
+      - YardiPropertyId
+      - InterfaceEntity
+      - InterfaceLicense
+    GetPropertyConfigurationsRequest:
+      type: object
+      description: SOAP request for retrieving property configuration data.
       properties:
         UserName:
           type: string

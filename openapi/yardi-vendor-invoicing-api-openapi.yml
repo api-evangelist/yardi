@@ -73,13 +73,47 @@ paths:
           description: Server error processing the SOAP request
 components:
   schemas:
-    VendorInvoicesResponse:
+    ImportVendorInvoicesRequest:
       type: object
-      description: SOAP response containing vendor invoice data.
+      description: SOAP request for importing vendor invoices into Voyager accounts payable.
       properties:
-        VendorInvoicesXmlResponse:
+        UserName:
           type: string
-          description: XML response containing vendor invoice records
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+        InvoiceXml:
+          type: string
+          description: XML payload containing vendor invoice data to import
+      required:
+      - UserName
+      - Password
+      - ServerName
+      - Database
+      - Platform
+      - YardiPropertyId
+      - InterfaceEntity
+      - InterfaceLicense
+      - InvoiceXml
     ImportResponse:
       type: object
       description: SOAP response confirming successful import of data.
@@ -92,6 +126,13 @@ components:
           description: List of error messages if any records failed to import
           items:
             type: string
+    VendorInvoicesResponse:
+      type: object
+      description: SOAP response containing vendor invoice data.
+      properties:
+        VendorInvoicesXmlResponse:
+          type: string
+          description: XML response containing vendor invoice records
     GetVendorInvoicesRequest:
       type: object
       description: SOAP request for retrieving vendor invoice records.
@@ -137,47 +178,6 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
-    ImportVendorInvoicesRequest:
-      type: object
-      description: SOAP request for importing vendor invoices into Voyager accounts payable.
-      properties:
-        UserName:
-          type: string
-          description: Yardi API user name
-        Password:
-          type: string
-          description: Yardi API password
-        ServerName:
-          type: string
-          description: Yardi database server name
-        Database:
-          type: string
-          description: Yardi database name
-        Platform:
-          type: string
-          description: Database platform identifier
-        YardiPropertyId:
-          type: string
-          description: Yardi property identifier
-        InterfaceEntity:
-          type: string
-          description: Interface entity code
-        InterfaceLicense:
-          type: string
-          description: Interface license key
-        InvoiceXml:
-          type: string
-          description: XML payload containing vendor invoice data to import
-      required:
-      - UserName
-      - Password
-      - ServerName
-      - Database
-      - Platform
-      - YardiPropertyId
-      - InterfaceEntity
-      - InterfaceLicense
-      - InvoiceXml
   securitySchemes:
     soapAuth:
       type: http

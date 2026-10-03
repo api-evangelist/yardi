@@ -181,6 +181,13 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
+    TransactionResponse:
+      type: object
+      description: SOAP response containing resident transaction data in XML format.
+      properties:
+        TransactionXmlResponse:
+          type: string
+          description: XML response containing transaction records
     GetResidentTransactionsByChargeDateRequest:
       type: object
       description: SOAP request for retrieving resident transactions filtered by charge date.
@@ -226,20 +233,6 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
-    TransactionResponse:
-      type: object
-      description: SOAP response containing resident transaction data in XML format.
-      properties:
-        TransactionXmlResponse:
-          type: string
-          description: XML response containing transaction records
-    BudgetDataResponse:
-      type: object
-      description: SOAP response containing budget data in XML format.
-      properties:
-        BudgetDataXmlResponse:
-          type: string
-          description: XML response containing budget records
     GetBudgetDataRequest:
       type: object
       description: SOAP request for retrieving budget data for a property.
@@ -283,6 +276,13 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
+    BudgetDataResponse:
+      type: object
+      description: SOAP response containing budget data in XML format.
+      properties:
+        BudgetDataXmlResponse:
+          type: string
+          description: XML response containing budget records
     ImportResidentTransactionsRequest:
       type: object
       description: SOAP request for importing resident transactions into Voyager.
