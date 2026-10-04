@@ -85,47 +85,6 @@ components:
           description: List of error messages if any records failed to import
           items:
             type: string
-    ImportServiceRequestsRequest:
-      type: object
-      description: SOAP request for creating or updating service requests in Voyager.
-      properties:
-        UserName:
-          type: string
-          description: Yardi API user name
-        Password:
-          type: string
-          description: Yardi API password
-        ServerName:
-          type: string
-          description: Yardi database server name
-        Database:
-          type: string
-          description: Yardi database name
-        Platform:
-          type: string
-          description: Database platform identifier
-        YardiPropertyId:
-          type: string
-          description: Yardi property identifier
-        InterfaceEntity:
-          type: string
-          description: Interface entity code
-        InterfaceLicense:
-          type: string
-          description: Interface license key
-        ServiceRequestXml:
-          type: string
-          description: XML payload containing service request data to import
-      required:
-      - UserName
-      - Password
-      - ServerName
-      - Database
-      - Platform
-      - YardiPropertyId
-      - InterfaceEntity
-      - InterfaceLicense
-      - ServiceRequestXml
     GetServiceRequestsRequest:
       type: object
       description: SOAP request for retrieving service requests and work orders.
@@ -178,6 +137,47 @@ components:
         ServiceRequestsXmlResponse:
           type: string
           description: XML response containing service request records
+    ImportServiceRequestsRequest:
+      type: object
+      description: SOAP request for creating or updating service requests in Voyager.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+        ServiceRequestXml:
+          type: string
+          description: XML payload containing service request data to import
+      required:
+      - UserName
+      - Password
+      - ServerName
+      - Database
+      - Platform
+      - YardiPropertyId
+      - InterfaceEntity
+      - InterfaceLicense
+      - ServiceRequestXml
   securitySchemes:
     soapAuth:
       type: http

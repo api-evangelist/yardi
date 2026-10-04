@@ -128,20 +128,6 @@ components:
         PropertyConfigurationsXmlResponse:
           type: string
           description: XML response containing property configuration records
-    TenantsResponse:
-      type: object
-      description: SOAP response containing tenant data.
-      properties:
-        TenantsXmlResponse:
-          type: string
-          description: XML response containing tenant records
-    UnitInformationResponse:
-      type: object
-      description: SOAP response containing unit information data.
-      properties:
-        UnitInformationXmlResponse:
-          type: string
-          description: XML response containing unit records
     GetUnitInformationRequest:
       type: object
       description: SOAP request for retrieving unit information for a property.
@@ -186,9 +172,16 @@ components:
         ChartOfAccountsXmlResponse:
           type: string
           description: XML response containing account records
-    GetTenantsRequest:
+    TenantsResponse:
       type: object
-      description: SOAP request for retrieving tenant data for a property.
+      description: SOAP response containing tenant data.
+      properties:
+        TenantsXmlResponse:
+          type: string
+          description: XML response containing tenant records
+    GetPropertyConfigurationsRequest:
+      type: object
+      description: SOAP request for retrieving property configuration data.
       properties:
         UserName:
           type: string
@@ -223,6 +216,13 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
+    UnitInformationResponse:
+      type: object
+      description: SOAP response containing unit information data.
+      properties:
+        UnitInformationXmlResponse:
+          type: string
+          description: XML response containing unit records
     GetChartOfAccountsRequest:
       type: object
       description: SOAP request for retrieving the chart of accounts.
@@ -260,9 +260,9 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
-    GetPropertyConfigurationsRequest:
+    GetTenantsRequest:
       type: object
-      description: SOAP request for retrieving property configuration data.
+      description: SOAP request for retrieving tenant data for a property.
       properties:
         UserName:
           type: string
