@@ -407,6 +407,12 @@ x-provenance:
   - rate-limits/
   verified: '2026-07-28'
 common:
+- type: Plans
+  url: plans/yardi-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/yardi-rate-limits.yml
+- type: FinOps
+  url: finops/yardi-finops.yml
 - type: Website
   url: https://www.yardi.com
 - type: Documentation
