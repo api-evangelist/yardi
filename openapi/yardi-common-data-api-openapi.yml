@@ -121,57 +121,6 @@ paths:
           description: Server error processing the SOAP request
 components:
   schemas:
-    PropertyConfigurationsResponse:
-      type: object
-      description: SOAP response containing property configuration data.
-      properties:
-        PropertyConfigurationsXmlResponse:
-          type: string
-          description: XML response containing property configuration records
-    GetUnitInformationRequest:
-      type: object
-      description: SOAP request for retrieving unit information for a property.
-      properties:
-        UserName:
-          type: string
-          description: Yardi API user name
-        Password:
-          type: string
-          description: Yardi API password
-        ServerName:
-          type: string
-          description: Yardi database server name
-        Database:
-          type: string
-          description: Yardi database name
-        Platform:
-          type: string
-          description: Database platform identifier
-        YardiPropertyId:
-          type: string
-          description: Yardi property identifier
-        InterfaceEntity:
-          type: string
-          description: Interface entity code
-        InterfaceLicense:
-          type: string
-          description: Interface license key
-      required:
-      - UserName
-      - Password
-      - ServerName
-      - Database
-      - Platform
-      - YardiPropertyId
-      - InterfaceEntity
-      - InterfaceLicense
-    ChartOfAccountsResponse:
-      type: object
-      description: SOAP response containing chart of accounts data.
-      properties:
-        ChartOfAccountsXmlResponse:
-          type: string
-          description: XML response containing account records
     TenantsResponse:
       type: object
       description: SOAP response containing tenant data.
@@ -179,6 +128,13 @@ components:
         TenantsXmlResponse:
           type: string
           description: XML response containing tenant records
+    ChartOfAccountsResponse:
+      type: object
+      description: SOAP response containing chart of accounts data.
+      properties:
+        ChartOfAccountsXmlResponse:
+          type: string
+          description: XML response containing account records
     GetPropertyConfigurationsRequest:
       type: object
       description: SOAP request for retrieving property configuration data.
@@ -216,13 +172,6 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
-    UnitInformationResponse:
-      type: object
-      description: SOAP response containing unit information data.
-      properties:
-        UnitInformationXmlResponse:
-          type: string
-          description: XML response containing unit records
     GetChartOfAccountsRequest:
       type: object
       description: SOAP request for retrieving the chart of accounts.
@@ -297,6 +246,57 @@ components:
       - YardiPropertyId
       - InterfaceEntity
       - InterfaceLicense
+    GetUnitInformationRequest:
+      type: object
+      description: SOAP request for retrieving unit information for a property.
+      properties:
+        UserName:
+          type: string
+          description: Yardi API user name
+        Password:
+          type: string
+          description: Yardi API password
+        ServerName:
+          type: string
+          description: Yardi database server name
+        Database:
+          type: string
+          description: Yardi database name
+        Platform:
+          type: string
+          description: Database platform identifier
+        YardiPropertyId:
+          type: string
+          description: Yardi property identifier
+        InterfaceEntity:
+          type: string
+          description: Interface entity code
+        InterfaceLicense:
+          type: string
+          description: Interface license key
+      required:
+      - UserName
+      - Password
+      - ServerName
+      - Database
+      - Platform
+      - YardiPropertyId
+      - InterfaceEntity
+      - InterfaceLicense
+    PropertyConfigurationsResponse:
+      type: object
+      description: SOAP response containing property configuration data.
+      properties:
+        PropertyConfigurationsXmlResponse:
+          type: string
+          description: XML response containing property configuration records
+    UnitInformationResponse:
+      type: object
+      description: SOAP response containing unit information data.
+      properties:
+        UnitInformationXmlResponse:
+          type: string
+          description: XML response containing unit records
   securitySchemes:
     soapAuth:
       type: http
